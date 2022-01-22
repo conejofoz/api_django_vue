@@ -1,0 +1,39 @@
+GET http://localhost:8000/rest/v1/docs/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyODY0NTY0LCJpYXQiOjE2NDI4NjQyNjQsImp0aSI6IjVjYzZmOTNhYjBlYzRmYjc5ZGU0MzMwYzcyYWI5MTIwIiwidXNlcl9pZCI6Mn0.dUmXNSpzlvRuh_XXtSHGD9VbxStEpqVFcZE-SA39zFU
+
+
+
+POST http://localhost:8000/rest/v1/docs/
+Content-Type: application/json
+
+{
+    "nombre": "F2 novembro",
+    "expira": "2030-08-05",
+    "alerta1y": false,
+    "alerta6m": false,
+    "alerta3m": false,
+    "alerta1m": true
+}
+
+
+PUT http://localhost:8000/rest/v1/docs/1/
+Content-Type: application/json
+
+{
+    "nombre": "F2 dezembro",
+    "expira": "2040-08-05",
+    "alerta1y": false,
+    "alerta6m": false,
+    "alerta3m": false,
+    "alerta1m": true
+}
+
+
+POST http://localhost:8000/rest/v1/token/
+Content-Type: application/json
+
+{
+    "username": "dunha",
+    "password": "1234567."
+}
