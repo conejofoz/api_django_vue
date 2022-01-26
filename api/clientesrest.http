@@ -6,11 +6,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiY
 
 POST http://localhost:8000/rest/v1/docs/
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyODk0NTA5LCJpYXQiOjE2NDI4OTQyMDksImp0aSI6ImQ4ZjU2YWY1MzZhYjQ5OWVhNzk1YTBhNGYzYzk5NjAwIiwidXNlcl9pZCI6MX0.sUrcChYm64fG5oHZhLBAJ445KtYpHhOXx5DSSBlmAxw
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTU3NzU0LCJpYXQiOjE2NDMxNTc0NTQsImp0aSI6IjdiMzlkYWY4OTM4NTRiNjZhZTU5Mjc3MTg4OWYzNWJmIiwidXNlcl9pZCI6MX0._khiX_2CLx_1x0aMDtPEJQ8AsO7Poi48F6EvXtgXmsU
 
 {
-    "nombre": "F2 novembro",
-    "expira": "2030-08-05",
+    "nombre": "F2 dezembro",
+    "expira": "2025-08-06",
     "alerta1y": false,
     "alerta6m": false,
     "alerta3m": false,
