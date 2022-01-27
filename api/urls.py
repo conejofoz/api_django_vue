@@ -8,10 +8,11 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from .views import prueba, DocumentoViewSet
+from .views import prueba, DocumentoViewSet, CategoriaViewSet
 
 router = routers.DefaultRouter()
 router.register(r'docs', DocumentoViewSet)
+router.register(r'categoria', CategoriaViewSet)
 
 urlpatterns = [
     #path('', prueba, name='prueba')
