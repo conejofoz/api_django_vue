@@ -6,7 +6,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiY
 
 POST http://localhost:8000/rest/v1/docs/
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMTU3NzU0LCJpYXQiOjE2NDMxNTc0NTQsImp0aSI6IjdiMzlkYWY4OTM4NTRiNjZhZTU5Mjc3MTg4OWYzNWJmIiwidXNlcl9pZCI6MX0._khiX_2CLx_1x0aMDtPEJQ8AsO7Poi48F6EvXtgXmsU
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMjg2NTI2LCJpYXQiOjE2NDMyODYyMjYsImp0aSI6ImM4YjM1MDY1MTJhZDQ0MmJiYmQzOTNhNDc2MWM4N2JlIiwidXNlcl9pZCI6MX0.GKIXQIAVLaN0CyEHPkCKTieVMiMlZwT4nIGis13HSNw
 
 {
     "nombre": "F2 dezembro",
@@ -37,4 +37,14 @@ Content-Type: application/json
 {
     "username": "conejofoz",
     "password": "1234567."
+}
+
+
+
+POST http://localhost:8000/rest/v1/categoria/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzMjg2NTI2LCJpYXQiOjE2NDMyODYyMjYsImp0aSI6ImM4YjM1MDY1MTJhZDQ0MmJiYmQzOTNhNDc2MWM4N2JlIiwidXNlcl9pZCI6MX0.GKIXQIAVLaN0CyEHPkCKTieVMiMlZwT4nIGis13HSNw
+
+{
+    "descricao": "Perfumes"
 }
