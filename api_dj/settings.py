@@ -84,9 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'apivuedj',
         'USER': 'postgres',
-        'PASSWORD': 'conejo34',
+        'PASSWORD': 'conejo24',
         'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
