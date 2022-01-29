@@ -21,13 +21,13 @@ class DocumentoViewSet(viewsets.ModelViewSet):
 
 
 class CategoriaViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     queryset = Categoria.objects.all().order_by('descricao')
     serializer_class = CategoriaSerializer
 
 
 class SubCategoriaViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     queryset = SubCategoria.objects.all().order_by('descricao')
     serializer_class = SubCategoriaSerializer
 

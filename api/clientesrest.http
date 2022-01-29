@@ -48,3 +48,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiY
 {
     "descricao": "Perfumes"
 }
+
+
+
+http://localhost:8000/rest/v1/subcategoria/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDc4Mjc1LCJpYXQiOjE2NDM0Nzc5NzUsImp0aSI6ImU4MjMxODg1OWIxNzQ2ZDdiMDYzZDYxNjlmYmE4NjdiIiwidXNlcl9pZCI6MX0.bWr4J0xbQ19KZszZJZg5Uy0YffWPYIosk9M_PBqnk1M

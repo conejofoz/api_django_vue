@@ -36,7 +36,7 @@ class Categoria(models.Model):
     
 
 class SubCategoria(models.Model):
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, related_name='subcategorias', on_delete=models.CASCADE)
     descricao = models.CharField(max_length=50, null=False, blank=False)
 
     def __str__(self):
