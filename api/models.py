@@ -1,6 +1,7 @@
-from operator import mod
+from operator import mod, truediv
 from tabnanny import verbose
 from django.db import models
+from importlib_metadata import email
 
 class Documento(models.Model):
     nombre = models.CharField(max_length=50, null=False, blank=False, unique=True)
@@ -68,3 +69,20 @@ class Produto(models.Model):
 
     class Meta:
         verbose_name_plural = "Produtos"
+
+
+class Fornecedor(models.Model):
+    nome = models.CharField(max_length=50, null=False, blank=False,unique=True)
+    telefone = models.CharField(max_length=20, null=True, blank=True)
+    email = models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return self.nome
+
+    def save(self, **kwargs):
+        self.nome = self.nome.upper()
+        super(Fornecedor, self).save()
+
+    class Meta:
+        verbose_name_plural = 'Fornecedores'
+    

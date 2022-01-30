@@ -84,9 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'apivuedj',
         'USER': 'postgres',
-        'PASSWORD': 'conejo34',
+        'PASSWORD': 'conejo24',
         'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
@@ -145,5 +145,5 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
-    "http://192.168.0.118:8080",
+    "http://192.168.0.116:8080",
 ]

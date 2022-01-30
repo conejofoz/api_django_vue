@@ -4,9 +4,9 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import viewsets 
 from .models import Documento, Categoria, SubCategoria, \
-    Produto
+    Produto, Fornecedor
 from .serializer import DocumentoSerializer, CategoriaSerializer, \
-    SubCategoriaSerializer, ProdutoSerializer
+    SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer
 
 
 def prueba(request):
@@ -36,3 +36,9 @@ class ProdutoViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = Produto.objects.all().order_by('descricao')
     serializer_class = ProdutoSerializer
+
+
+class FornecedorViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    queryset = Fornecedor.objects.all().order_by('nome')
+    serializer_class = FornecedorSerializer
