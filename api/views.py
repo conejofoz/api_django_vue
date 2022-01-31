@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import viewsets 
-from .models import Documento, Categoria, SubCategoria, \
-    Produto, Fornecedor
-from .serializer import DocumentoSerializer, CategoriaSerializer, \
-    SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer
+from .models import ComprasDetelhe, Documento, Categoria, SubCategoria, \
+    Produto, Fornecedor, Compras
+from .serializer import ComprasSerializer, DocumentoSerializer, CategoriaSerializer, \
+    SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
+        ComprasDetalheSerializer
 
 
 def prueba(request):
@@ -33,7 +34,7 @@ class SubCategoriaViewSet(viewsets.ModelViewSet):
 
 
 class ProdutoViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     queryset = Produto.objects.all().order_by('descricao')
     serializer_class = ProdutoSerializer
 
@@ -42,3 +43,16 @@ class FornecedorViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = Fornecedor.objects.all().order_by('nome')
     serializer_class = FornecedorSerializer
+
+
+class ComprasViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    queryset = Compras.objects.all().order_by('id')    
+    serializer_class = ComprasSerializer
+
+class ComprasDetalheViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    queryset = ComprasDetelhe.objects.all().order_by('id')    
+    serializer_class = ComprasDetalheSerializer
+
+    

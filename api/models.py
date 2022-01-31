@@ -1,7 +1,17 @@
 from operator import mod, truediv
 from tabnanny import verbose
+from tkinter.tix import Tree
 from django.db import models
 from importlib_metadata import email
+
+
+class ModeloEdit(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
 
 class Documento(models.Model):
     nombre = models.CharField(max_length=50, null=False, blank=False, unique=True)
@@ -85,4 +95,38 @@ class Fornecedor(models.Model):
 
     class Meta:
         verbose_name_plural = 'Fornecedores'
+    
+
+class Compras(ModeloEdit):
+    fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
+    data = models.DateField(null=False, blank=False)
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name_plural = "Compras"
+    
+
+class ComprasDetelhe(ModeloEdit):
+    compra = models.ForeignKey(Compras, related_name='detalhes', on_delete=models.CASCADE)
+    produto = models.ForeignKey(Produto, on_delete=models.DO_NOTHING)
+    quantidade = models.IntegerField(default=0)
+    preco = models.FloatField(default=0)
+    desconto = models.FloatField(default=0)
+
+    @property
+    def subtotal(self):
+        return self.quantidade * self.preco
+
+    @property
+    def total(self):
+        return self.subtotal - self.desconto
+
+    def __str__(self):
+        return '{}-{}-{}'.format(self.id, self.compra, self.produto)
+
+    class Meta:
+        verbose_name_plural = "Detalhes"
+    
     
