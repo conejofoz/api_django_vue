@@ -2,7 +2,7 @@ from operator import mod, truediv
 from tabnanny import verbose
 from tkinter.tix import Tree
 from django.db import models
-from importlib_metadata import email
+#from importlib_metadata import email
 
 
 class ModeloEdit(models.Model):
