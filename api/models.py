@@ -108,8 +108,8 @@ class Compras(ModeloEdit):
         verbose_name_plural = "Compras"
     
 
-class ComprasDetelhe(ModeloEdit):
-    compra = models.ForeignKey(Compras, related_name='detalhes', on_delete=models.CASCADE)
+class ComprasDetalhe(ModeloEdit):
+    compra = models.ForeignKey(Compras, related_name='detalhe', on_delete=models.CASCADE)
     produto = models.ForeignKey(Produto, on_delete=models.DO_NOTHING)
     quantidade = models.IntegerField(default=0)
     preco = models.FloatField(default=0)

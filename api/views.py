@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import viewsets 
-from .models import ComprasDetelhe, Documento, Categoria, SubCategoria, \
+from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
     Produto, Fornecedor, Compras
 from .serializer import ComprasSerializer, DocumentoSerializer, CategoriaSerializer, \
     SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
@@ -46,13 +46,13 @@ class FornecedorViewSet(viewsets.ModelViewSet):
 
 
 class ComprasViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     queryset = Compras.objects.all().order_by('id')    
     serializer_class = ComprasSerializer
 
 class ComprasDetalheViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
-    queryset = ComprasDetelhe.objects.all().order_by('id')    
+    #permission_classes = (IsAuthenticated,)
+    queryset = ComprasDetalhe.objects.all().order_by('id')    
     serializer_class = ComprasDetalheSerializer
 
     

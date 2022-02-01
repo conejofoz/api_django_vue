@@ -1,7 +1,7 @@
 from dataclasses import field, fields
 from rest_framework import serializers 
 from .models import Documento, Categoria, Fornecedor, Produto, \
-    SubCategoria, Compras, ComprasDetelhe
+    SubCategoria, Compras, ComprasDetalhe
 
 
 class DocumentoSerializer(serializers.ModelSerializer):
@@ -44,13 +44,15 @@ class FornecedorSerializer(serializers.ModelSerializer):
 class ComprasDetalheSerializer(serializers.ModelSerializer):
     produto_descricao = serializers.ReadOnlyField(source='produto.descricao')
     class Meta:
-        model=ComprasDetelhe
-        fields=['compras', 'id', 'produto', 'quantidade', 'preco', 'subtotal', 'desconto', 'total', 'produto_descricao']
+        model=ComprasDetalhe
+        fields=["compra", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao"]
 
 
 class ComprasSerializer(serializers.ModelSerializer):
     detalhe = ComprasDetalheSerializer(many=True, read_only=True)
+    print("detalhe", detalhe)
 
     class Meta:
         model = Compras
-        fields = ['id', 'fornecedor', 'data', 'detalhe']
+        fields = ["id", "fornecedor", "data", "detalhe"]
+        #fields = '__all__'
