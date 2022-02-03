@@ -1,8 +1,7 @@
-from operator import mod, truediv
-from tabnanny import verbose
-from tkinter.tix import Tree
+
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
 from django.db import models
-#from importlib_metadata import email
 
 
 class ModeloEdit(models.Model):
@@ -145,3 +144,27 @@ class Cliente(models.Model):
 
     class Meta:
         verbose_name_plural = "Clientes"
+
+
+
+
+# Signals de Compra
+@receiver(post_save, sender=ComprasDetalhe)
+def somar_quantidade(sender, instance, **kwargs):
+    id_produto = instance.produto.id 
+    produto = Produto.objects.get(id = id_produto)
+    
+    if produto:
+        produto.stock = int(produto.stock) + int(instance.quantidade)
+        produto.save()
+
+
+
+@receiver(post_delete, sender=ComprasDetalhe)
+def diminuir_quantidade(sender, instance, **kwargs):
+    id_produto = instance.produto.id 
+    produto = Produto.objects.filtert(id = id_produto).first()
+    
+    if produto:
+        produto.stock -= int(instance.quantidade)
+        produto.save()
