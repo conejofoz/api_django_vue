@@ -146,6 +146,37 @@ class Cliente(models.Model):
         verbose_name_plural = "Clientes"
 
 
+class Venda(ModeloEdit):
+    cliente = models.ForeignKey(Cliente, on_delete=models.RESTRICT)
+    data = models.DateField()
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name_plural = "Vendas"
+
+
+
+class VendaDetalhe(ModeloEdit):
+    venda = models.ForeignKey(Venda, related_name='detalhe', on_delete=models.CASCADE)
+    produto = models.ForeignKey(Produto, on_delete=models.RESTRICT)
+    quantidade = models.IntegerField(default=0)
+    preco = models.FloatField(default=0)        
+    
+    @property
+    def subtotal(self):
+        return self.quantidade * self.preco
+
+    @property
+    def total(self):
+        return self.subtotal - self.desconto
+
+    def __str__(self):
+        return '{}-{}-{}'.format(self.id, self.compra, self.produto)
+
+    class Meta:
+        verbose_name_plural = "Detalhes de Venda"
 
 
 # Signals de Compra
