@@ -1,5 +1,7 @@
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import viewsets 
@@ -12,6 +14,15 @@ from .serializer import ClienteSerializer, ComprasSerializer, DocumentoSerialize
 
 def prueba(request):
     return HttpResponse("primeira vista")
+
+@method_decorator(csrf_exempt) 
+def upload(request):
+    print(request.FILES['imagem'])
+    cliente = Cliente.objects.filter(pk=1).first()
+    cliente.imagem = request.FILES['imagem']
+    cliente.save()
+    return HttpResponse("Passou no upload")
+   #return HttpResponse(request)
 
 
 
