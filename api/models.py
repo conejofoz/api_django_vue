@@ -134,7 +134,7 @@ class Cliente(models.Model):
     telefone = models.CharField(max_length=20, null=True, blank=True)
     email = models.TextField(null=True, blank=True)
     estado = models.BooleanField(default=True)
-    imagem = models.ImageField(null=True, blank=True)
+    imagem = models.ImageField(null=True, blank=True,upload_to='clientes/')
 
     def __str__(self):
         return self.nome

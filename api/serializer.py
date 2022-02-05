@@ -79,3 +79,4 @@ class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         fields = '__all__'
+        #fields = ["id", "nome", "telefone", "email", "estado"]

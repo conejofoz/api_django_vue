@@ -15,10 +15,11 @@ from .serializer import ClienteSerializer, ComprasSerializer, DocumentoSerialize
 def prueba(request):
     return HttpResponse("primeira vista")
 
+
 @method_decorator(csrf_exempt) 
 def upload(request):
-    print(request.FILES['imagem'])
-    cliente = Cliente.objects.filter(pk=1).first()
+    id = request.POST.get('codigo')
+    cliente = Cliente.objects.filter(pk=id).first()
     cliente.imagem = request.FILES['imagem']
     cliente.save()
     return HttpResponse("Passou no upload")
