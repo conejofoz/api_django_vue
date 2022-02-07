@@ -11,7 +11,7 @@ from rest_framework_simplejwt.views import (
 from .views import prueba, DocumentoViewSet, CategoriaViewSet, \
     SubCategoriaViewSet, ProdutoViewSet, FornecedorViewSet, \
         ComprasViewSet, ComprasDetalheViewSet, ClienteViewSet, \
-            VendaViewSet, VendaDetalheViewSet, upload
+            VendaViewSet, VendaDetalheViewSet, upload, clientest
 
 router = routers.DefaultRouter()
 router.register(r'docs', DocumentoViewSet)
@@ -32,4 +32,5 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name="token_obtain_pair" ),
     path('token/refresh/', TokenRefreshView.as_view(), name="token_refresh" ),
     path('upload/', upload, name='upload'),
+    path('clientest/', clientest, name='clientest'),
 ]

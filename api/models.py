@@ -4,6 +4,9 @@ from django.dispatch import receiver
 from django.db import models
 
 
+from api_dj.settings import MEDIA_URL, STATIC_URL, BASE_DIR, MEDIA_ROOT
+
+
 class ModeloEdit(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -135,6 +138,11 @@ class Cliente(models.Model):
     email = models.TextField(null=True, blank=True)
     estado = models.BooleanField(default=True)
     imagem = models.ImageField(null=True, blank=True,upload_to='clientes/')
+
+    def get_image(self):
+        if self.imagem:
+            return '{}{}'.format(MEDIA_URL, self.imagem)
+        return '{}{}'.format(STATIC_URL, 'img/empty.png')
 
     def __str__(self):
         return self.nome

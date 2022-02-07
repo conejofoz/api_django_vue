@@ -1,7 +1,8 @@
+from urllib import response
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from django.http import HttpResponse, request
+from django.http import HttpResponse, JsonResponse, request
 from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import viewsets 
@@ -25,6 +26,24 @@ def upload(request):
     return HttpResponse("Passou no upload")
    #return HttpResponse(request)
 
+
+@method_decorator(csrf_exempt) 
+def clientest(request):
+    clientes = Cliente.objects.all().order_by('nome')
+    data = [
+        {
+            'id': cliente.id, 
+            'nome': cliente.nome, 
+            'telefone': cliente.telefone,
+            'email': cliente.email,
+            'estado':cliente.estado,
+            'imagem':cliente.get_image(),
+            #'imagem':None,
+        }
+        for cliente in clientes
+    ]
+    response = {'dados': data}
+    return JsonResponse(response)
 
 
 class DocumentoViewSet(viewsets.ModelViewSet):
