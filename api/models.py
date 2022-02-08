@@ -71,6 +71,13 @@ class Produto(models.Model):
     stock = models.IntegerField(default=0)
     preco = models.FloatField(default=0)
     subcategoria = models.ForeignKey(SubCategoria, on_delete=models.CASCADE)
+    imagem = models.ImageField(null=True, blank=True,upload_to='clientes/')
+
+    def get_image(self):
+        if self.imagem:
+            return '{}{}'.format(MEDIA_URL, self.imagem)
+        return '{}{}'.format(STATIC_URL, 'img/empty.png')
+
 
     def __str__(self):
         return self.descricao

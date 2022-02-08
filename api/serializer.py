@@ -31,7 +31,7 @@ class ProdutoSerializer(serializers.ModelSerializer):
     subcat_descricao = serializers.ReadOnlyField(source='subcategoria.descricao')
     class Meta:
         model=Produto
-        fields=("id", "codigo", "descricao", "stock", "preco", "subcategoria", "subcat_descricao")
+        fields=("id", "codigo", "descricao", "stock", "preco", "subcategoria", "subcat_descricao", "imagem")
 
 
 class FornecedorSerializer(serializers.ModelSerializer):
