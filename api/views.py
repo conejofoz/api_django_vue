@@ -13,6 +13,10 @@ from .serializer import ClienteSerializer, ComprasSerializer, DocumentoSerialize
         ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer
 
 
+def index(request):
+    return render(request, 'index.html')
+
+
 def prueba(request):
     return HttpResponse("primeira vista")
 
