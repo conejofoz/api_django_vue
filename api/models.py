@@ -1,8 +1,21 @@
+#gerar thumbnail
+from ctypes import sizeof
+from distutils.command.upload import upload
+from email.mime import image
+from io import BytesIO
+from pickletools import optimize
+from ssl import Options
+from turtle import width
+from django.conf import settings
+from django.core.files import File
+import os
+
 
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.db import models
 
+from PIL import Image
 
 from api_dj.settings import MEDIA_URL, STATIC_URL, BASE_DIR, MEDIA_ROOT
 
@@ -71,23 +84,57 @@ class Produto(models.Model):
     stock = models.IntegerField(default=0)
     preco = models.FloatField(default=0)
     subcategoria = models.ForeignKey(SubCategoria, on_delete=models.CASCADE)
-    imagem = models.ImageField(null=True, blank=True,upload_to='clientes/')
+    imagem = models.ImageField(null=True, blank=True, upload_to='produtos/')
+    thumbnail = models.ImageField(null=True, blank=True, upload_to='produtos/')
 
+    
     def get_image(self):
         if self.imagem:
             return '{}{}'.format(MEDIA_URL, self.imagem)
         return '{}{}'.format(STATIC_URL, 'img/empty.png')
 
-
     def __str__(self):
         return self.descricao
-    
-    def save(self, **kwargs):
+   
+    def save(self, *args, **kwargs):
         self.descricao = self.descricao.upper()
-        super(Produto, self).save()
+        #self.thumbnail = self.make_thumbnail(self.imagem)
+        super().save(*args, **kwargs)
+        self.resize_image(self.thumbnail.name, 280)
+        
+
+    @staticmethod
+    def resize_image(img_name, new_width):
+        img_path = os.path.join(settings.MEDIA_ROOT, img_name) 
+        img = Image.open(img_path)
+        width, height = img.size
+        new_height = round((new_width * height) / width)
+
+        if width < new_width:
+            img.close()
+            return
+
+        new_img = img.resize((new_width, new_height), Image.ANTIALIAS)
+        new_img.save(img_path, optimize=True, quality=60)
+        new_img.close()
+        img.close()
+
 
     class Meta:
         verbose_name_plural = "Produtos"
+
+    def make_thumbnail(imagem, size=(300, 200)):
+        img = Image.open(imagem)
+        img.convert('RGB')
+        img.thumbnail(size)
+
+        thumb_io = BytesIO()
+        img.save(thumb_io, 'JPEG', quality=85)
+
+        thumbnail = File(thumb_io, name=imagem.name)
+
+        return thumbnail
+
 
 
 class Fornecedor(models.Model):

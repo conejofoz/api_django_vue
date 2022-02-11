@@ -28,7 +28,7 @@ def upload(request):
     cliente.imagem = request.FILES['imagem']
     cliente.save()
     return HttpResponse("Passou no upload")
-   #return HttpResponse(request)
+    #return HttpResponse(request)
 
 
 @method_decorator(csrf_exempt) 
