@@ -1,9 +1,12 @@
-from urllib import response
+from unicodedata import name
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, request
 from rest_framework.permissions import IsAuthenticated
+
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from rest_framework import viewsets 
 from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
@@ -92,9 +95,19 @@ class ComprasDetalheViewSet(viewsets.ModelViewSet):
 
 
 class ClienteViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     queryset = Cliente.objects.all().order_by('nome')
     serializer_class = ClienteSerializer
+
+    @action(methods=['get'], detail=False,permission_classes=[], 
+        url_path='by-name/(?P<nome>[\w\ ]+)')
+    def by_name(self, request, pk=None, nome=None):
+        print(nome)
+        obj = Cliente.objects.filter(nome__icontains=nome,estado=True)
+        if not obj:
+            return Response({"detail": "Não existe um cliente com esse nome"})
+        serializador = ClienteSerializer(obj, many=True)
+        return Response(serializador.data)
 
 
 class VendaViewSet(viewsets.ModelViewSet):
