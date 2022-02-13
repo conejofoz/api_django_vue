@@ -226,6 +226,7 @@ class VendaDetalhe(ModeloEdit):
     produto = models.ForeignKey(Produto, on_delete=models.RESTRICT)
     quantidade = models.IntegerField(default=0)
     preco = models.FloatField(default=0)        
+    desconto = models.FloatField(default=0)        
     
     @property
     def subtotal(self):
