@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from rest_framework import viewsets 
+from rest_framework import viewsets, status 
 from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
     Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe
 from .serializer import ClienteSerializer, ComprasSerializer, DocumentoSerializer, CategoriaSerializer, \
@@ -115,7 +115,20 @@ class VendaViewSet(viewsets.ModelViewSet):
     queryset = Venda.objects.all().order_by('id')    
     serializer_class = VendaSerializer
 
+
 class VendaDetalheViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
     queryset = VendaDetalhe.objects.all().order_by('id')    
     serializer_class = VendaDetalheSerializer
+
+    def create(self, request):
+        serializer = VendaDetalheSerializer(data=request.data)
+        if serializer.is_valid():
+            data = request.data
+            prod = Produto.objects.get(pk=data["produto"])
+            if int(prod.stock) >= int(data["quantidade"]):
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                return Response("Não tem quantidade suficiente" + "Estoque atual: " + str(prod.stock))
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
