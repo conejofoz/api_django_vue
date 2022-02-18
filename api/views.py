@@ -2,13 +2,19 @@ from unicodedata import name
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, request
+from django.http import HttpResponse, JsonResponse, QueryDict, request
 from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.request import Request
 
 from rest_framework import viewsets, status 
+
+from rest_framework.parsers import JSONParser
+import json
+
+
 from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
     Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe
 from .serializer import ClienteSerializer, ComprasSerializer, DocumentoSerializer, CategoriaSerializer, \
@@ -115,6 +121,44 @@ class VendaViewSet(viewsets.ModelViewSet):
     queryset = Venda.objects.all().order_by('id')    
     serializer_class = VendaSerializer
 
+    def create(self, request, *args, **kwargs):
+        serializerVenda = VendaSerializer(data=request.data)
+        print('/////////////////REQUEST.DATA////////////////')
+        print(request.data['produtos'])
+        print('/////////////////REQUEST.DATA////////////////')
+        if serializerVenda.is_valid():
+            serializerVenda.save()
+            print('serializerVenda')
+            print(serializerVenda.data['id'])
+            numeroVenda = serializerVenda.data['id']
+            #numeroVenda = 24
+            print('-------produtos quando chega no django--------')
+            print(request.POST.get('produtos'))
+            print('-------produtos com loads---------------------')
+            
+            ###produtos = json.loads(request.POST.get('produtos'))
+            produtos = request.data['produtos']
+            #produtos = request.POST.get('produtos')
+            #print(request.POST.get('produtos'))
+            print(produtos)
+            for produto in produtos:
+                produto['venda'] = numeroVenda
+                print('______________um produto________________')
+                print(produto)
+                serializerDetalhe = VendaDetalheSerializer(data=produto)
+                print('******************')
+                print(serializerDetalhe)
+                #print(serializerDetalhe.data)
+                if serializerDetalhe.is_valid():
+                    serializerDetalhe.save()
+                else:
+                    print('serialize é inválido')
+                    serializerDetalhe.save()
+            print('----------------------------------')
+            #return super().create(request, *args, **kwargs)
+            return Response(serializerVenda.data, status=status.HTTP_201_CREATED)
+        return Response(serializerVenda.errors, status=status.HTTP_400_BAD_REQUEST)  
+
 
 class VendaDetalheViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
@@ -122,6 +166,8 @@ class VendaDetalheViewSet(viewsets.ModelViewSet):
     serializer_class = VendaDetalheSerializer
 
     def create(self, request):
+        print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+        print(request.data)
         serializer = VendaDetalheSerializer(data=request.data)
         if serializer.is_valid():
             data = request.data

@@ -254,7 +254,6 @@ def somar_quantidade(sender, instance, **kwargs):
         produto.save()
 
 
-
 @receiver(post_delete, sender=ComprasDetalhe)
 def diminuir_quantidade(sender, instance, **kwargs):
     id_produto = instance.produto.id 
