@@ -123,27 +123,31 @@ class VendaViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         serializerVenda = VendaSerializer(data=request.data)
-        print('/////////////////REQUEST.DATA////////////////')
+        print('/////////////////REQUEST.DATA.PRODUTO//////////////// \n')
         print(request.data['produtos'])
-        print('/////////////////REQUEST.DATA////////////////')
+        print(request.data)
+        print('/////////////////REQUEST.DATA.PRODUTO//////////////// \n\n')
         if serializerVenda.is_valid():
             serializerVenda.save()
             print('serializerVenda')
             print(serializerVenda.data['id'])
             numeroVenda = serializerVenda.data['id']
             #numeroVenda = 24
+            
             print('-------produtos quando chega no django--------')
             print(request.POST.get('produtos'))
             print('-------produtos com loads---------------------')
-            
-            ###produtos = json.loads(request.POST.get('produtos'))
-            produtos = request.data['produtos']
+            produtos = json.loads(request.POST.get('produtos'))
+            #produtos = request.data['produtos']
+            #produtos = json.loads(request.data['produtos'])
             #produtos = request.POST.get('produtos')
             #print(request.POST.get('produtos'))
-            print(produtos)
+            print('Produtos => ', produtos)
             for produto in produtos:
+                #produto = json.dumps(produto)
                 produto['venda'] = numeroVenda
                 print('______________um produto________________')
+                print('Tipo do produto: ', type(produto))
                 print(produto)
                 serializerDetalhe = VendaDetalheSerializer(data=produto)
                 print('******************')
@@ -153,7 +157,7 @@ class VendaViewSet(viewsets.ModelViewSet):
                     serializerDetalhe.save()
                 else:
                     print('serialize é inválido')
-                    serializerDetalhe.save()
+                    #serializerDetalhe.save()
             print('----------------------------------')
             #return super().create(request, *args, **kwargs)
             return Response(serializerVenda.data, status=status.HTTP_201_CREATED)
@@ -168,6 +172,7 @@ class VendaDetalheViewSet(viewsets.ModelViewSet):
     def create(self, request):
         print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         print(request.data)
+        print('Tipo do request.data ', type(request.data))
         serializer = VendaDetalheSerializer(data=request.data)
         if serializer.is_valid():
             data = request.data
