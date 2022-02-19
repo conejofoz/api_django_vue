@@ -82,6 +82,18 @@ class ProdutoViewSet(viewsets.ModelViewSet):
     queryset = Produto.objects.all().order_by('descricao')
     serializer_class = ProdutoSerializer
 
+    @action(methods=['get'], detail=False,permission_classes=[], 
+        url_path='by-descricao/(?P<descricao>[\w\ ]+)')
+    def by_descricao(self, request, pk=None, descricao=None):
+        print(descricao)
+        obj = Produto.objects.filter(descricao__icontains=descricao)
+        print('OBJ: ', obj)
+        if not obj:
+            return Response({"detail": "Não existe um produto com esse nome"})
+        serializador = ProdutoSerializer(obj, many=True)
+        print('SERIALIZADOR: ',serializador.data)
+        return Response(serializador.data)
+
 
 class FornecedorViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
@@ -103,6 +115,7 @@ class ComprasDetalheViewSet(viewsets.ModelViewSet):
 class ClienteViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
     queryset = Cliente.objects.all().order_by('nome')
+    print('QUERYSET: ', queryset) 
     serializer_class = ClienteSerializer
 
     @action(methods=['get'], detail=False,permission_classes=[], 
@@ -110,9 +123,11 @@ class ClienteViewSet(viewsets.ModelViewSet):
     def by_name(self, request, pk=None, nome=None):
         print(nome)
         obj = Cliente.objects.filter(nome__icontains=nome,estado=True)
+        print('OBJ: ', obj)
         if not obj:
             return Response({"detail": "Não existe um cliente com esse nome"})
         serializador = ClienteSerializer(obj, many=True)
+        print('SERIALIZADOR: ',serializador.data)
         return Response(serializador.data)
 
 
