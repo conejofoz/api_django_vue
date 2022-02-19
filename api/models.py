@@ -262,3 +262,26 @@ def diminuir_quantidade(sender, instance, **kwargs):
     if produto:
         produto.stock -= int(instance.quantidade)
         produto.save()
+
+
+# Signals de Venda
+"""
+@receiver(post_save, sender=VendaDetalhe)
+def diminuir_quantidade(sender, instance, **kwargs):
+    id_produto = instance.produto.id 
+    produto = Produto.objects.get(id = id_produto)
+    
+    if produto:
+        produto.stock = int(produto.stock) - int(instance.quantidade)
+        produto.save()
+
+
+@receiver(post_delete, sender=VendaDetalhe)
+def somar_quantidade(sender, instance, **kwargs):
+    id_produto = instance.produto.id 
+    produto = Produto.objects.filtert(id = id_produto).first()
+    
+    if produto:
+        produto.stock += int(instance.quantidade)
+        produto.save()
+"""
