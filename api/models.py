@@ -1,4 +1,5 @@
 #gerar thumbnail
+from ast import Try
 from ctypes import sizeof
 from distutils.command.upload import upload
 from email.mime import image
@@ -265,23 +266,35 @@ def diminuir_quantidade(sender, instance, **kwargs):
 
 
 # Signals de Venda
-"""
+
 @receiver(post_save, sender=VendaDetalhe)
-def diminuir_quantidade(sender, instance, **kwargs):
+def diminuir_qtd(sender, instance, **kwargs):
     id_produto = instance.produto.id 
-    produto = Produto.objects.get(id = id_produto)
+    produto = Produto.objects.filter(id=id_produto).only('stock').first()
+    #produto = Produto.objects.get(id=id_produto)
     
     if produto:
+        print('PRODUTO:->> ', produto)
         produto.stock = int(produto.stock) - int(instance.quantidade)
-        produto.save()
+        """ 
+        Estava dando erro por causa do resize imagem no model
+        como a venda gravava normal mais estourava um erro
+        capiturei a excessão e deixei passar
+        """
+        try:
+            produto.save()
+        except Exception as e: 
+            print(str(e))
 
 
 @receiver(post_delete, sender=VendaDetalhe)
-def somar_quantidade(sender, instance, **kwargs):
+def somar_qtd(sender, instance, **kwargs):
     id_produto = instance.produto.id 
-    produto = Produto.objects.filtert(id = id_produto).first()
+    produto = Produto.objects.filter(id=id_produto).first()
     
     if produto:
         produto.stock += int(instance.quantidade)
-        produto.save()
-"""
+        try:
+           produto.save()
+        except Exception as e: 
+           print(str(e))
