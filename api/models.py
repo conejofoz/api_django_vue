@@ -238,10 +238,16 @@ class VendaDetalhe(ModeloEdit):
         return self.subtotal - self.desconto
 
     def __str__(self):
-        return '{}-{}-{}'.format(self.id, self.compra, self.produto)
+        return '{}-{}-{}'.format(self.id, self.venda, self.produto)
 
     class Meta:
         verbose_name_plural = "Detalhes de Venda"
+
+    #def save(self, *args, **kwargs):
+        #print("**************************************************************")
+        #print("produto====>", self.produto_id)
+        #self.produto_id = 5
+        #super(VendaDetalhe, self).save()
 
 
 # Signals de Compra

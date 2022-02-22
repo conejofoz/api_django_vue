@@ -142,7 +142,7 @@ class VendaViewSet(viewsets.ModelViewSet):
             serializerVenda.save()
             numeroVenda = serializerVenda.data['id']
             produtos = json.loads(request.POST.get('produtos'))
-
+            #print(produtos)
             for produto in produtos:
                 produto['venda'] = numeroVenda
                 serializerDetalhe = VendaDetalheSerializer(data=produto)

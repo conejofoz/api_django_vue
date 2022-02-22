@@ -60,9 +60,14 @@ class ComprasSerializer(serializers.ModelSerializer):
 
 class VendaDetalheSerializer(serializers.ModelSerializer):
     produto_descricao = serializers.ReadOnlyField(source='produto.descricao')
+    produto_imagem = serializers.ImageField(source='produto.imagem')
+    #produ = serializers.ReadOnlyField(source='produto')
+    #produto_id = serializers.ReadOnlyField(source='produto.id')
+    produto_completo = ProdutoSerializer(many=False, read_only=True)
+    #produto = ProdutoSerializer(many=False, read_only=True)
     class Meta:
         model=VendaDetalhe
-        fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao"]
+        fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao", "produto_imagem", "produto_completo",]
 
 
 class VendaSerializer(serializers.ModelSerializer):
