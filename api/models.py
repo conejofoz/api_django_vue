@@ -1,12 +1,12 @@
 #gerar thumbnail
-from ast import Try
+#from ast import Try
 from ctypes import sizeof
-from distutils.command.upload import upload
-from email.mime import image
+#from distutils.command.upload import upload
+#from email.mime import image
 from io import BytesIO
 from pickletools import optimize
-from ssl import Options
-from turtle import width
+#from ssl import Options
+#from turtle import width
 from django.conf import settings
 from django.core.files import File
 import os
@@ -101,7 +101,8 @@ class Produto(models.Model):
         self.descricao = self.descricao.upper()
         #self.thumbnail = self.make_thumbnail(self.imagem)
         super().save(*args, **kwargs)
-        self.resize_image(self.thumbnail.name, 280)
+        if self.thumbnail:
+            self.resize_image(self.thumbnail.name, 720)
         
 
     @staticmethod
