@@ -1,6 +1,6 @@
 from dataclasses import field, fields
 from rest_framework import serializers 
-from .models import Cliente, Documento, Categoria, Fornecedor, Produto, \
+from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, Produto, \
     SubCategoria, Compras, ComprasDetalhe, Venda, VendaDetalhe
 
 
@@ -25,6 +25,12 @@ class CategoriaSerializer(serializers.ModelSerializer):
         model=Categoria
         #fields='__all__'
         fields = ("id", "descricao", "subcategorias")
+
+class EmpresaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Empresa
+        fields='__all__'
+        
 
 
 class ProdutoSerializer(serializers.ModelSerializer):

@@ -16,10 +16,10 @@ import json
 
 
 from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
-    Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe
+    Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe, Empresa
 from .serializer import ClienteSerializer, ComprasSerializer, DocumentoSerializer, CategoriaSerializer, \
     SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
-        ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer
+        ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer, EmpresaSerializer
 
 
 def index(request):
@@ -63,6 +63,12 @@ class DocumentoViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = Documento.objects.all().order_by('id')
     serializer_class = DocumentoSerializer
+
+
+class EmpresaViewSet(viewsets.ModelViewSet):
+    #permission_classes = (IsAuthenticated,)
+    queryset = Empresa.objects.all().order_by('id')
+    serializer_class = EmpresaSerializer
 
 
 class CategoriaViewSet(viewsets.ModelViewSet):

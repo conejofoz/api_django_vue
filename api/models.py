@@ -5,6 +5,7 @@ from ctypes import sizeof
 #from email.mime import image
 from io import BytesIO
 from pickletools import optimize
+from tabnanny import verbose
 #from ssl import Options
 #from turtle import width
 from django.conf import settings
@@ -60,7 +61,21 @@ class Categoria(models.Model):
 
     class Meta:
         verbose_name_plural = "Categorias"
-    
+
+
+class Empresa(ModeloEdit):
+    nome = models.CharField(max_length=100, null=False, blank=False, unique=True)
+
+    def __st__(self):    
+        return self.nome
+
+    def save(self, **kwargs):
+        self.nome = self.nome.upper()
+        super(Empresa, self).save()
+
+    class Meta:
+        verbose_name_plural = "Empresas"
+
 
 class SubCategoria(models.Model):
     categoria = models.ForeignKey(Categoria, related_name='subcategorias', on_delete=models.CASCADE)
@@ -73,8 +88,7 @@ class SubCategoria(models.Model):
         self.descricao = self.descricao.upper()
         super(SubCategoria, self).save()
 
-
-    class Meta:    
+    class Meta:
         verbose_name_plural = "Sub Categorias"
         unique_together = ("categoria", "descricao")
 
@@ -88,7 +102,6 @@ class Produto(models.Model):
     imagem = models.ImageField(null=True, blank=True, upload_to='produtos/')
     thumbnail = models.ImageField(null=True, blank=True, upload_to='produtos/')
 
-    
     def get_image(self):
         if self.imagem:
             return '{}{}'.format(MEDIA_URL, self.imagem)
@@ -96,14 +109,13 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.descricao
-   
+
     def save(self, *args, **kwargs):
         self.descricao = self.descricao.upper()
         #self.thumbnail = self.make_thumbnail(self.imagem)
         super().save(*args, **kwargs)
         if self.thumbnail:
             self.resize_image(self.thumbnail.name, 720)
-        
 
     @staticmethod
     def resize_image(img_name, new_width):
@@ -121,7 +133,6 @@ class Produto(models.Model):
         new_img.close()
         img.close()
 
-
     class Meta:
         verbose_name_plural = "Produtos"
 
@@ -138,7 +149,6 @@ class Produto(models.Model):
         return thumbnail
 
 
-
 class Fornecedor(models.Model):
     nome = models.CharField(max_length=50, null=False, blank=False,unique=True)
     telefone = models.CharField(max_length=20, null=True, blank=True)
@@ -153,7 +163,7 @@ class Fornecedor(models.Model):
 
     class Meta:
         verbose_name_plural = 'Fornecedores'
-    
+
 
 class Compras(ModeloEdit):
     fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
