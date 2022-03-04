@@ -77,11 +77,12 @@ class VendaDetalheSerializer(serializers.ModelSerializer):
 
 
 class VendaSerializer(serializers.ModelSerializer):
+    nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
     detalhe = VendaDetalheSerializer(many=True, read_only=True)
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "data", "detalhe"]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente"]
         #fields = '__all__'
 
 

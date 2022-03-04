@@ -49,6 +49,20 @@ class Documento(models.Model):
         verbose_name_plural = "Documentos"
 
 
+class Empresa(ModeloEdit):
+    nome = models.CharField(max_length=100, null=False, blank=False, unique=True)
+
+    def __st__(self):    
+        return self.nome
+
+    def save(self, **kwargs):
+        self.nome = self.nome.upper()
+        super(Empresa, self).save()
+
+    class Meta:
+        verbose_name_plural = "Empresas"
+
+
 class Categoria(models.Model):
     descricao = models.CharField(max_length=50, null=False,blank=False, unique=True)
 
@@ -62,19 +76,6 @@ class Categoria(models.Model):
     class Meta:
         verbose_name_plural = "Categorias"
 
-
-class Empresa(ModeloEdit):
-    nome = models.CharField(max_length=100, null=False, blank=False, unique=True)
-
-    def __st__(self):    
-        return self.nome
-
-    def save(self, **kwargs):
-        self.nome = self.nome.upper()
-        super(Empresa, self).save()
-
-    class Meta:
-        verbose_name_plural = "Empresas"
 
 
 class SubCategoria(models.Model):
@@ -223,6 +224,7 @@ class Cliente(models.Model):
 
 class Venda(ModeloEdit):
     cliente = models.ForeignKey(Cliente, on_delete=models.RESTRICT)
+    empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
     data = models.DateField()
 
     def __str__(self):
