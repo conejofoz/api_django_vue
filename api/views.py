@@ -2,9 +2,10 @@ from unicodedata import name
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, QueryDict, request
-from rest_framework.permissions import IsAuthenticated
+from django.http import HttpResponse, JsonResponse
 
+from rest_framework import generics, serializers
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.request import Request
@@ -143,7 +144,11 @@ class VendaViewSet(viewsets.ModelViewSet):
     serializer_class = VendaSerializer
 
     def create(self, request, *args, **kwargs):
+        #request.data["cliente_id"] = request.data["cliente"]
         serializerVenda = VendaSerializer(data=request.data)
+        #serializerVenda.create(cliente_id=request.data["cliente_id"])
+        print("request.data ==>", request.data)
+        #print("cliente ==>", request.data["cliente"])
         if serializerVenda.is_valid():
             serializerVenda.save()
             numeroVenda = serializerVenda.data['id']

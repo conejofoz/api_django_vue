@@ -76,14 +76,7 @@ class VendaDetalheSerializer(serializers.ModelSerializer):
         fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao",]
 
 
-class VendaSerializer(serializers.ModelSerializer):
-    nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
-    detalhe = VendaDetalheSerializer(many=True, read_only=True)
 
-    class Meta:
-        model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente"]
-        #fields = '__all__'
 
 
 
@@ -92,3 +85,14 @@ class ClienteSerializer(serializers.ModelSerializer):
         model = Cliente
         fields = '__all__'
         #fields = ["id", "nome", "telefone", "email", "estado"]
+
+
+class VendaSerializer(serializers.ModelSerializer):
+    nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
+    cliente = ClienteSerializer(many=False, read_only=True)
+    detalhe = VendaDetalheSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Venda
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente",]
+        #fields = '__all__'        

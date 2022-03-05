@@ -223,7 +223,7 @@ class Cliente(models.Model):
 
 
 class Venda(ModeloEdit):
-    cliente = models.ForeignKey(Cliente, on_delete=models.RESTRICT)
+    cliente = models.ForeignKey(Cliente, related_name='clientes', on_delete=models.RESTRICT)
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
     data = models.DateField()
 
