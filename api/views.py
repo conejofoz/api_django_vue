@@ -20,7 +20,7 @@ from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
     Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe, Empresa
 from .serializer import ClienteSerializer, ComprasSerializer, DocumentoSerializer, CategoriaSerializer, \
     SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
-        ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer, EmpresaSerializer
+        ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer, EmpresaSerializer, VendaSerializerCliente
 
 
 def index(request):
@@ -143,14 +143,25 @@ class VendaViewSet(viewsets.ModelViewSet):
     queryset = Venda.objects.all().order_by('id')    
     serializer_class = VendaSerializer
 
+    def list(self, request, *args, **kwargs):
+        queryset = Venda.objects.all()
+        serializer = VendaSerializerCliente(queryset, many=True)
+        return Response(serializer.data)
+
     def create(self, request, *args, **kwargs):
         #request.data["cliente_id"] = request.data["cliente"]
+        #request.data["cliente_id"] = 500
         serializerVenda = VendaSerializer(data=request.data)
+        
         #serializerVenda.create(cliente_id=request.data["cliente_id"])
         print("request.data ==>", request.data)
         #print("cliente ==>", request.data["cliente"])
         if serializerVenda.is_valid():
             serializerVenda.save()
+        #else:
+            #print('serialize é inválido')
+            #return Response("Erro ao serializar o cabeçalho da venda: ")
+
             numeroVenda = serializerVenda.data['id']
             produtos = json.loads(request.POST.get('produtos'))
             print(produtos)

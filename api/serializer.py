@@ -1,4 +1,4 @@
-from dataclasses import field, fields
+#from dataclasses import field, fields
 from rest_framework import serializers 
 from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, Produto, \
     SubCategoria, Compras, ComprasDetalhe, Venda, VendaDetalhe
@@ -83,11 +83,20 @@ class VendaDetalheSerializer(serializers.ModelSerializer):
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = '__all__'
-        #fields = ["id", "nome", "telefone", "email", "estado"]
+        #fields = '__all__'
+        fields = ["id", "nome", "telefone", "email", "estado", "imagem"]
 
 
 class VendaSerializer(serializers.ModelSerializer):
+    nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
+    detalhe = VendaDetalheSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Venda
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente",]
+        #fields = '__all__'        
+
+class VendaSerializerCliente(serializers.ModelSerializer):
     nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
     cliente = ClienteSerializer(many=False, read_only=True)
     detalhe = VendaDetalheSerializer(many=True, read_only=True)
@@ -95,4 +104,4 @@ class VendaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Venda
         fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente",]
-        #fields = '__all__'        
+        #fields = '__all__'              

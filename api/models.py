@@ -4,6 +4,7 @@ from ctypes import sizeof
 #from distutils.command.upload import upload
 #from email.mime import image
 from io import BytesIO
+from operator import mod
 from pickletools import optimize
 from tabnanny import verbose
 #from ssl import Options
@@ -52,7 +53,7 @@ class Documento(models.Model):
 class Empresa(ModeloEdit):
     nome = models.CharField(max_length=100, null=False, blank=False, unique=True)
 
-    def __st__(self):    
+    def __str__(self):    
         return self.nome
 
     def save(self, **kwargs):
@@ -223,7 +224,7 @@ class Cliente(models.Model):
 
 
 class Venda(ModeloEdit):
-    cliente = models.ForeignKey(Cliente, related_name='clientes', on_delete=models.RESTRICT)
+    cliente = models.ForeignKey(Cliente, related_name='cliente', on_delete=models.RESTRICT)
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
     data = models.DateField()
 
