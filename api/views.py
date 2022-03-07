@@ -18,9 +18,11 @@ import json
 
 from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
     Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe, Empresa
-from .serializer import ClienteSerializer, ComprasSerializer, DocumentoSerializer, CategoriaSerializer, \
+from .serializer import ClienteSerializer, ComprasSerializer, \
+    DocumentoSerializer, CategoriaSerializer, \
     SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
-        ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer, EmpresaSerializer, VendaSerializerCliente
+    ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer, \
+    EmpresaSerializer, VendaSerializerCliente
 
 
 def index(request):
@@ -109,27 +111,28 @@ class FornecedorViewSet(viewsets.ModelViewSet):
 
 
 class ComprasViewSet(viewsets.ModelViewSet):
-    #permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     queryset = Compras.objects.all().order_by('id')    
     serializer_class = ComprasSerializer
 
+
 class ComprasDetalheViewSet(viewsets.ModelViewSet):
-    #permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     queryset = ComprasDetalhe.objects.all().order_by('id')    
     serializer_class = ComprasDetalheSerializer
 
 
 class ClienteViewSet(viewsets.ModelViewSet):
-    #permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     queryset = Cliente.objects.all().order_by('nome')
     print('QUERYSET: ', queryset) 
     serializer_class = ClienteSerializer
 
-    @action(methods=['get'], detail=False,permission_classes=[], 
+    @action(methods=['get'], detail=False, permission_classes=[],
         url_path='by-name/(?P<nome>[\w\ ]+)')
     def by_name(self, request, pk=None, nome=None):
         print(nome)
-        obj = Cliente.objects.filter(nome__icontains=nome,estado=True)
+        obj = Cliente.objects.filter(nome__icontains=nome, estado=True)
         print('OBJ: ', obj)
         if not obj:
             return Response({"detail": "Não existe um cliente com esse nome"})
@@ -139,8 +142,8 @@ class ClienteViewSet(viewsets.ModelViewSet):
 
 
 class VendaViewSet(viewsets.ModelViewSet):
-    #permission_classes = (IsAuthenticated,)
-    queryset = Venda.objects.all().order_by('id')    
+    # permission_classes = (IsAuthenticated,)
+    queryset = Venda.objects.all().order_by('-id')    
     serializer_class = VendaSerializer
 
     def list(self, request, *args, **kwargs):
@@ -149,18 +152,14 @@ class VendaViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
-        #request.data["cliente_id"] = request.data["cliente"]
-        #request.data["cliente_id"] = 500
         serializerVenda = VendaSerializer(data=request.data)
-        
-        #serializerVenda.create(cliente_id=request.data["cliente_id"])
         print("request.data ==>", request.data)
-        #print("cliente ==>", request.data["cliente"])
+        # print("cliente ==>", request.data["cliente"])
         if serializerVenda.is_valid():
             serializerVenda.save()
-        #else:
-            #print('serialize é inválido')
-            #return Response("Erro ao serializar o cabeçalho da venda: ")
+        # else:
+            # print('serialize é inválido')
+            # return Response("Erro ao serializar o cabeçalho da venda: ")
 
             numeroVenda = serializerVenda.data['id']
             produtos = json.loads(request.POST.get('produtos'))
@@ -173,7 +172,7 @@ class VendaViewSet(viewsets.ModelViewSet):
                 else:
                     print('serialize é inválido')
                     return Response("Erro ao serializar o item da venda: ")
-            #return super().create(request, *args, **kwargs)
+            # return super().create(request, *args, **kwargs)
             return Response(serializerVenda.data, status=status.HTTP_201_CREATED)
         return Response(serializerVenda.errors, status=status.HTTP_400_BAD_REQUEST)  
 
