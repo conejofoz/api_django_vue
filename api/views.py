@@ -14,6 +14,7 @@ from rest_framework import viewsets, status
 
 from rest_framework.parsers import JSONParser
 import json
+from rest_framework import pagination
 
 
 from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
@@ -86,10 +87,17 @@ class SubCategoriaViewSet(viewsets.ModelViewSet):
     serializer_class = SubCategoriaSerializer
 
 
+class Paginacao(pagination.PageNumberPagination):
+	page_size = 10
+	page_size_query_param = 'page_size'
+	max_page_size = 50 #no caso de algum engraçadinho definir 100.000 no front    
+
+
 class ProdutoViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     queryset = Produto.objects.all().order_by('descricao')
     serializer_class = ProdutoSerializer
+    #pagination_class = Paginacao
 
     @action(methods=['get'], detail=False,permission_classes=[], 
         url_path='by-descricao/(?P<descricao>[\w\ ]+)')
@@ -147,7 +155,7 @@ class VendaViewSet(viewsets.ModelViewSet):
     serializer_class = VendaSerializer
 
     def list(self, request, *args, **kwargs):
-        queryset = Venda.objects.all()
+        queryset = Venda.objects.all().order_by('-id')
         serializer = VendaSerializerCliente(queryset, many=True)
         return Response(serializer.data)
 
@@ -196,3 +204,6 @@ class VendaDetalheViewSet(viewsets.ModelViewSet):
             else:
                 return Response("Não tem quantidade suficiente" + "Estoque atual: " + str(prod.stock))
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    
