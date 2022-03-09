@@ -9,22 +9,28 @@ class DocumentoSerializer(serializers.ModelSerializer):
         model = Documento
         fields='__all__'
 
-
-class SubCategoriaSerializer(serializers.ModelSerializer):
-    cat_descricao = serializers.ReadOnlyField(source='categoria.descricao')
-    class Meta:
-        model=SubCategoria
-        #fields='__all__'
-        fields = ("id", "categoria", "descricao", "cat_descricao",)
-
-
 class CategoriaSerializer(serializers.ModelSerializer):
-    subcategorias = SubCategoriaSerializer(many=True, read_only=True)
+    #subcategorias = SubCategoriaSerializer(many=True, read_only=True)
     
     class Meta:
         model=Categoria
         #fields='__all__'
-        fields = ("id", "descricao", "subcategorias")
+        #fields = ("id", "descricao", "subcategorias")
+        fields = ("id", "descricao", )
+
+class SubCategoriaSerializer(serializers.ModelSerializer):
+    #categoria = serializers.PrimaryKeyRelatedField(queryset=Categoria.objects.all())
+    #categoria = serializers.StringRelatedField()
+    categoria = CategoriaSerializer(read_only=True)
+    categoria_id = serializers.PrimaryKeyRelatedField(queryset=Categoria.objects.all(), write_only=True, source='categoria')
+    cat_descricao = serializers.ReadOnlyField(source='categoria.descricao')
+    class Meta:
+        model=SubCategoria
+        #fields='__all__'
+        fields = ("id", "descricao", "cat_descricao", "categoria", "categoria_id")
+
+
+
 
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:

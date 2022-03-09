@@ -68,7 +68,7 @@ class Categoria(models.Model):
     descricao = models.CharField(max_length=50, null=False,blank=False, unique=True)
 
     def __str__(self):
-        return self.descricao
+        return self.descricao + ' - id: ' + str(self.pk)
 
     def save(self, **kwargs):
         self.descricao = self.descricao.upper()
@@ -78,9 +78,8 @@ class Categoria(models.Model):
         verbose_name_plural = "Categorias"
 
 
-
 class SubCategoria(models.Model):
-    categoria = models.ForeignKey(Categoria, related_name='subcategorias', on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, related_name='subcategorias', on_delete=models.PROTECT)
     descricao = models.CharField(max_length=50, null=False, blank=False)
 
     def __str__(self):
@@ -100,7 +99,7 @@ class Produto(models.Model):
     descricao = models.CharField(max_length=50)
     stock = models.IntegerField(default=0)
     preco = models.FloatField(default=0)
-    subcategoria = models.ForeignKey(SubCategoria, on_delete=models.CASCADE)
+    subcategoria = models.ForeignKey(SubCategoria, on_delete=models.PROTECT)
     imagem = models.ImageField(null=True, blank=True, upload_to='produtos/')
     thumbnail = models.ImageField(null=True, blank=True, upload_to='produtos/')
 
@@ -117,10 +116,12 @@ class Produto(models.Model):
         #self.thumbnail = self.make_thumbnail(self.imagem)
         super().save(*args, **kwargs)
         if self.thumbnail:
-            self.resize_image(self.thumbnail.name, 720)
+            self.resize_image(self.thumbnail.name, 720, 60)
+        if self.imagem:
+            self.resize_image(self.imagem.name, 1280, 80)
 
     @staticmethod
-    def resize_image(img_name, new_width):
+    def resize_image(img_name, new_width, qualidade):
         img_path = os.path.join(settings.MEDIA_ROOT, img_name) 
         img = Image.open(img_path)
         width, height = img.size
@@ -131,7 +132,7 @@ class Produto(models.Model):
             return
 
         new_img = img.resize((new_width, new_height), Image.ANTIALIAS)
-        new_img.save(img_path, optimize=True, quality=60)
+        new_img.save(img_path, optimize=True, quality=qualidade)
         new_img.close()
         img.close()
 
