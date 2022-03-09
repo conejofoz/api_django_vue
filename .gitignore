@@ -1,3 +1,4 @@
 env
 db.sqlite3
 media
+api_dj/settings.py
