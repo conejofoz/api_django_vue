@@ -155,7 +155,15 @@ class VendaViewSet(viewsets.ModelViewSet):
     serializer_class = VendaSerializer
 
     def list(self, request, *args, **kwargs):
-        queryset = Venda.objects.all().order_by('-id')
+        print('o que tem no request',  request.GET)
+        hoje = request.GET.get('data')
+        print('hoje', hoje)
+        #queryset = Venda.objects.all().order_by('-id')
+        #queryset = Venda.objects.filter(data='2022-03-11')
+        if hoje == None:
+            queryset = Venda.objects.all().order_by('-id')
+        else:
+            queryset = Venda.objects.filter(data=hoje)
         serializer = VendaSerializerCliente(queryset, many=True)
         return Response(serializer.data)
 
