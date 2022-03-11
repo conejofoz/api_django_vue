@@ -228,6 +228,7 @@ class Venda(ModeloEdit):
     cliente = models.ForeignKey(Cliente, related_name='cliente', on_delete=models.RESTRICT)
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
     data = models.DateField()
+    total = models.FloatField(default=0)
 
     def __str__(self):
         return str(self.id)

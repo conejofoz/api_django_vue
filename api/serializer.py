@@ -99,8 +99,9 @@ class VendaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente",]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total"]
         #fields = '__all__'        
+
 
 class VendaSerializerCliente(serializers.ModelSerializer):
     nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
@@ -109,5 +110,5 @@ class VendaSerializerCliente(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente",]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total"]
         #fields = '__all__'              
