@@ -1,32 +1,34 @@
 #from dataclasses import field, fields
 from rest_framework import serializers 
 from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, Produto, \
-    SubCategoria, Compras, ComprasDetalhe, Venda, VendaDetalhe
+    SubCategoria, Compras, ComprasDetalhe, Venda, VendaDetalhe, Moeda
 
 
 class DocumentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Documento
-        fields='__all__'
+        fields = '__all__'
+
 
 class CategoriaSerializer(serializers.ModelSerializer):
-    #subcategorias = SubCategoriaSerializer(many=True, read_only=True)
-    
+    # subcategorias = SubCategoriaSerializer(many=True, read_only=True)
     class Meta:
-        model=Categoria
-        #fields='__all__'
-        #fields = ("id", "descricao", "subcategorias")
+        model = Categoria
+        # fields='__all__'
+        # fields = ("id", "descricao", "subcategorias")
         fields = ("id", "descricao", )
 
+
 class SubCategoriaSerializer(serializers.ModelSerializer):
-    #categoria = serializers.PrimaryKeyRelatedField(queryset=Categoria.objects.all())
-    #categoria = serializers.StringRelatedField()
+    # categoria = serializers.PrimaryKeyRelatedField(queryset=Categoria.objects.all())
+    # categoria = serializers.StringRelatedField()
     categoria = CategoriaSerializer(read_only=True)
     categoria_id = serializers.PrimaryKeyRelatedField(queryset=Categoria.objects.all(), write_only=True, source='categoria')
     cat_descricao = serializers.ReadOnlyField(source='categoria.descricao')
+
     class Meta:
-        model=SubCategoria
-        #fields='__all__'
+        model = SubCategoria
+        # fields='__all__'
         fields = ("id", "descricao", "cat_descricao", "categoria", "categoria_id")
 
 
@@ -112,3 +114,12 @@ class VendaSerializerCliente(serializers.ModelSerializer):
         model = Venda
         fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total"]
         #fields = '__all__'              
+
+
+class MoedaSerializer(serializers.ModelSerializer):
+    empresa = EmpresaSerializer(read_only=True)
+    empresa_id = serializers.PrimaryKeyRelatedField(queryset=Empresa.objects.all(), write_only=True, source='empresa')
+
+    class Meta:
+        model = Moeda
+        fields = ("id", "descricao", "sigla", "cotacao", "acrescimo", "empresa", "empresa_id", )

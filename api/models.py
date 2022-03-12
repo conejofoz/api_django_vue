@@ -320,3 +320,23 @@ def somar_qtd(sender, instance, **kwargs):
            produto.save()
         except Exception as e: 
            print(str(e))
+
+
+class Moeda(ModeloEdit):
+    empresa = models.ForeignKey(Empresa, on_delete=models.PROTECT, related_name="moedas")
+    descricao = models.CharField(max_length=50)
+    sigla = models.CharField(max_length=3)
+    cotacao = models.FloatField(default=0)
+    acrescimo = models.FloatField(default=0)
+
+    def __str__(self):
+        return self.descricao
+
+    def save(self, **kwargs):
+        self.descricao = self.descricao.upper()
+        self.sigla  = self.sigla.upper()
+        super(Moeda, self).save()
+
+    class Meta:
+        verbose_name_plural = "moedas"
+        unique_together = ("empresa", "descricao", )

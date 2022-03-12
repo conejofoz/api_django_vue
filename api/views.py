@@ -20,10 +20,10 @@ from rest_framework import pagination
 from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
     Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe, Empresa
 from .serializer import ClienteSerializer, ComprasSerializer, \
-    DocumentoSerializer, CategoriaSerializer, \
+    DocumentoSerializer, CategoriaSerializer, MoedaSerializer, \
     SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
     ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer, \
-    EmpresaSerializer, VendaSerializerCliente
+    EmpresaSerializer, VendaSerializerCliente, Moeda
 
 
 def index(request):
@@ -214,4 +214,7 @@ class VendaDetalheViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-    
+class MoedaViewSet(viewsets.ModelViewSet):
+    # permission_classes = (IsAuthenticated,)
+    queryset = Moeda.objects.all().order_by('descricao')
+    serializer_class = MoedaSerializer
