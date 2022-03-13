@@ -16,6 +16,8 @@ from rest_framework.parsers import JSONParser
 import json
 from rest_framework import pagination
 
+from datetime import date
+from datetime import datetime
 
 from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
     Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe, Empresa
@@ -156,14 +158,25 @@ class VendaViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         print('o que tem no request',  request.GET)
-        hoje = request.GET.get('data')
+        print('data inicial: ', request.GET.get('dataInicial'))
+        print('data final  : ', request.GET.get('dataFinal'))
+        hoje = request.GET.get('dataInicial')
+        amanha = request.GET.get('dataFinal')
         print('hoje', hoje)
-        #queryset = Venda.objects.all().order_by('-id')
-        #queryset = Venda.objects.filter(data='2022-03-11')
-        if hoje == None:
+        # queryset = Venda.objects.filter(data='2022-03-11')
+        if hoje is None:
             queryset = Venda.objects.all().order_by('-id')
         else:
-            queryset = Venda.objects.filter(data=hoje)
+            data_atual_servidor = date.today()
+            # queryset = Venda.objects.filter(data=hoje)
+            if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+                return Response("Data Inicial não pode ser maior que hoje", status=status.HTTP_400_BAD_REQUEST) 
+            if amanha is None:
+                amanha = hoje
+            if hoje > amanha:
+                return Response("Data Inicial não pode ser maior que data final", status=status.HTTP_400_BAD_REQUEST) 
+            queryset = Venda.objects.filter(data__range=(hoje, amanha))
+
         serializer = VendaSerializerCliente(queryset, many=True)
         return Response(serializer.data)
 
