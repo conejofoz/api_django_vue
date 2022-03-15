@@ -231,3 +231,15 @@ class MoedaViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
     queryset = Moeda.objects.all().order_by('descricao')
     serializer_class = MoedaSerializer
+
+    def list(self, request, *args, **kwargs):
+        print('o que tem no request de moedas',  request.GET)
+        empresa = request.GET.get('empresa')
+        if empresa is None:
+            print("empresa none")
+            queryset = Moeda.objects.all().order_by('descricao')
+        else:
+            print('empresa', empresa)
+            queryset = Moeda.objects.filter(empresa_id=empresa).order_by('descricao')    
+        serializer = MoedaSerializer(queryset, many=True)
+        return Response(serializer.data)
