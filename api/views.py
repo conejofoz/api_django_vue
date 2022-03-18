@@ -195,6 +195,7 @@ class VendaViewSet(viewsets.ModelViewSet):
             print(produtos)
             for produto in produtos:
                 produto['venda'] = numeroVenda
+                print('produto com a venda: ', produto)
                 serializerDetalhe = VendaDetalheSerializer(data=produto)
                 if serializerDetalhe.is_valid():
                     serializerDetalhe.save()
