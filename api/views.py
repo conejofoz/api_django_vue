@@ -19,10 +19,10 @@ from rest_framework import pagination
 from datetime import date
 from datetime import datetime
 
-from .models import ComprasDetalhe, Documento, Categoria, SubCategoria, \
+from .models import ComprasDetalhe, Documento, Categoria, LancamentoCaixa, SubCategoria, \
     Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe, Empresa
 from .serializer import ClienteSerializer, ComprasSerializer, \
-    DocumentoSerializer, CategoriaSerializer, MoedaSerializer, \
+    DocumentoSerializer, CategoriaSerializer, LancamentoCaixaSerializer, MoedaSerializer, \
     SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
     ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer, \
     EmpresaSerializer, VendaSerializerCliente, Moeda
@@ -244,3 +244,8 @@ class MoedaViewSet(viewsets.ModelViewSet):
             queryset = Moeda.objects.filter(empresa_id=empresa).order_by('descricao')    
         serializer = MoedaSerializer(queryset, many=True)
         return Response(serializer.data)
+
+
+class LancamentoCaixaViewSet(viewsets.ModelViewSet):
+    queryset = LancamentoCaixa.objects.all().order_by('descricao')
+    serializer_class = LancamentoCaixaSerializer        

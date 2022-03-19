@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from .views import prueba, DocumentoViewSet, CategoriaViewSet, \
+from .views import LancamentoCaixaViewSet, prueba, DocumentoViewSet, CategoriaViewSet, \
     SubCategoriaViewSet, ProdutoViewSet, FornecedorViewSet, \
         ComprasViewSet, ComprasDetalheViewSet, ClienteViewSet, \
             VendaViewSet, VendaDetalheViewSet, upload, clientest, EmpresaViewSet, MoedaViewSet
@@ -26,10 +26,11 @@ router.register(r'cliente', ClienteViewSet)
 router.register(r'vendas-detalhe', VendaDetalheViewSet)
 router.register(r'vendas', VendaViewSet)
 router.register(r'moedas', MoedaViewSet)
+router.register(r'lancamento-caixa', LancamentoCaixaViewSet)
 
 
 urlpatterns = [
-    #path('', prueba, name='prueba')
+    # path('', prueba, name='prueba')
     path('', include(router.urls)),
     path('token/', TokenObtainPairView.as_view(), name="token_obtain_pair" ),
     path('token/refresh/', TokenRefreshView.as_view(), name="token_refresh" ),

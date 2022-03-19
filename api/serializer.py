@@ -1,6 +1,6 @@
 #from dataclasses import field, fields
 from rest_framework import serializers 
-from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, Produto, \
+from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, LancamentoCaixa, Produto, \
     SubCategoria, Compras, ComprasDetalhe, Venda, VendaDetalhe, Moeda
 
 
@@ -123,3 +123,9 @@ class MoedaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Moeda
         fields = ("id", "descricao", "sigla", "cotacao", "acrescimo", "empresa", "empresa_id", )
+
+
+class LancamentoCaixaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LancamentoCaixa
+        fields = '__all__'

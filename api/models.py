@@ -4,7 +4,7 @@ from ctypes import sizeof
 #from distutils.command.upload import upload
 #from email.mime import image
 from io import BytesIO
-from operator import mod
+from operator import mod, truediv
 from pickletools import optimize
 from tabnanny import verbose
 #from ssl import Options
@@ -264,6 +264,18 @@ class VendaDetalhe(ModeloEdit):
         #print("produto====>", self.produto_id)
         #self.produto_id = 5
         #super(VendaDetalhe, self).save()
+
+
+class LancamentoCaixa(ModeloEdit):
+    controle = models.CharField(max_length=100, blank=True, null=True)
+    data = models.DateField()
+    descricao = models.CharField(max_length=200, null=False, blank=False)
+    siglaMoeda = models.CharField(max_length=2, blank=False, null=False)
+    tipo = models.CharField(max_length=1, null=False, blank=False)
+    valor1 = models.FloatField(default=0)
+    cotacao = models.FloatField(default=0)
+    valor2 = models.FloatField(default=0)
+    empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
 
 
 # Signals de Compra
