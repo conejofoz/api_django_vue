@@ -199,11 +199,11 @@ class VendaViewSet(viewsets.ModelViewSet):
                 serializerDetalhe = VendaDetalheSerializer(data=produto)
                 if serializerDetalhe.is_valid():
                     serializerDetalhe.save()
-                else:
-                    print('serialize é inválido')
-                    return Response("Erro ao serializar o item da venda: ")
-            # return super().create(request, *args, **kwargs)
+                #else:
+                    #print('serialize é inválido')
+                    #return Response("Erro ao serializar o item da venda: ")
             return Response(serializerVenda.data, status=status.HTTP_201_CREATED)
+
         return Response(serializerVenda.errors, status=status.HTTP_400_BAD_REQUEST)  
 
 
@@ -248,4 +248,23 @@ class MoedaViewSet(viewsets.ModelViewSet):
 
 class LancamentoCaixaViewSet(viewsets.ModelViewSet):
     queryset = LancamentoCaixa.objects.all().order_by('descricao')
-    serializer_class = LancamentoCaixaSerializer        
+    serializer_class = LancamentoCaixaSerializer
+
+    def create(self, request, *args, **kwargs):
+        print('request->', request.data)
+        lista_lancamentos = json.loads(request.POST.get('lancamentos'))
+        print('lancamentos->', lista_lancamentos)
+        for lancamento in lista_lancamentos:
+            serializador = LancamentoCaixaSerializer(data=lancamento)
+            if serializador.is_valid():
+                serializador.save()
+            else:
+                print('serialize é inválido')
+                print('Lançamento=>', lancamento)
+                return Response("Erro ao serializar o lancamento: ")
+
+        return Response(serializador.data, status=status.HTTP_201_CREATED)
+    
+        #return super().create(request, *args, **kwargs)
+
+        # return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)

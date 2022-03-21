@@ -129,3 +129,5 @@ class LancamentoCaixaSerializer(serializers.ModelSerializer):
     class Meta:
         model = LancamentoCaixa
         fields = '__all__'
+
+        #fields = ["id", "descricao", ""]
