@@ -229,6 +229,7 @@ class Venda(ModeloEdit):
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
     data = models.DateField()
     total = models.FloatField(default=0)
+    paga = models.FloatField(default=False)
 
     def __str__(self):
         return str(self.id)

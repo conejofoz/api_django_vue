@@ -162,10 +162,12 @@ class VendaViewSet(viewsets.ModelViewSet):
         print('data final  : ', request.GET.get('dataFinal'))
         hoje = request.GET.get('dataInicial')
         amanha = request.GET.get('dataFinal')
+        empresa = request.GET.get('empresa')
         print('hoje', hoje)
         # queryset = Venda.objects.filter(data='2022-03-11')
         if hoje is None:
-            queryset = Venda.objects.all().order_by('-id')
+            # queryset = Venda.objects.all().order_by('-id')
+            queryset = Venda.objects.filter(empresa_id=empresa).order_by('-id')
         else:
             data_atual_servidor = date.today()
             # queryset = Venda.objects.filter(data=hoje)
@@ -175,7 +177,8 @@ class VendaViewSet(viewsets.ModelViewSet):
                 amanha = hoje
             if hoje > amanha:
                 return Response("Data Inicial não pode ser maior que data final", status=status.HTTP_400_BAD_REQUEST) 
-            queryset = Venda.objects.filter(data__range=(hoje, amanha))
+            # queryset = Venda.objects.filter(data__range=(hoje, amanha))
+            queryset = Venda.objects.filter(data__range=(hoje, amanha), empresa_id=empresa)
 
         serializer = VendaSerializerCliente(queryset, many=True)
         return Response(serializer.data)
@@ -253,6 +256,7 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         print('request->', request.data)
         lista_lancamentos = json.loads(request.POST.get('lancamentos'))
+        vendas = json.loads(request.POST.get('vendas'))
         print('lancamentos->', lista_lancamentos)
         for lancamento in lista_lancamentos:
             serializador = LancamentoCaixaSerializer(data=lancamento)
@@ -262,7 +266,11 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
                 print('serialize é inválido')
                 print('Lançamento=>', lancamento)
                 return Response("Erro ao serializar o lancamento: ")
-
+        for numero_venda in vendas:
+            venda = Venda.objects.get(pk=numero_venda)
+            print('paga ', venda.id, venda.paga)
+            venda.paga = True
+            venda.save()
         return Response(serializador.data, status=status.HTTP_201_CREATED)
     
         #return super().create(request, *args, **kwargs)

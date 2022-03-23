@@ -101,7 +101,7 @@ class VendaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total"]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga"]
         #fields = '__all__'        
 
 
@@ -112,7 +112,7 @@ class VendaSerializerCliente(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total"]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga"]
         #fields = '__all__'              
 
 
