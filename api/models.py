@@ -311,15 +311,18 @@ def diminuir_qtd(sender, instance, **kwargs):
     if produto:
         print('PRODUTO:->> ', produto)
         produto.stock = int(produto.stock) - int(instance.quantidade)
+        produto.save()
+        #produto.nome_campo = int(produto.nome_campo) - int(instance.quantidade)
         """ 
         Estava dando erro por causa do resize imagem no model
         como a venda gravava normal mais estourava um erro
         capiturei a excessão e deixei passar
         """
         try:
-            produto.save()
+            #produto.save()
+            print("Estoque atualizado: ", produto.stock)
         except Exception as e: 
-            print(str(e))
+            print("Deu erro no save do receiver da venda", str(e))
 
 
 @receiver(post_delete, sender=VendaDetalhe)

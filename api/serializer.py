@@ -64,7 +64,7 @@ class ComprasDetalheSerializer(serializers.ModelSerializer):
 
 class ComprasSerializer(serializers.ModelSerializer):
     detalhe = ComprasDetalheSerializer(many=True, read_only=True)
-    print("detalhe", detalhe)
+    # ###print("detalhe", detalhe)
 
     class Meta:
         model = Compras

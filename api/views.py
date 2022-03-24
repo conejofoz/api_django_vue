@@ -135,7 +135,7 @@ class ComprasDetalheViewSet(viewsets.ModelViewSet):
 class ClienteViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
     queryset = Cliente.objects.all().order_by('nome')
-    print('QUERYSET: ', queryset) 
+    # ###print('QUERYSET: ', queryset) #ESTAVA DANDO PAU NA HORA DE CRIAR UM BANCO NOVO
     serializer_class = ClienteSerializer
 
     @action(methods=['get'], detail=False, permission_classes=[],
