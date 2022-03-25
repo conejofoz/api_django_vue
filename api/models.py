@@ -111,6 +111,9 @@ class Produto(models.Model):
     def __str__(self):
         return self.descricao
 
+    def __getitem__(self, key):
+        return self.__dict__[key]
+
     def save(self, *args, **kwargs):
         self.descricao = self.descricao.upper()
         #self.thumbnail = self.make_thumbnail(self.imagem)
@@ -307,19 +310,20 @@ def diminuir_qtd(sender, instance, **kwargs):
     id_produto = instance.produto.id 
     produto = Produto.objects.filter(id=id_produto).only('stock').first()
     #produto = Produto.objects.get(id=id_produto)
-    
+    nome_campo = 'stock'
+    nome_campo = eval(nome_campo)
     if produto:
         print('PRODUTO:->> ', produto)
-        produto.stock = int(produto.stock) - int(instance.quantidade)
-        produto.save()
-        #produto.nome_campo = int(produto.nome_campo) - int(instance.quantidade)
+        #produto.stock = int(produto.stock) - int(instance.quantidade)
+        #produto.save()
+        produto[nome_campo] = int(produto[nome_campo]) - int(instance.quantidade)
         """ 
         Estava dando erro por causa do resize imagem no model
         como a venda gravava normal mais estourava um erro
         capiturei a excessão e deixei passar
         """
         try:
-            #produto.save()
+            produto.save()
             print("Estoque atualizado: ", produto.stock)
         except Exception as e: 
             print("Deu erro no save do receiver da venda", str(e))
