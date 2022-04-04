@@ -113,6 +113,18 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         print('SERIALIZADOR: ',serializador.data)
         return Response(serializador.data)
 
+    @action(methods=['get'], detail=False,permission_classes=[], 
+        url_path='by-subcategoria/(?P<subcategoria>[\w\ ]+)')
+    def by_subcategoria(self, request, pk=None, subcategoria=None):
+        print(subcategoria)
+        obj = Produto.objects.filter(subcategoria_id=subcategoria)
+        print('OBJ: ', obj)
+        if not obj:
+            return Response({"detail": "Não existe um produto com essa subcategoria"})
+        serializador = ProdutoSerializer(obj, many=True)
+        print('SERIALIZADOR: ',serializador.data)
+        return Response(serializador.data)
+
 
 class FornecedorViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
