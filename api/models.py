@@ -128,7 +128,10 @@ class Produto(models.Model):
         img_path = os.path.join(settings.MEDIA_ROOT, img_name) 
         img = Image.open(img_path)
         width, height = img.size
-        new_height = round((new_width * height) / width)
+        if new_width == 720:
+            new_height = 405
+        else:
+            new_height = round((new_width * height) / width)
 
         if width < new_width:
             img.close()
