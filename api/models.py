@@ -102,6 +102,7 @@ class Produto(models.Model):
     subcategoria = models.ForeignKey(SubCategoria, on_delete=models.PROTECT)
     imagem = models.ImageField(null=True, blank=True, upload_to='produtos/')
     thumbnail = models.ImageField(null=True, blank=True, upload_to='produtos/')
+    empresa = models.ManyToManyField(Empresa, related_name="produtos", through="EstoqueEmpresa")
 
     def get_image(self):
         if self.imagem:
@@ -156,6 +157,15 @@ class Produto(models.Model):
         thumbnail = File(thumb_io, name=imagem.name)
 
         return thumbnail
+
+
+class EstoqueEmpresa(models.Model):
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="empresa_estoque")
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name="empresa_estoque")
+    quantidade = models.FloatField(default=0)
+
+    def __st__(self):
+        return "{} - {} - ({})".format(self.produto.descricao, self.empresa.nome, self.quantidade)
 
 
 class Fornecedor(models.Model):
