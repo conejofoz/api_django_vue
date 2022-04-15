@@ -102,7 +102,7 @@ class Produto(models.Model):
     subcategoria = models.ForeignKey(SubCategoria, on_delete=models.PROTECT)
     imagem = models.ImageField(null=True, blank=True, upload_to='produtos/')
     thumbnail = models.ImageField(null=True, blank=True, upload_to='produtos/')
-    empresa = models.ManyToManyField(Empresa, related_name="produtos", through="EstoqueEmpresa")
+    empresa = models.ManyToManyField(Empresa, related_name="produtos", through="EstoqueEmpresa", blank=True, default=1)
 
     def get_image(self):
         if self.imagem:
@@ -160,8 +160,8 @@ class Produto(models.Model):
 
 
 class EstoqueEmpresa(models.Model):
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="empresa_estoque")
-    produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name="empresa_estoque")
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="empresa_estoque", blank=True, null=True, default=1)
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name="empresa_estoque", blank=True, null=True, default=1)
     quantidade = models.FloatField(default=0)
 
     def __st__(self):

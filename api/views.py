@@ -19,7 +19,7 @@ from rest_framework import pagination
 from datetime import date
 from datetime import datetime
 
-from .models import ComprasDetalhe, Documento, Categoria, LancamentoCaixa, SubCategoria, \
+from .models import ComprasDetalhe, Documento, Categoria, EstoqueEmpresa, LancamentoCaixa, SubCategoria, \
     Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe, Empresa
 from .serializer import ClienteSerializer, ComprasSerializer, \
     DocumentoSerializer, CategoriaSerializer, LancamentoCaixaSerializer, MoedaSerializer, \
@@ -100,6 +100,25 @@ class ProdutoViewSet(viewsets.ModelViewSet):
     queryset = Produto.objects.all().order_by('descricao')
     serializer_class = ProdutoSerializer
     #pagination_class = Paginacao
+
+    def create(self, request, *args, **kwargs):
+        estoque_empresa = json.loads(request.POST.get('estoque_empresa'))
+        print("estoque_empresa: ---------->", estoque_empresa)
+        print(estoque_empresa['produto'])
+        print(estoque_empresa['empresa'])
+        print(estoque_empresa['quantidade'])
+        serializerProduto = ProdutoSerializer(data=request.data)
+        print('serializerproduto data',  serializerProduto)
+        print("request.data ==>", request.data)
+        if serializerProduto.is_valid():
+            serializerProduto.save()
+            print('\ndpoisde slavar\n', serializerProduto.data)
+            print('\n id dpoisde slavar\n', serializerProduto.data['id'])
+            EstoqueEmpresa.objects.create(empresa_id=estoque_empresa['empresa'], produto_id=serializerProduto.data['id'])
+            print('\ndpoisde slavar\n', serializerProduto.data)
+            return Response(serializerProduto.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializerProduto.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action(methods=['get'], detail=False,permission_classes=[], 
         url_path='by-descricao/(?P<descricao>[\w\ ]+)')
