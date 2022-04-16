@@ -216,6 +216,7 @@ class VendaViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         serializerVenda = VendaSerializer(data=request.data)
+        empresa = request.data["empresa"]
         print("request.data ==>", request.data)
         # print("cliente ==>", request.data["cliente"])
         if serializerVenda.is_valid():
@@ -233,6 +234,15 @@ class VendaViewSet(viewsets.ModelViewSet):
                 serializerDetalhe = VendaDetalheSerializer(data=produto)
                 if serializerDetalhe.is_valid():
                     serializerDetalhe.save()
+                    p = Produto.objects.get(pk=produto['id'])
+                    x = p.empresa_estoque.filter(empresa=empresa).first()
+                    print('\n\no x \n', x)
+                    if x is not None:
+                        x.quantidade -= float(produto['quantidade'])
+                        x.save()
+                    else:
+                        # criar o estoque    
+                        EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], quantidade=float(produto['quantidade']) * -1)
                 #else:
                     #print('serialize é inválido')
                     #return Response("Erro ao serializar o item da venda: ")
