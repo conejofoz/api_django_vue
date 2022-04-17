@@ -95,14 +95,22 @@ class SubCategoria(models.Model):
 
 
 class Produto(models.Model):
+
+    """ def nome_imagem(self, filename):
+        extension = os.path.splitext(filename)[-1]
+        return '%s/self.codigo%s'%('produtos', extension,) """
+
     codigo = models.CharField(max_length=10, null=False, blank=False)
     descricao = models.CharField(max_length=50)
     stock = models.IntegerField(default=0)
     preco = models.FloatField(default=0)
     subcategoria = models.ForeignKey(SubCategoria, on_delete=models.PROTECT)
     imagem = models.ImageField(null=True, blank=True, upload_to='produtos/')
+    #imagem = models.ImageField(null=True, blank=True, upload_to=nome_imagem)
     thumbnail = models.ImageField(null=True, blank=True, upload_to='produtos/')
     empresa = models.ManyToManyField(Empresa, related_name="produtos", through="EstoqueEmpresa", blank=True, default=1)
+
+    
 
     def get_image(self):
         if self.imagem:
@@ -116,6 +124,16 @@ class Produto(models.Model):
         return self.__dict__[key]
 
     def save(self, *args, **kwargs):
+        if self.codigo > '':
+            nome_img = self.codigo
+        else:
+            nome_img = self.descricao
+
+        if self.imagem:
+            self.imagem.name = u''+nome_img+'.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
+        if self.thumbnail:
+            self.thumbnail.name = u''+nome_img+'_thumbnail.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
+            
         self.descricao = self.descricao.upper()
         #self.thumbnail = self.make_thumbnail(self.imagem)
         super().save(*args, **kwargs)
