@@ -1,0 +1,444 @@
+[
+{
+  "model": "api.produto",
+  "pk": 1,
+  "fields": {
+    "codigo": "123456",
+    "descricao": "DTB-130",
+    "stock": 897,
+    "preco": 3.5,
+    "subcategoria": 4,
+    "imagem": "produtos/b52925c9d7f7c87693c0cb11c6cf1224.jpg",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 2,
+  "fields": {
+    "codigo": "456",
+    "descricao": "JARRA KY-130",
+    "stock": 940,
+    "preco": 17.0,
+    "subcategoria": 1,
+    "imagem": "produtos/b52925c9d7f7c87693c0cb11c6cf1224.jpg",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 3,
+  "fields": {
+    "codigo": "789",
+    "descricao": "COPO BKY-350",
+    "stock": 1000,
+    "preco": 35.99,
+    "subcategoria": 2,
+    "imagem": "produtos/FAP16101079_FT02_951x600.jpg",
+    "thumbnail": "produtos/FAP16101079_FT02_951x600_9r0sFs2.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 4,
+  "fields": {
+    "codigo": "444",
+    "descricao": "COLHER DE SOPA",
+    "stock": 1000,
+    "preco": 2.0,
+    "subcategoria": 5,
+    "imagem": "clientes/Colher-de-Sopa-Petropolis-Toyland-preçolandia-982539-0c.jpg",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 41,
+  "fields": {
+    "codigo": "17215",
+    "descricao": "1650.00.64",
+    "stock": 1000,
+    "preco": 4.99,
+    "subcategoria": 2,
+    "imagem": "produtos/1650.00.64_FT01_1280x720.jpg",
+    "thumbnail": "produtos/1650.00.64_FT01_1280x720_4lTxn0U.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 42,
+  "fields": {
+    "codigo": "17425",
+    "descricao": "2143.00.37",
+    "stock": 1000,
+    "preco": 3.6,
+    "subcategoria": 2,
+    "imagem": "produtos/2143.00.37_FT01_1280x720.jpg",
+    "thumbnail": "produtos/2143.00.37_FT01_1280x720_JaO8TZJ.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 43,
+  "fields": {
+    "codigo": "17426",
+    "descricao": "2143.00.50",
+    "stock": 1000,
+    "preco": 3.6,
+    "subcategoria": 2,
+    "imagem": "produtos/2143.00.50_FT02_1280x720.jpg",
+    "thumbnail": "produtos/2143.00.50_FT02_1280x720_UxWjkXY.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 44,
+  "fields": {
+    "codigo": "17620",
+    "descricao": "ACUCAREIRO 165100.68",
+    "stock": 1000,
+    "preco": 6.0,
+    "subcategoria": 2,
+    "imagem": "produtos/165100.68_FT01_1280x720.jpg",
+    "thumbnail": "produtos/165100.68_FT01_1280x720_iiukT3D.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 45,
+  "fields": {
+    "codigo": "17693",
+    "descricao": "207000.73",
+    "stock": 1000,
+    "preco": 12.9,
+    "subcategoria": 2,
+    "imagem": "produtos/207000.73_FT01_1280x720.jpg",
+    "thumbnail": "produtos/207000.73_FT01_1280x720_qK8k8GZ.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 46,
+  "fields": {
+    "codigo": "17694",
+    "descricao": "207000.75",
+    "stock": 1000,
+    "preco": 12.9,
+    "subcategoria": 2,
+    "imagem": "produtos/207000.75_FT02_1280x720.jpg",
+    "thumbnail": "produtos/207000.75_FT02_1280x720_GGSQCyi.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 47,
+  "fields": {
+    "codigo": "17880",
+    "descricao": "223300",
+    "stock": 1000,
+    "preco": 12.0,
+    "subcategoria": 2,
+    "imagem": "produtos/223300_FT01_1280x720.jpg",
+    "thumbnail": "produtos/223300_FT01_1280x720_Ll3QVET.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 48,
+  "fields": {
+    "codigo": "23711",
+    "descricao": "229800.65",
+    "stock": 1000,
+    "preco": 10.3,
+    "subcategoria": 2,
+    "imagem": "produtos/229800.65_FT01_1280x720.jpg",
+    "thumbnail": "produtos/229800.65_FT01_1280x720_KDrJXGD.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 49,
+  "fields": {
+    "codigo": "GO32",
+    "descricao": "CAIXA DE SOM GO3",
+    "stock": 1000,
+    "preco": 350.0,
+    "subcategoria": 5,
+    "imagem": "produtos/loja2.jpg",
+    "thumbnail": "produtos/loja2_bXfhWQR.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 63,
+  "fields": {
+    "codigo": "Mouse 01",
+    "descricao": "MOUSE LOGITECH 001",
+    "stock": 1000,
+    "preco": 25.99,
+    "subcategoria": 9,
+    "imagem": "produtos/16463511099887686170769271097193.jpg",
+    "thumbnail": "produtos/16463511099887686170769271097193_QP4Z0KP.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 64,
+  "fields": {
+    "codigo": "Rq001",
+    "descricao": "RAQUETE LARANJA",
+    "stock": 1000,
+    "preco": 5.5,
+    "subcategoria": 10,
+    "imagem": "produtos/16465937017644837879002469363738.jpg",
+    "thumbnail": "produtos/16465937017644837879002469363738_zuoWjML.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 65,
+  "fields": {
+    "codigo": "16500064",
+    "descricao": "AÇUCAREIRO 1650.00.64",
+    "stock": 1000,
+    "preco": 10.0,
+    "subcategoria": 11,
+    "imagem": "produtos/1650.00.64_FT01.jpg",
+    "thumbnail": "produtos/1650.00.64_FT01_UNOdLvG.jpg"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 66,
+  "fields": {
+    "codigo": "223300",
+    "descricao": "AÇUCAREIRO 223300",
+    "stock": 1000,
+    "preco": 10.0,
+    "subcategoria": 11,
+    "imagem": "produtos/223300_FT04_4U5L3NG.png",
+    "thumbnail": "produtos/223300_FT04_9rnY2Jd.png"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 67,
+  "fields": {
+    "codigo": "2143.00.37",
+    "descricao": "PORTA TEMPERO 2143.00.37",
+    "stock": 1000,
+    "preco": 10.0,
+    "subcategoria": 12,
+    "imagem": "produtos/2143.00.37_FT02.png",
+    "thumbnail": "produtos/2143.00.37_FT02_vgUMfYk.png"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 68,
+  "fields": {
+    "codigo": "SK-664-2",
+    "descricao": "AÇUCAREIRO SK-664-2 FT02",
+    "stock": 1000,
+    "preco": 10.0,
+    "subcategoria": 11,
+    "imagem": "produtos/SK-664-2_FT02.png",
+    "thumbnail": "produtos/SK-664-2_FT02_Ze3FOY0.png"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 69,
+  "fields": {
+    "codigo": "KY-240-241",
+    "descricao": "PORTA TEMPERO KY-240-241 2 BLUE + 2 GREEN",
+    "stock": 1000,
+    "preco": 10.0,
+    "subcategoria": 12,
+    "imagem": "produtos/KY-240-241_2_BLUE__2_GREEN.png",
+    "thumbnail": "produtos/KY-240-241_2_BLUE__2_GREEN_PkJ3XSO.png"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 70,
+  "fields": {
+    "codigo": "NHC3TB-1-W",
+    "descricao": "ESCOVA DE BANHEIRO NHC3TB-1-W",
+    "stock": 1000,
+    "preco": 10.0,
+    "subcategoria": 13,
+    "imagem": "produtos/NHC3TB-1-W.png",
+    "thumbnail": "produtos/NHC3TB-1-W_roBSGG7.png"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 71,
+  "fields": {
+    "codigo": "4321",
+    "descricao": "PRODUTO TESTE",
+    "stock": 1000,
+    "preco": 100.0,
+    "subcategoria": 1,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 72,
+  "fields": {
+    "codigo": "123456",
+    "descricao": "TESTE",
+    "stock": 1000,
+    "preco": 100.0,
+    "subcategoria": 11,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 73,
+  "fields": {
+    "codigo": "teste2",
+    "descricao": "TESTE2",
+    "stock": 1000,
+    "preco": 100.0,
+    "subcategoria": 5,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 74,
+  "fields": {
+    "codigo": "teste3",
+    "descricao": "TESTE3",
+    "stock": 1000,
+    "preco": 1.0,
+    "subcategoria": 11,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 75,
+  "fields": {
+    "codigo": "teste4",
+    "descricao": "TESTE4",
+    "stock": 1000,
+    "preco": 1.0,
+    "subcategoria": 11,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 76,
+  "fields": {
+    "codigo": "teste4",
+    "descricao": "TESTE4",
+    "stock": 1000,
+    "preco": 1.0,
+    "subcategoria": 11,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 77,
+  "fields": {
+    "codigo": "teste4",
+    "descricao": "TESTE4",
+    "stock": 1000,
+    "preco": 1.0,
+    "subcategoria": 11,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 78,
+  "fields": {
+    "codigo": "teste4",
+    "descricao": "TESTE4",
+    "stock": 1000,
+    "preco": 1.0,
+    "subcategoria": 11,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 79,
+  "fields": {
+    "codigo": "teste4",
+    "descricao": "TESTE4",
+    "stock": 1000,
+    "preco": 1.0,
+    "subcategoria": 11,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 80,
+  "fields": {
+    "codigo": "teste5 a",
+    "descricao": "TESTE5 ALTERADO",
+    "stock": 1000,
+    "preco": 10.0,
+    "subcategoria": 11,
+    "imagem": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 81,
+  "fields": {
+    "codigo": "teste6",
+    "descricao": "TESTE6",
+    "stock": 1000,
+    "preco": 200.0,
+    "subcategoria": 11,
+    "imagem": "produtos/teste6.png",
+    "thumbnail": "produtos/teste6_thumbnail.png"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 82,
+  "fields": {
+    "codigo": "testex",
+    "descricao": "TESTEX",
+    "stock": 0,
+    "preco": 10.0,
+    "subcategoria": 11,
+    "imagem": "produtos/produtos/testex.png",
+    "thumbnail": "produtos/pixlr-bg-result_3_pDX1mCf.png"
+  }
+},
+{
+  "model": "api.produto",
+  "pk": 83,
+  "fields": {
+    "codigo": "aguabky001",
+    "descricao": "AGUA MINERAL",
+    "stock": 0,
+    "preco": 2.5,
+    "subcategoria": 11,
+    "imagem": "produtos/aguabky001_9suSHsi.jpg",
+    "thumbnail": "produtos/aguabky001_thumbnail_AOvhMDH.jpg"
+  }
+}
+]
