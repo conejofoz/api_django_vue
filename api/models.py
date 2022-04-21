@@ -124,9 +124,10 @@ class Produto(models.Model):
     
     preco = models.FloatField(default=0)
     subcategoria = models.ForeignKey(SubCategoria, on_delete=models.PROTECT)
-    imagem = models.ImageField(null=True, blank=True, upload_to='produtos/')
-    # imagem = models.ImageField(null=True, blank=True, upload_to=nome_imagem)
-    thumbnail = models.ImageField(null=True, blank=True, upload_to='produtos/')
+    #imagem = models.ImageField(null=True, blank=True, upload_to='produtos/')
+    #thumbnail = models.ImageField(null=True, blank=True, upload_to='produtos/')
+    imagem = models.ImageField(null=True, blank=True, upload_to='')
+    thumbnail = models.ImageField(null=True, blank=True, upload_to='')
     empresa = models.ManyToManyField(Empresa, related_name="produtos", through="EstoqueEmpresa", blank=True, default=1)
 
     
@@ -149,9 +150,9 @@ class Produto(models.Model):
             nome_img = self.descricao
 
         if self.imagem:
-            self.imagem.name = u''+nome_img+'.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
+            self.imagem.name = u'produtos/'+nome_img+'.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
         if self.thumbnail:
-            self.thumbnail.name = u''+nome_img+'_thumbnail.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
+            self.thumbnail.name = u'produtos/'+nome_img+'_thumbnail.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
             
         self.descricao = self.descricao.upper()
         #self.thumbnail = self.make_thumbnail(self.imagem)
