@@ -121,9 +121,9 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         return Response(serializerProduto.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action(methods=['get'], detail=False,permission_classes=[], 
-        url_path='by-descricao/(?P<descricao>[\w\ ]+)')
+        url_path='by-descricao/(?P<descricao>[-\w\ ]+)')
     def by_descricao(self, request, pk=None, descricao=None):
-        print(descricao)
+        print('DESCRICAO: ', descricao)
         obj = Produto.objects.filter(descricao__icontains=descricao)
         print('OBJ: ', obj)
         if not obj:
