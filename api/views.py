@@ -3,6 +3,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.core.mail import send_mail
 
 from rest_framework import generics, serializers
 from rest_framework.permissions import IsAuthenticated
@@ -35,6 +36,24 @@ def index(request):
 def prueba(request):
     return HttpResponse("primeira vista")
 
+@method_decorator(csrf_exempt) 
+def email_contato(request):
+    email = request.POST
+    email_contato = email['nome']
+    email_assunto = email['assunto']
+    email_mensagem = email['mensagem']
+    email_from = email['email_from']
+    email_to = 'infinity@infinity-group.net'
+
+    send_mail(
+     email_assunto,
+     email_mensagem,
+     email_from,
+     [email_to],
+     fail_silently=False,
+    )
+    print('Email enviado', email)
+    return HttpResponse("resposta do email")
 
 @method_decorator(csrf_exempt) 
 def upload(request):
