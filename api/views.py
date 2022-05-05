@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 from rest_framework import generics, serializers
 from rest_framework.permissions import IsAuthenticated
@@ -45,13 +46,26 @@ def email_contato(request):
     email_from = email['email_from']
     email_to = 'infinity@infinity-group.net'
 
-    send_mail(
+    """ send_mail(
      email_assunto,
      email_mensagem,
      email_from,
      [email_to],
      fail_silently=False,
+    ) """
+
+    email_obj = EmailMessage(
+        email_assunto,
+        email_mensagem,
+        email_to, # from
+        [email_to, ],
+        #reply_to=[email_from],
+        #headers={'Message-ID': 'foo'},
+        headers={'Reply-To': email_from},
     )
+
+    email_obj.send(fail_silently=False)
+
     print('Email enviado', email)
     return HttpResponse("resposta do email")
 
