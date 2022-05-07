@@ -45,6 +45,7 @@ def email_contato(request):
     email_mensagem = email['mensagem']
     email_from = email['email_from']
     email_to = 'infinity@infinity-group.net'
+    email_tecnico = 'site@infinity-group.net'
 
     """ send_mail(
      email_assunto,
@@ -58,7 +59,7 @@ def email_contato(request):
         email_assunto,
         email_mensagem,
         email_to, # from
-        [email_to, ],
+        [email_to, email_from, email_tecnico ],
         #reply_to=[email_from],
         #headers={'Message-ID': 'foo'},
         headers={'Reply-To': email_from},
