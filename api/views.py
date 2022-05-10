@@ -7,7 +7,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
 from rest_framework import generics, serializers
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, DjangoModelPermissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.request import Request
@@ -70,6 +70,60 @@ def email_contato(request):
     print('Email enviado', email)
     return HttpResponse("resposta do email")
 
+
+@method_decorator(csrf_exempt) 
+def ajusta_estoque(request):
+    produtos = Produto.objects.all()
+    contador = 1
+    empresa = '2'
+    empresas = [
+        {'empresa': '2', 'antiga': '2'},
+        {'empresa': '3', 'antiga': '8'}
+    ]
+
+    for emp in empresas:
+        print(emp, emp['empresa'], emp['antiga'])
+        contador = 0
+        for produto in produtos:
+            p = produto
+            estoque = p.empresa_estoque.filter(empresa_id=emp['empresa']).first()
+            if estoque is not None:
+                estoque.quantidade = produto['qtd'+emp['antiga']]
+                estoque.save()
+            else:
+                EstoqueEmpresa.objects.create(
+                    empresa_id=empresa,
+                    produto_id=produto['id'],
+                    quantidade=produto['qtd'+emp['antiga']]
+                )
+            contador = contador+1
+            print(contador)
+    return HttpResponse("terminou...")
+
+
+@method_decorator(csrf_exempt) 
+def ajusta_estoque_odl(request):
+    produtos = Produto.objects.all()
+    contador = 1
+    empresa = '2'
+    for produto in produtos:
+        p = produto
+        estoque = p.empresa_estoque.filter(empresa_id = empresa).first()
+        if estoque is not None:
+            estoque.quantidade = produto['qtd'+empresa]
+            estoque.save()
+        else:
+            EstoqueEmpresa.objects.create(
+                empresa_id=empresa,
+                produto_id=produto['id'],
+                quantidade=produto['qtd'+empresa] 
+            )
+        contador=contador+1
+        print(contador)
+    return HttpResponse("terminou...")
+
+
+
 @method_decorator(csrf_exempt) 
 def upload(request):
     id = request.POST.get('codigo')
@@ -119,6 +173,8 @@ class CategoriaViewSet(viewsets.ModelViewSet):
 
 class SubCategoriaViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (DjangoModelPermissions,)
     queryset = SubCategoria.objects.all().order_by('descricao')
     serializer_class = SubCategoriaSerializer
 

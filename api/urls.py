@@ -12,7 +12,7 @@ from .views import LancamentoCaixaViewSet, prueba, DocumentoViewSet, CategoriaVi
     SubCategoriaViewSet, ProdutoViewSet, FornecedorViewSet, \
         ComprasViewSet, ComprasDetalheViewSet, ClienteViewSet, \
             VendaViewSet, VendaDetalheViewSet, \
-                 upload, clientest, EmpresaViewSet, MoedaViewSet, email_contato
+                 upload, clientest, EmpresaViewSet, MoedaViewSet, email_contato, ajusta_estoque
 
 router = routers.DefaultRouter()
 router.register(r'docs', DocumentoViewSet)
@@ -39,4 +39,5 @@ urlpatterns = [
     path('upload/', upload, name='upload'),
     path('clientest/', clientest, name='clientest'),
     path('email-contato/', email_contato, name='email_contato'),
+    path('ajusta-estoque/', ajusta_estoque, name='ajusta_estoque'),
 ]
