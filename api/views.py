@@ -214,7 +214,11 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         url_path='by-descricao/(?P<descricao>[-\w\ ]+)')
     def by_descricao(self, request, pk=None, descricao=None):
         print('DESCRICAO: ', descricao)
-        obj = Produto.objects.filter(descricao__icontains=descricao)
+        if descricao == 'vazio':
+            print('BUSCA VAZIA')
+            obj = Produto.objects.all().order_by('?')[0:90]
+        else:
+            obj = Produto.objects.filter(descricao__icontains=descricao)
         print('OBJ: ', obj)
         if not obj:
             return Response({"detail": "Não existe um produto com esse nome"})
