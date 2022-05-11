@@ -92,7 +92,7 @@ def ajusta_estoque(request):
                 estoque.save()
             else:
                 EstoqueEmpresa.objects.create(
-                    empresa_id=empresa,
+                    empresa_id=int(emp['empresa']),
                     produto_id=produto['id'],
                     quantidade=produto['qtd'+emp['antiga']]
                 )
