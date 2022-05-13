@@ -216,9 +216,10 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         print('DESCRICAO: ', descricao)
         if descricao == 'vazio':
             print('BUSCA VAZIA')
-            obj = Produto.objects.all().order_by('?')[0:90]
+            #obj = Produto.objects.all().exclude(imagem__isnull=True).order_by('?')[0:90]
+            obj = Produto.objects.exclude(imagem__isnull=True).exclude(imagem__iexact='').order_by('?')[0:90]
         else:
-            obj = Produto.objects.filter(descricao__icontains=descricao)
+            obj = Produto.objects.filter(descricao__icontains=descricao).order_by('descricao')
         print('OBJ: ', obj)
         if not obj:
             return Response({"detail": "Não existe um produto com esse nome"})
