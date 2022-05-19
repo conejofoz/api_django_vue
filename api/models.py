@@ -202,6 +202,13 @@ class EstoqueEmpresa(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="empresa_estoque", blank=True, null=True, default=1)
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name="empresa_estoque", blank=True, null=True, default=1)
     quantidade = models.FloatField(default=0)
+    deposito1 = models.FloatField(default=0)
+    deposito2 = models.FloatField(default=0)
+    deposito3 = models.FloatField(default=0)
+    deposito4 = models.FloatField(default=0)
+    deposito5 = models.FloatField(default=0)
+    deposito6 = models.FloatField(default=0)
+    deposito7 = models.FloatField(default=0)
 
     def __st__(self):
         return "{} - {} - ({})".format(self.produto.descricao, self.empresa.nome, self.quantidade)
@@ -300,6 +307,7 @@ class VendaDetalhe(ModeloEdit):
     quantidade = models.IntegerField(default=0)
     preco = models.FloatField(default=0)        
     desconto = models.FloatField(default=0)        
+    deposito = models.IntegerField(default=0)
     
     @property
     def subtotal(self):

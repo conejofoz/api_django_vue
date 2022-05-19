@@ -89,7 +89,7 @@ class VendaDetalheSerializer(serializers.ModelSerializer):
     #produto = ProdutoSerializer(many=False, read_only=True)
     class Meta:
         model=VendaDetalhe
-        fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao",]
+        fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao", "deposito",]
 
 
 

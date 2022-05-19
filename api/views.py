@@ -77,25 +77,51 @@ def ajusta_estoque(request):
     contador = 1
     empresa = '2'
     empresas = [
+        {'empresa': '1', 'antiga': '0'},
         {'empresa': '2', 'antiga': '2'},
         {'empresa': '3', 'antiga': '8'}
     ]
+    deposito = '7'
 
     for emp in empresas:
         print(emp, emp['empresa'], emp['antiga'])
         contador = 0
+        
         for produto in produtos:
             p = produto
             estoque = p.empresa_estoque.filter(empresa_id=emp['empresa']).first()
             if estoque is not None:
-                estoque.quantidade = produto['qtd'+emp['antiga']]
+                if emp['empresa'] == '1':
+                    estoque.deposito1 = produto['deposito1']
+                    estoque.deposito2 = produto['deposito2']
+                    estoque.deposito3 = produto['deposito3']
+                    estoque.deposito4 = produto['deposito4']
+                    estoque.deposito5 = produto['deposito5']
+                    estoque.deposito6 = produto['deposito6']
+                    estoque.deposito7 = produto['deposito7']
+                else:    
+                    estoque.quantidade = produto['qtd'+emp['antiga']]
+                
                 estoque.save()
             else:
-                EstoqueEmpresa.objects.create(
-                    empresa_id=int(emp['empresa']),
-                    produto_id=produto['id'],
-                    quantidade=produto['qtd'+emp['antiga']]
-                )
+                if emp['empresa'] == '1':
+                    EstoqueEmpresa.objects.create(
+                        empresa_id=int(emp['empresa']),
+                        produto_id=produto['id'],
+                        deposito1=produto['deposito1'],
+                        deposito2=produto['deposito2'],
+                        deposito3=produto['deposito3'],
+                        deposito4=produto['deposito4'],
+                        deposito5=produto['deposito5'],
+                        deposito6=produto['deposito6'],
+                        deposito7=produto['deposito7'],
+                    )
+                else:
+                    EstoqueEmpresa.objects.create(
+                        empresa_id=int(emp['empresa']),
+                        produto_id=produto['id'],
+                        quantidade=produto['qtd'+emp['antiga']],
+                    )
             contador = contador+1
             print(contador)
     return HttpResponse("terminou...")
@@ -333,11 +359,46 @@ class VendaViewSet(viewsets.ModelViewSet):
                     x = p.empresa_estoque.filter(empresa=empresa).first()
                     print('\n\no x \n', x)
                     if x is not None:
-                        x.quantidade -= float(produto['quantidade'])
+                        if empresa == '1':
+                            deposito = produto['deposito']
+                            if deposito == 1:
+                                x.deposito1 -= float(produto['quantidade'])
+                            if deposito == 2:
+                                x.deposito2 -= float(produto['quantidade'])
+                            if deposito == 3:
+                                x.deposito3 -= float(produto['quantidade'])
+                            if deposito == 4:
+                                x.deposito4 -= float(produto['quantidade'])
+                            if deposito == 5:
+                                x.deposito5 -= float(produto['quantidade'])
+                            if deposito == 6:
+                                x.deposito6 -= float(produto['quantidade'])
+                            if deposito == 7:
+                                x.deposito7 -= float(produto['quantidade'])
+                        else:
+                            x.quantidade -= float(produto['quantidade'])
+                        
                         x.save()
                     else:
                         # criar o estoque    
-                        EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], quantidade=float(produto['quantidade']) * -1)
+                        if empresa == '1':
+                            deposito = produto['deposito']
+                            if deposito == 1:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito1=float(produto['quantidade']) * -1)
+                            if deposito == 2:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito2=float(produto['quantidade']) * -1)
+                            if deposito == 3:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito3=float(produto['quantidade']) * -1)
+                            if deposito == 4:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito4=float(produto['quantidade']) * -1)
+                            if deposito == 5:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito5=float(produto['quantidade']) * -1)
+                            if deposito == 6:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito6=float(produto['quantidade']) * -1)
+                            if deposito == 7:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito7=float(produto['quantidade']) * -1)
+                        else:
+                            EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], quantidade=float(produto['quantidade']) * -1)
                 #else:
                     #print('serialize é inválido')
                     #return Response("Erro ao serializar o item da venda: ")
