@@ -168,8 +168,8 @@ class Produto(models.Model):
         img = Image.open(img_path)
         width, height = img.size
         if new_width == 720:
-            #new_height = 405
-            new_height = round((new_width * height) / width)
+            new_height = 480 #405
+            #new_height = round((new_width * height) / width)
         else:
             new_height = round((new_width * height) / width)
 
