@@ -1,7 +1,7 @@
 #from dataclasses import field, fields
 from rest_framework import serializers 
 from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, LancamentoCaixa, Produto, \
-    SubCategoria, Compras, ComprasDetalhe, Venda, VendaDetalhe, Moeda, EstoqueEmpresa
+    SubCategoria, Compra, CompraDetalhe, Venda, VendaDetalhe, Moeda, EstoqueEmpresa
 
 
 class DocumentoSerializer(serializers.ModelSerializer):
@@ -62,7 +62,23 @@ class FornecedorSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CompraDetalheSerializer(serializers.ModelSerializer):
+    produto_descricao = serializers.ReadOnlyField(source='produto.descricao')
+    class Meta:
+        model=CompraDetalhe
+        fields=["compra", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao", "deposito",]
 
+
+class CompraSerializer(serializers.ModelSerializer):
+    nome_fornecedor = serializers.ReadOnlyField(source='fornecedor.nome')
+    detalhe = CompraDetalheSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Compra
+        fields = ["id", "fornecedor", "empresa", "data", "detalhe", "nome_fornecedor", "total", "paga"]
+        #fields = '__all__'        
+
+""" 
 class ComprasDetalheSerializer(serializers.ModelSerializer):
     produto_descricao = serializers.ReadOnlyField(source='produto.descricao')
     class Meta:
@@ -79,7 +95,7 @@ class ComprasSerializer(serializers.ModelSerializer):
         fields = ["id", "fornecedor", "data", "detalhe"]
         #fields = '__all__'
 
-
+ """
 class VendaDetalheSerializer(serializers.ModelSerializer):
     produto_descricao = serializers.ReadOnlyField(source='produto.descricao')
     #produto_imagem = serializers.ImageField(source='produto.imagem') #verificar estava funcionando

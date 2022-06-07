@@ -10,7 +10,7 @@ from rest_framework_simplejwt.views import (
 
 from .views import LancamentoCaixaViewSet, prueba, DocumentoViewSet, CategoriaViewSet, \
     SubCategoriaViewSet, ProdutoViewSet, FornecedorViewSet, \
-        ComprasViewSet, ComprasDetalheViewSet, ClienteViewSet, \
+        CompraViewSet, CompraDetalheViewSet, ClienteViewSet, \
             VendaViewSet, VendaDetalheViewSet, \
                  upload, clientest, EmpresaViewSet, MoedaViewSet, email_contato, ajusta_estoque
 
@@ -21,8 +21,8 @@ router.register(r'empresa', EmpresaViewSet)
 router.register(r'subcategoria', SubCategoriaViewSet)
 router.register(r'produto', ProdutoViewSet)
 router.register(r'fornecedor', FornecedorViewSet)
-router.register(r'compras', ComprasViewSet)
-router.register(r'compras-detalhe', ComprasDetalheViewSet)
+router.register(r'compras', CompraViewSet)
+router.register(r'compras-detalhe', CompraDetalheViewSet)
 router.register(r'cliente', ClienteViewSet)
 router.register(r'vendas-detalhe', VendaDetalheViewSet)
 router.register(r'vendas', VendaViewSet)

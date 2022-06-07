@@ -21,12 +21,12 @@ from rest_framework import pagination
 from datetime import date
 from datetime import datetime
 
-from .models import ComprasDetalhe, Documento, Categoria, EstoqueEmpresa, LancamentoCaixa, SubCategoria, \
-    Produto, Fornecedor, Compras, Cliente, Venda, VendaDetalhe, Empresa
-from .serializer import ClienteSerializer, ComprasSerializer, \
+from .models import CompraDetalhe, Documento, Categoria, EstoqueEmpresa, LancamentoCaixa, SubCategoria, \
+    Produto, Fornecedor, Compra, Cliente, Venda, VendaDetalhe, Empresa
+from .serializer import ClienteSerializer, CompraSerializer, \
     DocumentoSerializer, CategoriaSerializer, LancamentoCaixaSerializer, MoedaSerializer, \
     SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
-    ComprasDetalheSerializer, VendaSerializer, VendaDetalheSerializer, \
+    CompraDetalheSerializer, VendaSerializer, VendaDetalheSerializer, \
     EmpresaSerializer, VendaSerializerCliente, Moeda
 
 
@@ -272,6 +272,128 @@ class FornecedorViewSet(viewsets.ModelViewSet):
     serializer_class = FornecedorSerializer
 
 
+class CompraViewSet(viewsets.ModelViewSet):
+    # permission_classes = (IsAuthenticated,)
+    queryset = Compra.objects.all().order_by('-id')    
+    serializer_class = CompraSerializer
+
+    def list(self, request, *args, **kwargs):
+        print('o que tem no request',  request.GET)
+        print('data inicial: ', request.GET.get('dataInicial'))
+        print('data final  : ', request.GET.get('dataFinal'))
+        hoje = request.GET.get('dataInicial')
+        amanha = request.GET.get('dataFinal')
+        empresa = request.GET.get('empresa')
+        print('hoje', hoje)
+        # queryset = Compra.objects.filter(data='2022-03-11')
+        if hoje is None:
+            # queryset = Compra.objects.all().order_by('-id')
+            queryset = Compra.objects.filter(empresa_id=empresa).order_by('-id')
+        else:
+            data_atual_servidor = date.today()
+            # queryset = Compra.objects.filter(data=hoje)
+            if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+                return Response("Data Inicial não pode ser maior que hoje", status=status.HTTP_400_BAD_REQUEST) 
+            if amanha is None:
+                amanha = hoje
+            if hoje > amanha:
+                return Response("Data Inicial não pode ser maior que data final", status=status.HTTP_400_BAD_REQUEST) 
+            # queryset = Compra.objects.filter(data__range=(hoje, amanha))
+            queryset = Compra.objects.filter(data__range=(hoje, amanha), empresa_id=empresa)
+
+        serializer = CompraSerializerCliente(queryset, many=True)
+        return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        serializerCompra = CompraSerializer(data=request.data)
+        empresa = request.data["empresa"]
+        print("request.data ==>", request.data)
+        # print("cliente ==>", request.data["cliente"])
+        if serializerCompra.is_valid():
+            serializerCompra.save()
+        # else:
+            # print('serialize é inválido')
+            # return Response("Erro ao serializar o cabeçalho da venda: ")
+
+            numeroCompra = serializerCompra.data['id']
+            produtos = json.loads(request.POST.get('produtos'))
+            print(produtos)
+            for produto in produtos:
+                produto['venda'] = numeroCompra
+                print('produto com a venda: ', produto)
+                serializerDetalhe = CompraDetalheSerializer(data=produto)
+                if serializerDetalhe.is_valid():
+                    serializerDetalhe.save()
+                    p = Produto.objects.get(pk=produto['id'])
+                    x = p.empresa_estoque.filter(empresa=empresa).first()
+                    print('\n\no x \n', x)
+                    if x is not None:
+                        if empresa == '1':
+                            deposito = produto['deposito']
+                            if deposito == 1:
+                                x.deposito1 -= float(produto['quantidade'])
+                            if deposito == 2:
+                                x.deposito2 -= float(produto['quantidade'])
+                            if deposito == 3:
+                                x.deposito3 -= float(produto['quantidade'])
+                            if deposito == 4:
+                                x.deposito4 -= float(produto['quantidade'])
+                            if deposito == 5:
+                                x.deposito5 -= float(produto['quantidade'])
+                            if deposito == 6:
+                                x.deposito6 -= float(produto['quantidade'])
+                            if deposito == 7:
+                                x.deposito7 -= float(produto['quantidade'])
+                        else:
+                            x.quantidade -= float(produto['quantidade'])
+                        
+                        x.save()
+                    else:
+                        # criar o estoque    
+                        if empresa == '1':
+                            deposito = produto['deposito']
+                            if deposito == 1:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito1=float(produto['quantidade']) * -1)
+                            if deposito == 2:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito2=float(produto['quantidade']) * -1)
+                            if deposito == 3:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito3=float(produto['quantidade']) * -1)
+                            if deposito == 4:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito4=float(produto['quantidade']) * -1)
+                            if deposito == 5:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito5=float(produto['quantidade']) * -1)
+                            if deposito == 6:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito6=float(produto['quantidade']) * -1)
+                            if deposito == 7:
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito7=float(produto['quantidade']) * -1)
+                        else:
+                            EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], quantidade=float(produto['quantidade']) * -1)
+                #else:
+                    #print('serialize é inválido')
+                    #return Response("Erro ao serializar o item da venda: ")
+            return Response(serializerCompra.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializerCompra.errors, status=status.HTTP_400_BAD_REQUEST)  
+
+
+class CompraDetalheViewSet(viewsets.ModelViewSet):
+    #permission_classes = (IsAuthenticated,)
+    queryset = CompraDetalhe.objects.all().order_by('id')    
+    serializer_class = CompraDetalheSerializer
+
+"""     def create(self, request):
+        serializer = CompraDetalheSerializer(data=request.data)
+        if serializer.is_valid():
+            data = request.data
+            prod = Produto.objects.get(pk=data["produto"])
+            if int(prod.stock) >= int(data["quantidade"]):
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                return Response("Não tem quantidade suficiente" + "Estoque atual: " + str(prod.stock))
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+ """
+""" 
 class ComprasViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
     queryset = Compras.objects.all().order_by('id')    
@@ -283,7 +405,7 @@ class ComprasDetalheViewSet(viewsets.ModelViewSet):
     queryset = ComprasDetalhe.objects.all().order_by('id')    
     serializer_class = ComprasDetalheSerializer
 
-
+ """
 class ClienteViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
     queryset = Cliente.objects.all().order_by('nome')

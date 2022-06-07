@@ -230,6 +230,42 @@ class Fornecedor(models.Model):
         verbose_name_plural = 'Fornecedores'
 
 
+class Compra(ModeloEdit):
+    cornecedor = models.ForeignKey(Fornecedor, related_name='cornecedor', on_delete=models.RESTRICT)
+    empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
+    data = models.DateField()
+    total = models.FloatField(default=0)
+    paga = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name_plural = "Compras"
+
+
+class CompraDetalhe(ModeloEdit):
+    compra = models.ForeignKey(Compra, related_name='detalhe', on_delete=models.CASCADE)
+    produto = models.ForeignKey(Produto, on_delete=models.RESTRICT)
+    quantidade = models.IntegerField(default=0)
+    preco = models.FloatField(default=0)        
+    desconto = models.FloatField(default=0)        
+    deposito = models.IntegerField(default=0)
+    
+    @property
+    def subtotal(self):
+        return self.quantidade * self.preco
+
+    @property
+    def total(self):
+        return self.subtotal - self.desconto
+
+    def __str__(self):
+        return '{}-{}-{}'.format(self.id, self.compra, self.produto)
+
+    class Meta:
+        verbose_name_plural = "Detalhes de Compra"
+""" 
 class Compras(ModeloEdit):
     fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
     data = models.DateField(null=False, blank=False)
@@ -262,7 +298,7 @@ class ComprasDetalhe(ModeloEdit):
     class Meta:
         verbose_name_plural = "Detalhes"
     
-    
+ """    
 class Cliente(models.Model):
     nome = models.CharField(max_length=200, null=False, blank=False, unique=True)
     telefone = models.CharField(max_length=20, null=True, blank=True)
@@ -343,7 +379,8 @@ class LancamentoCaixa(ModeloEdit):
 
 
 # Signals de Compra
-@receiver(post_save, sender=ComprasDetalhe)
+""" 
+@receiver(post_save, sender=CompraDetalhe)
 def somar_quantidade(sender, instance, **kwargs):
     id_produto = instance.produto.id 
     produto = Produto.objects.get(id = id_produto)
@@ -353,7 +390,7 @@ def somar_quantidade(sender, instance, **kwargs):
         produto.save()
 
 
-@receiver(post_delete, sender=ComprasDetalhe)
+@receiver(post_delete, sender=CompraDetalhe)
 def diminuir_quantidade(sender, instance, **kwargs):
     id_produto = instance.produto.id 
     produto = Produto.objects.filtert(id = id_produto).first()
@@ -362,7 +399,7 @@ def diminuir_quantidade(sender, instance, **kwargs):
         produto.stock -= int(instance.quantidade)
         produto.save()
 
-
+ """
 # Signals de Venda
 
 @receiver(post_save, sender=VendaDetalhe)
