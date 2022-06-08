@@ -231,11 +231,13 @@ class Fornecedor(models.Model):
 
 
 class Compra(ModeloEdit):
-    cornecedor = models.ForeignKey(Fornecedor, related_name='cornecedor', on_delete=models.RESTRICT)
+    fornecedor = models.ForeignKey(Fornecedor, related_name='fornecedor', on_delete=models.RESTRICT)
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
     data = models.DateField()
     total = models.FloatField(default=0)
     paga = models.BooleanField(default=False)
+    origem = models.IntegerField(blank=True, null=True)
+    tipo_movimento = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
@@ -328,6 +330,8 @@ class Venda(ModeloEdit):
     data = models.DateField()
     total = models.FloatField(default=0)
     paga = models.BooleanField(default=False)
+    destino = models.IntegerField(blank=True, null=True)
+    tipo_movimento = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return str(self.id)

@@ -75,9 +75,19 @@ class CompraSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Compra
-        fields = ["id", "fornecedor", "empresa", "data", "detalhe", "nome_fornecedor", "total", "paga"]
+        fields = ["id", "fornecedor", "empresa", "data", "detalhe", "nome_fornecedor", "total", "paga", "origem", "tipo_movimento"]
         #fields = '__all__'        
 
+
+class CompraSerializerFornecedor(serializers.ModelSerializer):
+    nome_fornecedor = serializers.ReadOnlyField(source='fornecedor.nome')
+    fornecedor = FornecedorSerializer(many=False, read_only=True)
+    detalhe = CompraDetalheSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Compra
+        fields = ["id", "fornecedor", "empresa", "data", "detalhe", "nome_fornecedor", "total", "paga"]
+        #fields = '__all__'      
 """ 
 class ComprasDetalheSerializer(serializers.ModelSerializer):
     produto_descricao = serializers.ReadOnlyField(source='produto.descricao')
@@ -125,7 +135,7 @@ class VendaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga"]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento"]
         #fields = '__all__'        
 
 
@@ -136,7 +146,7 @@ class VendaSerializerCliente(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga"]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento"]
         #fields = '__all__'              
 
 

@@ -27,7 +27,7 @@ from .serializer import ClienteSerializer, CompraSerializer, \
     DocumentoSerializer, CategoriaSerializer, LancamentoCaixaSerializer, MoedaSerializer, \
     SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
     CompraDetalheSerializer, VendaSerializer, VendaDetalheSerializer, \
-    EmpresaSerializer, VendaSerializerCliente, Moeda
+    EmpresaSerializer, VendaSerializerCliente, Moeda, CompraSerializerFornecedor
 
 
 def index(request):
@@ -301,7 +301,7 @@ class CompraViewSet(viewsets.ModelViewSet):
             # queryset = Compra.objects.filter(data__range=(hoje, amanha))
             queryset = Compra.objects.filter(data__range=(hoje, amanha), empresa_id=empresa)
 
-        serializer = CompraSerializerCliente(queryset, many=True)
+        serializer = CompraSerializerFornecedor(queryset, many=True)
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
@@ -319,8 +319,8 @@ class CompraViewSet(viewsets.ModelViewSet):
             produtos = json.loads(request.POST.get('produtos'))
             print(produtos)
             for produto in produtos:
-                produto['venda'] = numeroCompra
-                print('produto com a venda: ', produto)
+                produto['compra'] = numeroCompra
+                print('produto com a compra: ', produto)
                 serializerDetalhe = CompraDetalheSerializer(data=produto)
                 if serializerDetalhe.is_valid():
                     serializerDetalhe.save()
@@ -328,49 +328,52 @@ class CompraViewSet(viewsets.ModelViewSet):
                     x = p.empresa_estoque.filter(empresa=empresa).first()
                     print('\n\no x \n', x)
                     if x is not None:
+                        # estoque existe, atualizar
+                        print('ATUALIZANDO ESTOQUE')
                         if empresa == '1':
                             deposito = produto['deposito']
                             if deposito == 1:
-                                x.deposito1 -= float(produto['quantidade'])
+                                x.deposito1 += float(produto['quantidade'])
                             if deposito == 2:
-                                x.deposito2 -= float(produto['quantidade'])
+                                x.deposito2 += float(produto['quantidade'])
                             if deposito == 3:
-                                x.deposito3 -= float(produto['quantidade'])
+                                x.deposito3 += float(produto['quantidade'])
                             if deposito == 4:
-                                x.deposito4 -= float(produto['quantidade'])
+                                x.deposito4 += float(produto['quantidade'])
                             if deposito == 5:
-                                x.deposito5 -= float(produto['quantidade'])
+                                x.deposito5 += float(produto['quantidade'])
                             if deposito == 6:
-                                x.deposito6 -= float(produto['quantidade'])
+                                x.deposito6 += float(produto['quantidade'])
                             if deposito == 7:
-                                x.deposito7 -= float(produto['quantidade'])
+                                x.deposito7 += float(produto['quantidade'])
                         else:
-                            x.quantidade -= float(produto['quantidade'])
+                            x.quantidade += float(produto['quantidade'])
                         
                         x.save()
                     else:
-                        # criar o estoque    
+                        # estoque não existe, criar o estoque    
+                        print('CRIANDO ESTOQUE')
                         if empresa == '1':
                             deposito = produto['deposito']
                             if deposito == 1:
-                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito1=float(produto['quantidade']) * -1)
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito1=float(produto['quantidade']) * 1)
                             if deposito == 2:
-                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito2=float(produto['quantidade']) * -1)
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito2=float(produto['quantidade']) * 1)
                             if deposito == 3:
-                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito3=float(produto['quantidade']) * -1)
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito3=float(produto['quantidade']) * 1)
                             if deposito == 4:
-                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito4=float(produto['quantidade']) * -1)
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito4=float(produto['quantidade']) * 1)
                             if deposito == 5:
-                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito5=float(produto['quantidade']) * -1)
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito5=float(produto['quantidade']) * 1)
                             if deposito == 6:
-                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito6=float(produto['quantidade']) * -1)
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito6=float(produto['quantidade']) * 1)
                             if deposito == 7:
-                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito7=float(produto['quantidade']) * -1)
+                                EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], deposito7=float(produto['quantidade']) * 1)
                         else:
-                            EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], quantidade=float(produto['quantidade']) * -1)
-                #else:
-                    #print('serialize é inválido')
-                    #return Response("Erro ao serializar o item da venda: ")
+                            EstoqueEmpresa.objects.create(empresa_id=empresa, produto_id=produto['id'], quantidade=float(produto['quantidade']) * 1)
+                else:
+                    print('serialize é inválido')
+                    return Response("Erro ao serializar o item da COMPRA: ")
             return Response(serializerCompra.data, status=status.HTTP_201_CREATED)
 
         return Response(serializerCompra.errors, status=status.HTTP_400_BAD_REQUEST)  
@@ -453,7 +456,6 @@ class VendaViewSet(viewsets.ModelViewSet):
                 return Response("Data Inicial não pode ser maior que data final", status=status.HTTP_400_BAD_REQUEST) 
             # queryset = Venda.objects.filter(data__range=(hoje, amanha))
             queryset = Venda.objects.filter(data__range=(hoje, amanha), empresa_id=empresa)
-
         serializer = VendaSerializerCliente(queryset, many=True)
         return Response(serializer.data)
 
