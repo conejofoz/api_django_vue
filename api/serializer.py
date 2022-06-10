@@ -1,4 +1,6 @@
 #from dataclasses import field, fields
+from dataclasses import fields
+from django.contrib.auth.models import User
 from rest_framework import serializers 
 from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, LancamentoCaixa, Produto, \
     SubCategoria, Compra, CompraDetalhe, Venda, VendaDetalhe, Moeda, EstoqueEmpresa
@@ -128,6 +130,10 @@ class ClienteSerializer(serializers.ModelSerializer):
         #fields = '__all__'
         fields = ["id", "nome", "telefone", "email", "estado", "imagem"]
 
+class UsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 
 class VendaSerializer(serializers.ModelSerializer):
     nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
@@ -143,10 +149,13 @@ class VendaSerializerCliente(serializers.ModelSerializer):
     nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
     cliente = ClienteSerializer(many=False, read_only=True)
     detalhe = VendaDetalheSerializer(many=True, read_only=True)
+    #nome_usuario = serializers.ReadOnlyField(source="user.username")
+    usuario = UsuarioSerializer(read_only=True)
+    
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento"]
+        fields = ["id", "usuario", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento", "uc", "um"]
         #fields = '__all__'              
 
 

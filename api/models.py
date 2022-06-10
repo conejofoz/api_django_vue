@@ -30,6 +30,7 @@ class ModeloEdit(models.Model):
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
     uc = UserForeignKey(auto_user_add=True, related_name='+') 
     um = UserForeignKey(auto_user=True, related_name='+')
+    usuario = models.ForeignKey(User, on_delete=models.RESTRICT)
 
     class Meta:
         abstract = True
@@ -82,7 +83,7 @@ class Categoria(ModeloEdit):
         verbose_name_plural = "Categorias"
 
 
-class SubCategoria(models.Model):
+class SubCategoria(ModeloEdit):
     categoria = models.ForeignKey(Categoria, related_name='subcategorias', on_delete=models.PROTECT)
     descricao = models.CharField(max_length=50, null=False, blank=False)
 
@@ -98,7 +99,7 @@ class SubCategoria(models.Model):
         unique_together = ("categoria", "descricao")
 
 
-class Produto(models.Model):
+class Produto(ModeloEdit):
 
     """ def nome_imagem(self, filename):
         extension = os.path.splitext(filename)[-1]
@@ -202,7 +203,7 @@ class Produto(models.Model):
         return thumbnail
 
 
-class EstoqueEmpresa(models.Model):
+class EstoqueEmpresa(ModeloEdit):
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="empresa_estoque", blank=True, null=True, default=1)
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name="empresa_estoque", blank=True, null=True, default=1)
     quantidade = models.FloatField(default=0)
@@ -218,7 +219,7 @@ class EstoqueEmpresa(models.Model):
         return "{} - {} - ({})".format(self.produto.descricao, self.empresa.nome, self.quantidade)
 
 
-class Fornecedor(models.Model):
+class Fornecedor(ModeloEdit):
     nome = models.CharField(max_length=50, null=False, blank=False,unique=True)
     telefone = models.CharField(max_length=20, null=True, blank=True)
     email = models.TextField(null=True,blank=True)
@@ -305,7 +306,7 @@ class ComprasDetalhe(ModeloEdit):
         verbose_name_plural = "Detalhes"
     
  """    
-class Cliente(models.Model):
+class Cliente(ModeloEdit):
     nome = models.CharField(max_length=200, null=False, blank=False, unique=True)
     telefone = models.CharField(max_length=20, null=True, blank=True)
     email = models.TextField(null=True, blank=True)
