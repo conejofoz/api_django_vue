@@ -17,6 +17,8 @@ import os
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.db import models
+from django.contrib.auth.models import User
+from django_userforeignkey.models.fields import UserForeignKey
 
 from PIL import Image
 
@@ -24,8 +26,10 @@ from api_dj.settings import MEDIA_URL, STATIC_URL, BASE_DIR, MEDIA_ROOT
 
 
 class ModeloEdit(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+    uc = UserForeignKey(auto_user_add=True, related_name='+') 
+    um = UserForeignKey(auto_user=True, related_name='+')
 
     class Meta:
         abstract = True
@@ -64,7 +68,7 @@ class Empresa(ModeloEdit):
         verbose_name_plural = "Empresas"
 
 
-class Categoria(models.Model):
+class Categoria(ModeloEdit):
     descricao = models.CharField(max_length=50, null=False,blank=False, unique=True)
 
     def __str__(self):
