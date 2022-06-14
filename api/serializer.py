@@ -6,6 +6,13 @@ from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, Lancamen
     SubCategoria, Compra, CompraDetalhe, Venda, VendaDetalhe, Moeda, EstoqueEmpresa
 
 
+class UsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        #fields = '__all__'
+        #exclude = ["password"]
+        fields = ["id", "username"]
+
 class DocumentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Documento
@@ -13,12 +20,15 @@ class DocumentoSerializer(serializers.ModelSerializer):
 
 
 class CategoriaSerializer(serializers.ModelSerializer):
-    # subcategorias = SubCategoriaSerializer(many=True, read_only=True)
+    usuario = UsuarioSerializer(read_only=True)
+    usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
+    um = UsuarioSerializer(read_only=True)
+    uc = UsuarioSerializer(read_only=True)
     class Meta:
         model = Categoria
-        # fields='__all__'
+        fields='__all__'
         # fields = ("id", "descricao", "subcategorias")
-        fields = ("id", "descricao", )
+        #fields = ("id", "descricao", "usuario", "usuario_id", "uc", "um")
 
 
 class SubCategoriaSerializer(serializers.ModelSerializer):
@@ -127,13 +137,9 @@ class VendaDetalheSerializer(serializers.ModelSerializer):
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        #fields = '__all__'
-        fields = ["id", "nome", "telefone", "email", "estado", "imagem"]
-
-class UsuarioSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
         fields = '__all__'
+        #fields = ["id", "nome", "telefone", "email", "estado", "imagem"]
+
 
 class VendaSerializer(serializers.ModelSerializer):
     nome_cliente = serializers.ReadOnlyField(source='cliente.nome')

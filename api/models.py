@@ -71,7 +71,7 @@ class Empresa(ModeloEdit):
 
 class Categoria(ModeloEdit):
     descricao = models.CharField(max_length=50, null=False,blank=False, unique=True)
-
+    
     def __str__(self):
         return self.descricao + ' - id: ' + str(self.pk)
 

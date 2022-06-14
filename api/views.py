@@ -200,7 +200,7 @@ class CategoriaViewSet(viewsets.ModelViewSet):
 class SubCategoriaViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
     #permission_classes = (IsAuthenticatedOrReadOnly,)
-    permission_classes = (DjangoModelPermissions,)
+    #permission_classes = (DjangoModelPermissions,)
     queryset = SubCategoria.objects.all().order_by('descricao')
     serializer_class = SubCategoriaSerializer
 
