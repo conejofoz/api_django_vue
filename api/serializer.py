@@ -119,6 +119,10 @@ class ComprasSerializer(serializers.ModelSerializer):
 
  """
 class VendaDetalheSerializer(serializers.ModelSerializer):
+    usuario = UsuarioSerializer(read_only=True)
+    usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
+    um = UsuarioSerializer(read_only=True)
+    uc = UsuarioSerializer(read_only=True)
     produto_descricao = serializers.ReadOnlyField(source='produto.descricao')
     #produto_imagem = serializers.ImageField(source='produto.imagem') #verificar estava funcionando
     #produ = serializers.ReadOnlyField(source='produto')
@@ -127,7 +131,7 @@ class VendaDetalheSerializer(serializers.ModelSerializer):
     #produto = ProdutoSerializer(many=False, read_only=True)
     class Meta:
         model=VendaDetalhe
-        fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao", "deposito",]
+        fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao", "deposito", "usuario_id", "usuario", "uc", "um"]
 
 
 
@@ -142,16 +146,25 @@ class ClienteSerializer(serializers.ModelSerializer):
 
 
 class VendaSerializer(serializers.ModelSerializer):
+    usuario = UsuarioSerializer(read_only=True)
+    usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
+    um = UsuarioSerializer(read_only=True)
+    uc = UsuarioSerializer(read_only=True)
+
     nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
     detalhe = VendaDetalheSerializer(many=True, read_only=True)
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento"]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento", "usuario_id", "usuario", "uc", "um"]
         #fields = '__all__'        
 
 
 class VendaSerializerCliente(serializers.ModelSerializer):
+    usuario = UsuarioSerializer(read_only=True)
+    usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
+    um = UsuarioSerializer(read_only=True)
+    uc = UsuarioSerializer(read_only=True)
     nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
     cliente = ClienteSerializer(many=False, read_only=True)
     detalhe = VendaDetalheSerializer(many=True, read_only=True)
@@ -161,7 +174,7 @@ class VendaSerializerCliente(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "usuario", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento", "uc", "um"]
+        fields = ["id", "usuario", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento", "usuario_id", "usuario", "uc", "um"]
         #fields = '__all__'              
 
 
