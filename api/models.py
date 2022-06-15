@@ -30,7 +30,7 @@ class ModeloEdit(models.Model):
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
     uc = UserForeignKey(auto_user_add=True, related_name='+') 
     um = UserForeignKey(auto_user=True, related_name='+')
-    usuario = models.ForeignKey(User, on_delete=models.RESTRICT)
+    # usuario = models.ForeignKey(User, on_delete=models.RESTRICT)
 
     class Meta:
         abstract = True

@@ -9,9 +9,9 @@ from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, Lancamen
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        #fields = '__all__'
+        fields = '__all__'
         #exclude = ["password"]
-        fields = ["id", "username"]
+        #fields = ["id", "username"]
 
 class DocumentoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,8 +20,8 @@ class DocumentoSerializer(serializers.ModelSerializer):
 
 
 class CategoriaSerializer(serializers.ModelSerializer):
-    usuario = UsuarioSerializer(read_only=True)
-    usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
+    # usuario = UsuarioSerializer(read_only=True)
+    # usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
     um = UsuarioSerializer(read_only=True)
     uc = UsuarioSerializer(read_only=True)
     class Meta:
@@ -119,8 +119,8 @@ class ComprasSerializer(serializers.ModelSerializer):
 
  """
 class VendaDetalheSerializer(serializers.ModelSerializer):
-    usuario = UsuarioSerializer(read_only=True)
-    usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
+    #usuario = UsuarioSerializer(read_only=True)
+    #usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
     um = UsuarioSerializer(read_only=True)
     uc = UsuarioSerializer(read_only=True)
     produto_descricao = serializers.ReadOnlyField(source='produto.descricao')
@@ -131,7 +131,7 @@ class VendaDetalheSerializer(serializers.ModelSerializer):
     #produto = ProdutoSerializer(many=False, read_only=True)
     class Meta:
         model=VendaDetalhe
-        fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao", "deposito", "usuario_id", "usuario", "uc", "um"]
+        fields=["venda", "id", "produto", "quantidade", "preco", "subtotal", "desconto", "total", "produto_descricao", "deposito", "uc", "um"]
 
 
 
@@ -146,8 +146,8 @@ class ClienteSerializer(serializers.ModelSerializer):
 
 
 class VendaSerializer(serializers.ModelSerializer):
-    usuario = UsuarioSerializer(read_only=True)
-    usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
+    #usuario = UsuarioSerializer(read_only=True)
+    #usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
     um = UsuarioSerializer(read_only=True)
     uc = UsuarioSerializer(read_only=True)
 
@@ -156,13 +156,13 @@ class VendaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento", "usuario_id", "usuario", "uc", "um"]
+        fields = ["id", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento", "uc", "um"]
         #fields = '__all__'        
 
 
 class VendaSerializerCliente(serializers.ModelSerializer):
-    usuario = UsuarioSerializer(read_only=True)
-    usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
+    #usuario = UsuarioSerializer(read_only=True)
+    #usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
     um = UsuarioSerializer(read_only=True)
     uc = UsuarioSerializer(read_only=True)
     nome_cliente = serializers.ReadOnlyField(source='cliente.nome')
@@ -174,7 +174,7 @@ class VendaSerializerCliente(serializers.ModelSerializer):
 
     class Meta:
         model = Venda
-        fields = ["id", "usuario", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento", "usuario_id", "usuario", "uc", "um"]
+        fields = ["id", "usuario", "cliente", "empresa", "data", "detalhe", "nome_cliente", "total", "paga", "destino", "tipo_movimento", "uc", "um"]
         #fields = '__all__'              
 
 

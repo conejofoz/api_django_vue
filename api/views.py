@@ -193,6 +193,7 @@ class EmpresaViewSet(viewsets.ModelViewSet):
 
 class CategoriaViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
+    permission_classes = (DjangoModelPermissions,)
     queryset = Categoria.objects.all().order_by('descricao')
     serializer_class = CategoriaSerializer
 
