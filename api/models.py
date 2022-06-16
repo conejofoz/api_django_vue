@@ -306,12 +306,14 @@ class ComprasDetalhe(ModeloEdit):
         verbose_name_plural = "Detalhes"
     
  """    
+
+
 class Cliente(ModeloEdit):
     nome = models.CharField(max_length=200, null=False, blank=False, unique=True)
     telefone = models.CharField(max_length=20, null=True, blank=True)
     email = models.TextField(null=True, blank=True)
     estado = models.BooleanField(default=True)
-    imagem = models.ImageField(null=True, blank=True,upload_to='clientes/')
+    imagem = models.ImageField(null=True, blank=True, upload_to='clientes/')
 
     def get_image(self):
         if self.imagem:
@@ -343,7 +345,6 @@ class Venda(ModeloEdit):
 
     class Meta:
         verbose_name_plural = "Vendas"
-
 
 
 class VendaDetalhe(ModeloEdit):

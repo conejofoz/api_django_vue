@@ -1,4 +1,4 @@
-from unicodedata import name
+# from unicodedata import name
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
@@ -6,7 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
-from rest_framework import generics, serializers
+# from rest_framework import generics, serializers
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, DjangoModelPermissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -21,13 +21,16 @@ from rest_framework import pagination
 from datetime import date
 from datetime import datetime
 
-from .models import CompraDetalhe, Documento, Categoria, EstoqueEmpresa, LancamentoCaixa, SubCategoria, \
-    Produto, Fornecedor, Compra, Cliente, Venda, VendaDetalhe, Empresa
+from .models import CompraDetalhe, Documento, Categoria, EstoqueEmpresa, \
+    LancamentoCaixa, SubCategoria, Produto, Fornecedor, Compra, Cliente, \
+    Venda, VendaDetalhe, Empresa
+
 from .serializer import ClienteSerializer, CompraSerializer, \
-    DocumentoSerializer, CategoriaSerializer, LancamentoCaixaSerializer, MoedaSerializer, \
-    SubCategoriaSerializer, ProdutoSerializer, FornecedorSerializer, \
-    CompraDetalheSerializer, VendaSerializer, VendaDetalheSerializer, \
-    EmpresaSerializer, VendaSerializerCliente, Moeda, CompraSerializerFornecedor
+    DocumentoSerializer, CategoriaSerializer, LancamentoCaixaSerializer, \
+    MoedaSerializer, SubCategoriaSerializer, ProdutoSerializer, \
+    FornecedorSerializer, CompraDetalheSerializer, VendaSerializer, \
+    VendaDetalheSerializer, EmpresaSerializer, VendaSerializerCliente, \
+    Moeda, CompraSerializerFornecedor
 
 
 def index(request):
@@ -81,6 +84,7 @@ def ajusta_estoque(request):
         {'empresa': '2', 'antiga': '2'},
         {'empresa': '3', 'antiga': '8'}
     ]
+    
     deposito = '7'
 
     for emp in empresas:
@@ -101,7 +105,6 @@ def ajusta_estoque(request):
                     estoque.deposito7 = produto['deposito7']
                 else:    
                     estoque.quantidade = produto['qtd'+emp['antiga']]
-                
                 estoque.save()
             else:
                 if emp['empresa'] == '1':
