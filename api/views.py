@@ -7,7 +7,8 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
 # from rest_framework import generics, serializers
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, DjangoModelPermissions
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, \
+    DjangoModelPermissions, DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.request import Request
@@ -196,7 +197,7 @@ class EmpresaViewSet(viewsets.ModelViewSet):
 
 class CategoriaViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
-    permission_classes = (DjangoModelPermissions,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Categoria.objects.all().order_by('descricao')
     serializer_class = CategoriaSerializer
 
@@ -437,14 +438,20 @@ class VendaViewSet(viewsets.ModelViewSet):
     queryset = Venda.objects.all().order_by('-id')    
     serializer_class = VendaSerializer
 
-    def list(self, request, *args, **kwargs):
-        print('o que tem no request',  request.GET)
-        print('data inicial: ', request.GET.get('dataInicial'))
-        print('data final  : ', request.GET.get('dataFinal'))
-        hoje = request.GET.get('dataInicial')
-        amanha = request.GET.get('dataFinal')
-        empresa = request.GET.get('empresa')
-        print('hoje', hoje)
+    def list(self, Request, *args, **kwargs):
+        print('o que tem no request',  Request.query_params)
+        print('o que tem no request',  Request)
+        #print('o que tem no request',  request.GET)
+        #print('data inicial: ', request.GET.get('dataInicial'))
+        #print('data final  : ', request.GET.get('dataFinal'))
+        #hoje = request.GET.get('dataInicial')
+        hoje = Request.query_params['dataInicial']
+        #amanha = request.GET.get('dataFinal')
+        amanha = Request.query_params['dataFinal']
+        #empresa = request.GET.get('empresa')
+        empresa = Request.query_params['empresa']
+        tipo_movimento = Request.query_params['tipo_movimento']
+        #print('hoje', hoje)
         # queryset = Venda.objects.filter(data='2022-03-11')
         if hoje is None:
             # queryset = Venda.objects.all().order_by('-id')
@@ -459,7 +466,7 @@ class VendaViewSet(viewsets.ModelViewSet):
             if hoje > amanha:
                 return Response("Data Inicial não pode ser maior que data final", status=status.HTTP_400_BAD_REQUEST) 
             # queryset = Venda.objects.filter(data__range=(hoje, amanha))
-            queryset = Venda.objects.filter(data__range=(hoje, amanha), empresa_id=empresa)
+            queryset = Venda.objects.filter(data__range=(hoje, amanha), empresa_id=empresa, tipo_movimento=tipo_movimento)
         serializer = VendaSerializerCliente(queryset, many=True)
         return Response(serializer.data)
 
