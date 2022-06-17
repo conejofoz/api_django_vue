@@ -218,6 +218,9 @@ class EstoqueEmpresa(ModeloEdit):
     def __st__(self):
         return "{} - {} - ({})".format(self.produto.descricao, self.empresa.nome, self.quantidade)
 
+    class Meta:
+        ordering = ['id']
+
 
 class Fornecedor(ModeloEdit):
     nome = models.CharField(max_length=50, null=False, blank=False,unique=True)
