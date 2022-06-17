@@ -10,9 +10,9 @@ from rest_framework_simplejwt.views import (
 
 from .views import LancamentoCaixaViewSet, prueba, DocumentoViewSet, CategoriaViewSet, \
     SubCategoriaViewSet, ProdutoViewSet, FornecedorViewSet, \
-        CompraViewSet, CompraDetalheViewSet, ClienteViewSet, \
-            VendaViewSet, VendaDetalheViewSet, \
-                 upload, clientest, EmpresaViewSet, MoedaViewSet, email_contato, ajusta_estoque
+        CompraViewSet, CompraDetalheViewSet, ClienteViewSet, UserViewSet, \
+        VendaViewSet, VendaDetalheViewSet, \
+        upload, clientest, EmpresaViewSet, MoedaViewSet, email_contato, ajusta_estoque
 
 router = routers.DefaultRouter()
 router.register(r'docs', DocumentoViewSet)
@@ -24,6 +24,7 @@ router.register(r'fornecedor', FornecedorViewSet)
 router.register(r'compras', CompraViewSet)
 router.register(r'compras-detalhe', CompraDetalheViewSet)
 router.register(r'cliente', ClienteViewSet)
+router.register(r'usuario', UserViewSet)
 router.register(r'vendas-detalhe', VendaDetalheViewSet)
 router.register(r'vendas', VendaViewSet)
 router.register(r'moedas', MoedaViewSet)

@@ -1,0 +1,1034 @@
+Watching for file changes with StatReloader
+Acessaram Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+"GET /rest/v1/cliente/ HTTP/1.1" 200 507
+"GET /media/clientes/download.jpg HTTP/1.1" 200 8377
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+"GET /rest/v1/subcategoria/ HTTP/1.1" 200 1076
+"OPTIONS /rest/v1/produto/by-descricao/ABC/ HTTP/1.1" 200 0
+"GET /rest/v1/produto/by-descricao/ABC/ HTTP/1.1" 200 49
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Acessaram Categoria
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"GET /rest/v1/categoria/ HTTP/1.1" 500 78612
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Acessaram Categoria
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'super'>`
+"GET /rest/v1/categoria/ HTTP/1.1" 500 78772
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+Acessaram Categoria
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+"GET /rest/v1/categoria/ HTTP/1.1" 500 78612
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+Acessaram Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Acessaram Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'user.username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    logger.info(Request.query_params['user.username'] + 'Acessaram Categoria')
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'user.username'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 99477
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'user.username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    logger.info(Request.query_params['user.username'] + 'Acessaram Categoria')
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'user.username'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 99477
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'user.username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    logger.info(Request.query_params['user.username'] + 'Acessaram Categoria')
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'user.username'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 99482
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'user.username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    logger.info(Request.query_params['user.username'] + 'Acessaram Categoria')
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'user.username'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 99468
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'user.username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    logger.info(Request.query_params['user.username'] + 'Acessaram Categoria')
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'user.username'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 99453
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: CategoriaViewSet.list() missing 1 required positional argument: 'request'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 87239
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: CategoriaViewSet.list() missing 1 required positional argument: 'request'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 87239
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\request.py", line 416, in __getattr__
+    return getattr(self._request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'queryparams'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    print(Request.queryparams)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\request.py", line 418, in __getattr__
+    return self.__getattribute__(attr)
+AttributeError: 'Request' object has no attribute 'queryparams'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 99549
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'user'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    print(Request.query_params['user'])
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'user'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 99392
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    usuario = User.get_current_user()
+AttributeError: type object 'User' has no attribute 'get_current_user'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91685
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    usuario = User.get_current_user()
+AttributeError: type object 'User' has no attribute 'get_current_user'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91685
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 216, in list
+    usuario = user.get_current_user()
+NameError: name 'ser' is not defined
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91411
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 217, in list
+    usuario = request.user
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91621
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 218, in list
+    print(usuario.username)
+AttributeError: 'DeferredAttribute' object has no attribute 'username'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91858
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 217, in list
+    usuario = request.user
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91621
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 218, in list
+    #print(usuario.username)
+NameError: name 'usuario' is not defined
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91371
+"GET /rest/v1/subcategoria/ HTTP/1.1" 200 1076
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 218, in list
+    #print(usuario.username)
+NameError: name 'usuario' is not defined
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91371
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 218, in list
+    #print(usuario.username)
+NameError: name 'usuario' is not defined
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91371
+"GET /rest/v1/cliente/ HTTP/1.1" 200 507
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 218, in list
+    #print(usuario.username)
+NameError: name 'usuario' is not defined
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91371
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 217, in list
+    usuario = request.user
+AttributeError: module 'urllib.request' has no attribute 'user'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91622
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 220, in list
+    logger.info(Request.user  + 'Acessou Categoria')
+TypeError: unsupported operand type(s) for +: 'User' and 'str'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91646
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 220, in list
+    logger.info(Request.user  + 'Acessou Categoria')
+TypeError: unsupported operand type(s) for +: 'User' and 'str'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91646
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+ManéAcessou Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 220, in list
+    logger.info(Request.user.username + 'Acessou Categoria')
+TypeError: unsupported operand type(s) for +: 'User' and 'str'
+"GET /rest/v1/categoria/ HTTP/1.1" 500 91669
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+ManéAcessou Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Mané Acessou Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"OPTIONS /rest/v1/token/refresh/ HTTP/1.1" 200 0
+Unauthorized: /rest/v1/token/refresh/
+"POST /rest/v1/token/refresh/ HTTP/1.1" 401 65
+"OPTIONS /rest/v1/categoria/ HTTP/1.1" 200 0
+Unauthorized: /rest/v1/categoria/
+"POST /rest/v1/categoria/ HTTP/1.1" 401 183
+Unauthorized: /rest/v1/token/refresh/
+"POST /rest/v1/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /rest/v1/categoria/
+"POST /rest/v1/categoria/ HTTP/1.1" 401 183
+"OPTIONS /rest/v1/token/ HTTP/1.1" 200 0
+Unauthorized: /rest/v1/token/
+"POST /rest/v1/token/ HTTP/1.1" 401 63
+"POST /rest/v1/token/ HTTP/1.1" 200 483
+Mané Acessou Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2078
+Internal Server Error: /rest/v1/categoria/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 227, in create
+    logger.info(usuario + ' criou categoria ' + obj)
+NameError: name 'o' is not defined
+"POST /rest/v1/categoria/ HTTP/1.1" 500 92234
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Mané criou categoria pratos 
+"POST /rest/v1/categoria/ HTTP/1.1" 201 787
+Mané Acessou Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2866
+"OPTIONS /rest/v1/categoria/6/ HTTP/1.1" 200 0
+Forbidden: /rest/v1/categoria/6/
+"PUT /rest/v1/categoria/6/ HTTP/1.1" 403 65
+"GET /admin/auth/user/ HTTP/1.1" 200 8525
+"GET /admin/jsi18n/ HTTP/1.1" 200 8483
+"GET /admin/auth/user/2/change/ HTTP/1.1" 200 19855
+"GET /admin/jsi18n/ HTTP/1.1" 200 8483
+Forbidden: /rest/v1/categoria/6/
+"DELETE /rest/v1/categoria/6/ HTTP/1.1" 403 65
+"POST /rest/v1/token/refresh/ HTTP/1.1" 200 241
+Mané Acessou Categoria
+"GET /rest/v1/categoria/ HTTP/1.1" 200 2866
+C:\prj\guriweb\django\api_dj\settings.py changed, reloading.
