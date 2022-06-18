@@ -1,0 +1,19 @@
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api_dj\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api_dj\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /rest/v1/categoria/7/
+Mané Acessou a lista de categorias em: 18-06-2022 12:23:53
+Forbidden: /rest/v1/categoria/7/
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /rest/v1/fornecedor/1/
+Forbidden: /rest/v1/fornecedor/1/
+Forbidden: /rest/v1/fornecedor/1/
+Forbidden: /rest/v1/fornecedor/1/
+Forbidden: /rest/v1/fornecedor/1/

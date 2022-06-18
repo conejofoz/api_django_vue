@@ -1,6 +1,11 @@
 # from dataclasses import field, fields
 # from dataclasses import fields
+from asyncore import read
+from imp import source_from_cache
+from importlib.resources import read_binary
+from re import M
 from django.contrib.auth.models import User
+from django.http import QueryDict
 from rest_framework import serializers 
 from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, \
     LancamentoCaixa, Produto, SubCategoria, Compra, CompraDetalhe, Venda, \
@@ -19,12 +24,32 @@ class DocumentoSerializer(serializers.ModelSerializer):
         model = Documento
         fields = '__all__'
 
+class SubCategoriaSerializerList(serializers.ModelSerializer):
+
+    class Meta:
+        model = SubCategoria
+        # fields='__all__'
+        fields = ("id", "descricao", )
 
 class CategoriaSerializer(serializers.ModelSerializer):
     # usuario = UsuarioSerializer(read_only=True)
     # usuario_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True, source='usuario')
     um = UsuarioSerializer(read_only=True)
     uc = UsuarioSerializer(read_only=True)
+
+    """ 
+        subcategorias = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+        retorna só o id
+        
+        a classe SubCategoriaSerializer não se pode usar porque esta definida depois
+        para colocar a subcategoria completa na categoria a solução foi criar uma classe serializer só para listar
+        e se colocar a subcategoria para cima para de funcionar a categoria que tem dentro dela
+        outra coisa muito importante o nome do campo subcategorias é o nome que está em related_name='subcategorias'
+            la no model
+    """
+   
+    # usando outro serializer só para listagem    
+    subcategorias = SubCategoriaSerializerList(read_only=True, many=True)
     
     class Meta:
         model = Categoria

@@ -1,8 +1,8 @@
 # from unicodedata import name
-import logging
-#from urllib import request
-logger = logging.getLogger('django')
 
+#from urllib import request
+
+from this import d
 from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -38,7 +38,10 @@ from .serializer import ClienteSerializer, CompraSerializer, \
     VendaDetalheSerializer, EmpresaSerializer, VendaSerializerCliente, \
     Moeda, CompraSerializerFornecedor, UsuarioSerializer
 
-
+import logging
+logger = logging.getLogger('django.arquivo')
+# data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+#print(data_log)
 
 def index(request):
     return render(request, 'index.html')
@@ -215,7 +218,8 @@ class CategoriaViewSet(viewsets.ModelViewSet):
 
     def list(self, Request, *args, **kwargs):
         usuario = Request.user.username
-        logger.info(usuario + ' Acessou a lista de categorias')
+        data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        logger.info(usuario + ' Acessou a lista de categorias' + ' em: ' + data_log)
         # queryset = Categoria.objects.all().order_by('descricao')
         # serializer = CategoriaSerializer(queryset, many=True)
         # return Response(serializer.data)
@@ -224,21 +228,23 @@ class CategoriaViewSet(viewsets.ModelViewSet):
     def create(self, Request, *args, **kwargs):
         usuario = Request.user.username
         obj = Request.data['descricao']
-        logger.info(usuario + ' criou categoria ' + obj)
+        data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        logger.info(usuario + ' criou categoria ' + obj + ' em: ' + data_log)
         return super(CategoriaViewSet, self).create(Request, *args, **kwargs)
 
     def update(self, Request, *args, **kwargs):
         usuario = Request.user.username
         obj = Request.data['descricao']
-        logger.info(usuario + ' alterou a categoria ' + obj)
+        data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        logger.info(usuario + ' alterou a categoria ' + obj + ' em: ' + data_log)
         return super().update(Request, *args, **kwargs)
 
     def destroy(self, Request, *args, **kwargs):
         id = kwargs['pk']
         obj = Categoria.objects.get(id=id)
-        print('id: ', id)
+        data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
         usuario = Request.user.username
-        logger.info(usuario + ' apagou a categoria ' + obj.descricao)
+        logger.info(usuario + ' apagou a categoria ' + obj.descricao + ' em: ' + data_log)
         return super().destroy(Request, *args, **kwargs)
 
 
@@ -312,7 +318,7 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
 
 class FornecedorViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Fornecedor.objects.all().order_by('nome')
     serializer_class = FornecedorSerializer
 
