@@ -1,6 +1,6 @@
 # from unicodedata import name
 import logging
-from urllib import request
+#from urllib import request
 logger = logging.getLogger('django')
 
 from django.contrib.auth.models import User
@@ -16,7 +16,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
     DjangoModelPermissions, DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.request import Request
+#from rest_framework.request import Request
 
 from rest_framework import viewsets, status 
 
@@ -208,25 +208,38 @@ class EmpresaViewSet(viewsets.ModelViewSet):
 
 
 class CategoriaViewSet(viewsets.ModelViewSet):
-    #permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Categoria.objects.all().order_by('descricao')
     serializer_class = CategoriaSerializer
 
     def list(self, Request, *args, **kwargs):
         usuario = Request.user.username
-        logger.info(usuario + ' Acessou Categoria')
-        #queryset = Categoria.objects.all().order_by('descricao')
-        #serializer = CategoriaSerializer(queryset, many=True)
-        #return Response(serializer.data)
+        logger.info(usuario + ' Acessou a lista de categorias')
+        # queryset = Categoria.objects.all().order_by('descricao')
+        # serializer = CategoriaSerializer(queryset, many=True)
+        # return Response(serializer.data)
         return super(CategoriaViewSet, self).list(Request, *args, **kwargs)
 
     def create(self, Request, *args, **kwargs):
         usuario = Request.user.username
         obj = Request.data['descricao']
-        logger.info(usuario + ' criou categoria ' + obj )
+        logger.info(usuario + ' criou categoria ' + obj)
         return super(CategoriaViewSet, self).create(Request, *args, **kwargs)
 
+    def update(self, Request, *args, **kwargs):
+        usuario = Request.user.username
+        obj = Request.data['descricao']
+        logger.info(usuario + ' alterou a categoria ' + obj)
+        return super().update(Request, *args, **kwargs)
+
+    def destroy(self, Request, *args, **kwargs):
+        id = kwargs['pk']
+        obj = Categoria.objects.get(id=id)
+        print('id: ', id)
+        usuario = Request.user.username
+        logger.info(usuario + ' apagou a categoria ' + obj.descricao)
+        return super().destroy(Request, *args, **kwargs)
 
 
 class SubCategoriaViewSet(viewsets.ModelViewSet):
