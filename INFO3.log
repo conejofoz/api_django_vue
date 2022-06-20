@@ -2636,3 +2636,921 @@ Traceback (most recent call last):
   File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
     raise MultiValueDictKeyError(key)
 django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:20:36
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:24:50
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:25:08
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:27:21
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:27:22
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:27:31
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:28:16
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:31:40
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:31:40
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:31:41
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:31:41
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:31:42
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:31:43
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:32:09
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:33:22
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:42:31
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:44:47
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '20/06/2022' does not match format '%Y-%m-%d'
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022' does not match format '%Y-%m-%d'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:45:09
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022/06/' does not match format '%Y-%m-%d'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:45:09
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022/06/20' does not match format '%Y-%m-%d'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:45:14
+Bad Request: /rest/v1/vendas/
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:47:08
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '[2022-06-20' does not match format '%Y-%m-%d'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:47:33
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data "['2022-06-20" does not match format '%Y-%m-%d'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:47:55
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data "['2022-06-20']" does not match format '%Y-%m-%d'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:47:55
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data "'2022-06-20']" does not match format '%Y-%m-%d'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:48:35
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 516, in list
+    if datetime.strptime(hoje, '%Y-%m-%d').date() > data_atual_servidor:
+  File "C:\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data "'2022-06-20'" does not match format '%Y-%m-%d'
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:48:38
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:48:58
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:54:10
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 508, in list
+    print('hoje', hoje)
+NameError: name 'hoje' is not defined
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 510, in list
+    if hoje is None:
+NameError: name 'hoje' is not defined
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:55:09
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 14:56:20
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 15:00:31
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 15:02:01
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 15:02:38
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 507, in list
+    print('------------',Request.query_params['dataInicial'])
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 15:04:31
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 507, in list
+    if Request.query_params['dataInicial']:
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 15:09:19
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+conejofoz Acessou a lista de categorias em: 20-06-2022 15:11:56
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\prj\guriweb\django\api\views.py changed, reloading.
+Watching for file changes with StatReloader

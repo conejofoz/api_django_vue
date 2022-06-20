@@ -493,20 +493,23 @@ class VendaViewSet(viewsets.ModelViewSet):
     serializer_class = VendaSerializer
 
     def list(self, Request, *args, **kwargs):
-        print('o que tem no request',  Request.query_params)
-        print('o que tem no request',  Request)
-        #print('o que tem no request',  request.GET)
-        #print('data inicial: ', request.GET.get('dataInicial'))
-        #print('data final  : ', request.GET.get('dataFinal'))
-        #hoje = request.GET.get('dataInicial')
-        hoje = Request.query_params['dataInicial']
-        #amanha = request.GET.get('dataFinal')
-        amanha = Request.query_params['dataFinal']
-        #empresa = request.GET.get('empresa')
+
+        if 'dataInicial' in Request.query_params:
+            hoje = Request.query_params['dataInicial']
+            print('data inicial')
+        else:
+            hoje = None
+            print('nao tem data inicial')    
+        if 'dataFinal' in Request.query_params:
+            amanha = Request.query_params['dataFinal']
+            
+        else:
+            amanha = None
+
         empresa = Request.query_params['empresa']
         tipo_movimento = Request.query_params['tipo_movimento']
-        #print('hoje', hoje)
         # queryset = Venda.objects.filter(data='2022-03-11')
+
         if hoje is None:
             # queryset = Venda.objects.all().order_by('-id')
             queryset = Venda.objects.filter(empresa_id=empresa).order_by('-id')
@@ -521,6 +524,7 @@ class VendaViewSet(viewsets.ModelViewSet):
                 return Response("Data Inicial não pode ser maior que data final", status=status.HTTP_400_BAD_REQUEST) 
             # queryset = Venda.objects.filter(data__range=(hoje, amanha))
             queryset = Venda.objects.filter(data__range=(hoje, amanha), empresa_id=empresa, tipo_movimento=tipo_movimento)
+        
         serializer = VendaSerializerCliente(queryset, many=True)
         return Response(serializer.data)
 
