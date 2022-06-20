@@ -2477,3 +2477,162 @@ Original exception was:
     print(**kwargs)
 TypeError: 'force_insert' is an invalid keyword argument for print()
 
+Watching for file changes with StatReloader
+Not Found: /media/loja/loja.jpg
+ Acessou a lista de categorias em: 20-06-2022 09:21:44
+Unauthorized: /rest/v1/token/refresh/
+Unauthorized: /rest/v1/cliente/
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'empresa'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 506, in list
+    empresa = Request.query_params['empresa']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'empresa'
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'empresa'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 506, in list
+    empresa = Request.query_params['empresa']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'empresa'
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'empresa'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 506, in list
+    empresa = Request.query_params['empresa']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'empresa'
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'empresa'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 506, in list
+    empresa = Request.query_params['empresa']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'empresa'
+Not Found: /rest/v1/produto/1789/
+Not Found: /media/loja/loja.jpg
+ Acessou a lista de categorias em: 20-06-2022 09:55:21
+conejofoz Acessou a lista de categorias em: 20-06-2022 09:55:41
+Internal Server Error: /rest/v1/vendas/
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 83, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'dataInicial'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\prj\guriweb\django\env\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\prj\guriweb\django\api\views.py", line 502, in list
+    hoje = Request.query_params['dataInicial']
+  File "C:\prj\guriweb\django\env\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'dataInicial'
