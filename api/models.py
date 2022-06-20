@@ -1,18 +1,18 @@
-#gerar thumbnail
-#from ast import Try
-from ctypes import sizeof
-#from distutils.command.upload import upload
-#from email.mime import image
+# gerar thumbnail
+# from ast import Try
+# from ctypes import sizeof
+# from distutils.command.upload import upload
+# from email.mime import image
+# from operator import mod, truediv
+# from pickletools import optimize
 from io import BytesIO
-from operator import mod, truediv
-from pickletools import optimize
-from tabnanny import verbose
-#from ssl import Options
-#from turtle import width
+# from tabnanny import verbose
+# from ssl import Options
+# from turtle import width
 from django.conf import settings
 from django.core.files import File
 import os
-
+from django.core.mail import send_mail, mail_admins
 
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
@@ -76,8 +76,26 @@ class Categoria(ModeloEdit):
         return self.descricao + ' - id: ' + str(self.pk)
 
     def save(self, **kwargs):
+        novo = self.id
         self.descricao = self.descricao.upper()
         super(Categoria, self).save()
+
+        print(novo)
+
+        if novo is None:
+            send_mail(
+                'Nova categoria cadastrada',
+                'A categoria %s foi cadastrada' % self.descricao,
+                'infinity@infinity-group.net',
+                ['infinity@infinity-group.net', 'conejofoz@gmail.com'],
+                fail_silently=False,
+            )
+
+            mail_admins(
+                'Nova categoria cadastrada',
+                'A categoria %s foi cadastrada' % self.descricao,
+                fail_silently=False,
+            )
 
     class Meta:
         verbose_name_plural = "Categorias"

@@ -226,12 +226,20 @@ class CategoriaViewSet(viewsets.ModelViewSet):
         return super(CategoriaViewSet, self).list(Request, *args, **kwargs)
 
     def create(self, Request, *args, **kwargs):
+        #Request.data['descricao'] = Request.data['descricao'].lower()
         usuario = Request.user.username
         obj = Request.data['descricao']
         data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
         logger.info(usuario + ' criou categoria ' + obj + ' em: ' + data_log)
         return super(CategoriaViewSet, self).create(Request, *args, **kwargs)
-
+        """
+        try:
+            logger.info(usuario + ' criou categoria ' + obj + ' em: ' + data_log)
+            return super(CategoriaViewSet, self).create(Request, *args, **kwargs)
+        except Exception as e:   
+            logger.info(usuario + ' erro ao criar a categoria ' + obj + str(e) + ' em: ' + data_log)
+            return Response("Erro ao criar a categoria " + str(e), status=status.HTTP_400_BAD_REQUEST)
+        """
     def update(self, Request, *args, **kwargs):
         usuario = Request.user.username
         obj = Request.data['descricao']
