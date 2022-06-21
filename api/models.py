@@ -80,8 +80,6 @@ class Categoria(ModeloEdit):
         self.descricao = self.descricao.upper()
         super(Categoria, self).save()
 
-        print(novo)
-
         if novo is None:
             send_mail(
                 'Nova categoria cadastrada',
