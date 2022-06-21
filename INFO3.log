@@ -3554,3 +3554,8 @@ C:\prj\guriweb\django\api\views.py changed, reloading.
 Watching for file changes with StatReloader
 C:\prj\guriweb\django\api\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /media/loja/loja.jpg
+ Acessou a lista de categorias em: 21-06-2022 14:25:16
+Unauthorized: /rest/v1/token/refresh/
+Unauthorized: /rest/v1/cliente/
