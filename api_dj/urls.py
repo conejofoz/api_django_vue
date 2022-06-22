@@ -27,3 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = 'Infinity Group S.A.'
+admin.site.site_title = 'Infinity Group S.A. Guriweb'
+admin.site.index_title = 'Sistema Guriweb'
