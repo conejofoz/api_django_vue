@@ -4,4 +4,6 @@ media
 api_dj/settings.py
 api_dj/__pycache__/
 api/__pycache__/
-*.log
+INFO.log
+INFO2.log
+INFO3.log
