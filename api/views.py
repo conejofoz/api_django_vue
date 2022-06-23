@@ -640,6 +640,7 @@ class MoedaViewSet(viewsets.ModelViewSet):
 
 
 class LancamentoCaixaViewSet(viewsets.ModelViewSet):
+    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = LancamentoCaixa.objects.all().order_by('descricao')
     serializer_class = LancamentoCaixaSerializer
 
