@@ -1,4 +1,4 @@
-from unicodedata import name
+#from unicodedata import name
 from django.urls import path, include
 
 from rest_framework import routers
@@ -8,11 +8,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from .views import LancamentoCaixaViewSet, prueba, DocumentoViewSet, CategoriaViewSet, \
-    SubCategoriaViewSet, ProdutoViewSet, FornecedorViewSet, \
-        CompraViewSet, CompraDetalheViewSet, ClienteViewSet, UserViewSet, \
-        VendaViewSet, VendaDetalheViewSet, \
-        upload, clientest, EmpresaViewSet, MoedaViewSet, email_contato, ajusta_estoque
+from .views import LancamentoCaixaViewSet, prueba, DocumentoViewSet, \
+    CategoriaViewSet, SubCategoriaViewSet, ProdutoViewSet, FornecedorViewSet, \
+    CompraViewSet, CompraDetalheViewSet, ClienteViewSet, UserViewSet, \
+    VendaViewSet, VendaDetalheViewSet, \
+    upload, clientest, EmpresaViewSet, MoedaViewSet, email_contato, \
+    ajusta_estoque, LancamentoCaixaSimplesViewSet
 
 router = routers.DefaultRouter()
 router.register(r'docs', DocumentoViewSet)
@@ -29,6 +30,7 @@ router.register(r'vendas-detalhe', VendaDetalheViewSet)
 router.register(r'vendas', VendaViewSet)
 router.register(r'moedas', MoedaViewSet)
 router.register(r'lancamento-caixa', LancamentoCaixaViewSet)
+router.register(r'lancamento-caixa-simples', LancamentoCaixaSimplesViewSet)
 #router.register(r'email-contato', EnviarEmailAPIView)
 
 

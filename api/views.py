@@ -667,3 +667,10 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
         #return super().create(request, *args, **kwargs)
 
         # return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
+    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly)
+    queryset = LancamentoCaixa.objects.all()
+    serializer_class = LancamentoCaixaSerializer
