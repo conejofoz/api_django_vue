@@ -3,11 +3,13 @@
 #from urllib import request
 
 from this import d
+from tkinter import N
+from turtle import st
 from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, QueryDict
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
@@ -29,14 +31,15 @@ from datetime import datetime
 
 from .models import CompraDetalhe, Documento, Categoria, EstoqueEmpresa, \
     LancamentoCaixa, SubCategoria, Produto, Fornecedor, Compra, Cliente, \
-    Venda, VendaDetalhe, Empresa
+    Venda, VendaDetalhe, Empresa, ContaContabil
 
 from .serializer import ClienteSerializer, CompraSerializer, \
     DocumentoSerializer, CategoriaSerializer, LancamentoCaixaSerializer, \
     MoedaSerializer, SubCategoriaSerializer, ProdutoSerializer, \
     FornecedorSerializer, CompraDetalheSerializer, VendaSerializer, \
     VendaDetalheSerializer, EmpresaSerializer, VendaSerializerCliente, \
-    Moeda, CompraSerializerFornecedor, UsuarioSerializer
+    Moeda, CompraSerializerFornecedor, UsuarioSerializer, ContaContabilSerializer, \
+    LancamentoCaixaSimplesSerializer
 
 import logging
 logger = logging.getLogger('django.arquivo')
@@ -644,6 +647,36 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
     queryset = LancamentoCaixa.objects.all().order_by('descricao')
     serializer_class = LancamentoCaixaSerializer
 
+    def list(self, Request, *args, **kwargs):
+        data_inicial = None
+        data_final = None
+        empresa = None
+
+        if 'empresa' in Request.query_params:
+            empresa = int(Request.query_params['empresa'])
+
+        if 'dataInicial' in Request.query_params:
+            data_inicial = Request.query_params['dataInicial']
+            print(data_inicial)
+        if 'dataFinal' in Request.query_params:
+            data_final = Request.query_params['dataFinal']
+            print(data_final)
+
+        if empresa is None:
+            return Response("Empesa é obrigatório",status=status.HTTP_400_BAD_REQUEST)
+
+        if data_inicial is not None or data_final is not None:
+            queryset = LancamentoCaixa.objects.filter(data__range=(data_inicial, data_final), empresa_id=empresa)
+            serializer = LancamentoCaixaSerializer(queryset, many=True)
+            print('datas ok')
+            return Response(serializer.data, status=status.HTTP_200_OK) 
+        else:
+            queryset = LancamentoCaixa.objects.filter(empresa_id=empresa)
+            serializer = LancamentoCaixaSerializer(queryset, many=True)
+            print('sem data')
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return super().list(Request, *args, **kwargs)
+
     def create(self, request, *args, **kwargs):
         print('request->', request.data)
         lista_lancamentos = json.loads(request.POST.get('lancamentos'))
@@ -673,4 +706,10 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
 class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
     #permission_classes = (DjangoModelPermissionsOrAnonReadOnly)
     queryset = LancamentoCaixa.objects.all()
-    serializer_class = LancamentoCaixaSerializer
+    serializer_class = LancamentoCaixaSimplesSerializer
+
+
+class ContaContabilViewSet(viewsets.ModelViewSet):
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+    queryset = ContaContabil.objects.all().order_by('descricao')
+    serializer_class = ContaContabilSerializer

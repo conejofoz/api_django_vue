@@ -6,6 +6,7 @@
 # from operator import mod, truediv
 # from pickletools import optimize
 from io import BytesIO
+from tabnanny import verbose
 # from tabnanny import verbose
 # from ssl import Options
 # from turtle import width
@@ -394,6 +395,16 @@ class VendaDetalhe(ModeloEdit):
         #self.produto_id = 5
         #super(VendaDetalhe, self).save()
 
+class ContaContabil(ModeloEdit):
+    descricao = models.CharField(max_length=100, null=False, blank=False)
+    tipo = models.CharField(max_length=1, null=False, blank=False)
+
+    def __str__(self):
+        return self.descricao
+
+    class Meta:
+        verbose_name_plural = 'Contas Contábeis'
+
 
 class LancamentoCaixa(ModeloEdit):
     controle = models.CharField(max_length=100, blank=True, null=True)
@@ -405,6 +416,11 @@ class LancamentoCaixa(ModeloEdit):
     cotacao = models.FloatField(default=0)
     valor2 = models.FloatField(default=0)
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
+    conta_contabil = models.ForeignKey(ContaContabil, related_name="lancamentos", on_delete=models.RESTRICT)
+    class Meta:
+        verbose_name_plural = 'Lancamentos de caixa'
+
+
 
 
 # Signals de Compra

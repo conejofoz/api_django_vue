@@ -9,7 +9,7 @@ from django.http import QueryDict
 from rest_framework import serializers 
 from .models import Cliente, Documento, Categoria, Empresa, Fornecedor, \
     LancamentoCaixa, Produto, SubCategoria, Compra, CompraDetalhe, Venda, \
-    VendaDetalhe, Moeda, EstoqueEmpresa
+    VendaDetalhe, Moeda, EstoqueEmpresa, ContaContabil
 
 
 class UsuarioSerializer(serializers.ModelSerializer):
@@ -221,6 +221,24 @@ class MoedaSerializer(serializers.ModelSerializer):
 
 
 class LancamentoCaixaSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = LancamentoCaixa
+        fields = '__all__'
+
+        # fields = ["id", "descricao", ""]
+
+
+class ContaContabilSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ContaContabil
+        fields = ("id", "descricao", "tipo")
+
+
+class LancamentoCaixaSimplesSerializer(serializers.ModelSerializer):
+    conta_contabil = ContaContabilSerializer(read_only=True)
+    
     class Meta:
         model = LancamentoCaixa
         fields = '__all__'
