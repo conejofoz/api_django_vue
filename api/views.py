@@ -708,7 +708,7 @@ class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
     queryset = LancamentoCaixa.objects.all()
     serializer_class = LancamentoCaixaSimplesSerializer
 
-
+    
 class ContaContabilViewSet(viewsets.ModelViewSet):
     permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
     queryset = ContaContabil.objects.all().order_by('descricao')
