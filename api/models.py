@@ -417,6 +417,7 @@ class LancamentoCaixa(ModeloEdit):
     valor2 = models.FloatField(default=0)
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
     conta_contabil = models.ForeignKey(ContaContabil, related_name="lancamentos", on_delete=models.RESTRICT)
+    comprovante = models.FileField(blank=True, null=True, upload_to='uploads/lancamentos/')
     class Meta:
         verbose_name_plural = 'Lancamentos de caixa'
 

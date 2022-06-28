@@ -220,7 +220,16 @@ class MoedaSerializer(serializers.ModelSerializer):
         fields = ("id", "descricao", "sigla", "cotacao", "acrescimo", "empresa", "empresa_id", )
 
 
+class ContaContabilSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ContaContabil
+        fields = ("id", "descricao", "tipo")
+
+
 class LancamentoCaixaSerializer(serializers.ModelSerializer):
+    conta_contabil = ContaContabilSerializer(read_only=True)
+    conta_contabil_id = serializers.PrimaryKeyRelatedField(queryset=ContaContabil.objects.all(), write_only=True, source='conta_contabil')
 
     class Meta:
         model = LancamentoCaixa
@@ -229,19 +238,18 @@ class LancamentoCaixaSerializer(serializers.ModelSerializer):
         # fields = ["id", "descricao", ""]
 
 
-class ContaContabilSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = ContaContabil
-        fields = ("id", "descricao", "tipo")
 
 
 class LancamentoCaixaSimplesSerializer(serializers.ModelSerializer):
+    pass
+    """ 
     conta_contabil = ContaContabilSerializer(read_only=True)
     conta_contabil_id = serializers.PrimaryKeyRelatedField(queryset=ContaContabil.objects.all(), write_only=True, source='conta_contabil')
     
     class Meta:
         model = LancamentoCaixa
         #fields = '__all__'
+        fields = ["id", "cotacao", "tipo", "controle","descricao", "valor1", "valor2", "data", "siglaMoeda", "conta_contabil", "conta_contabil_id", "empresa"]
 
-        fields = ["id", "cotacao", "tipo", "controle","descricao", "valor1", "valor2", "data", "siglaMoeda", "conta_contabil_id", ]
+ """

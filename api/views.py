@@ -706,10 +706,41 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
 class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
     #permission_classes = (DjangoModelPermissionsOrAnonReadOnly)
     queryset = LancamentoCaixa.objects.all()
-    serializer_class = LancamentoCaixaSimplesSerializer
+    # serializer_class = LancamentoCaixaSimplesSerializer
+    serializer_class = LancamentoCaixaSerializer
 
+    def list(self, Request, *args, **kwargs):
+        data_inicial = None
+        data_final = None
+        empresa = None
+
+        if 'empresa' in Request.query_params:
+            empresa = int(Request.query_params['empresa'])
+
+        if 'dataInicial' in Request.query_params:
+            data_inicial = Request.query_params['dataInicial']
+            print(data_inicial)
+        if 'dataFinal' in Request.query_params:
+            data_final = Request.query_params['dataFinal']
+            print(data_final)
+
+        if empresa is None:
+            return Response("Empesa é obrigatório",status=status.HTTP_400_BAD_REQUEST)
+
+        if data_inicial is not None or data_final is not None:
+            queryset = LancamentoCaixa.objects.filter(data__range=(data_inicial, data_final), empresa_id=empresa)
+            serializer = LancamentoCaixaSerializer(queryset, many=True)
+            print('datas ok')
+            return Response(serializer.data, status=status.HTTP_200_OK) 
+        else:
+            queryset = LancamentoCaixa.objects.filter(empresa_id=empresa)
+            serializer = LancamentoCaixaSerializer(queryset, many=True)
+            print('sem data')
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return super().list(Request, *args, **kwargs)
     
+        
 class ContaContabilViewSet(viewsets.ModelViewSet):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
     queryset = ContaContabil.objects.all().order_by('descricao')
     serializer_class = ContaContabilSerializer
