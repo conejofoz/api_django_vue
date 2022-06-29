@@ -13,6 +13,8 @@ from django.http import HttpResponse, JsonResponse, QueryDict
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
+from num2words import num2words
+
 # from rest_framework import generics, serializers
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, \
     DjangoModelPermissions, DjangoModelPermissionsOrAnonReadOnly
@@ -45,6 +47,72 @@ import logging
 logger = logging.getLogger('django.arquivo')
 # data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 #print(data_log)
+
+""" 
+ACHADO NA INTERNET ADAPTADO PARA VARIAS MOEDAS BY SILVIAO
+number_to_long_number('210.000', 'es', 'G$')
+"""
+def number_to_long_number(number_p, lang=None, moeda_p=None):
+    moeda = {}
+    e = ' e '
+    
+    if lang is None:
+        lingua = 'pt_BR'
+    else:
+        lingua = lang
+        if lang == 'es':
+            e = ' y '
+
+    if moeda_p is None:
+        moeda[0] = ' real'
+        moeda[1] = ' reais'
+    elif moeda_p == 'U$':
+        moeda[0] = ' dolar'
+        moeda[1] = ' dolares'
+    elif moeda_p == 'G$':
+        moeda[0] = ' gurani'
+        if lang == 'es':
+            moeda[1] = ' guaranies'
+        else:
+            moeda[1] = ' guaranis'
+    
+
+    if number_p.find(',')!=-1:
+        number_p = number_p.split(',')
+        number_p1 = int(number_p[0].replace('.',''))
+        number_p2 = int(number_p[1])
+    else:
+        number_p1 = int(number_p.replace('.',''))
+        number_p2 = 0    
+        
+    if number_p1 == 1:
+        # aux1 = ' real'
+        aux1 = moeda[0]
+    else:
+        # aux1 = ' reais'
+        aux1 = moeda[1]
+        
+    if number_p2 == 1:
+        aux2 = ' centavo'
+    else:
+        aux2 = ' centavos'
+        
+    text1 = ''
+    if number_p1 > 0:
+        text1 = num2words(number_p1,lang=lingua) + str(aux1)
+    else:
+        text1 = ''
+    
+    if number_p2 > 0:
+        text2 = num2words(number_p2,lang=lingua) + str(aux2) 
+    else: 
+        text2 = ''
+    
+    if (number_p1 > 0 and number_p2 > 0):
+        result = text1 +  e  + text2
+    else:
+        result = text1 + text2
+    return result
 
 def index(request):
     return render(request, 'index.html')
@@ -669,7 +737,7 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
             queryset = LancamentoCaixa.objects.filter(data__range=(data_inicial, data_final), empresa_id=empresa)
             serializer = LancamentoCaixaSerializer(queryset, many=True)
             print('datas ok')
-            return Response(serializer.data, status=status.HTTP_200_OK) 
+            return Response(extenso, serializer.data, status=status.HTTP_200_OK) 
         else:
             queryset = LancamentoCaixa.objects.filter(empresa_id=empresa)
             serializer = LancamentoCaixaSerializer(queryset, many=True)
@@ -731,6 +799,56 @@ class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
             queryset = LancamentoCaixa.objects.filter(data__range=(data_inicial, data_final), empresa_id=empresa)
             serializer = LancamentoCaixaSerializer(queryset, many=True)
             print('datas ok')
+            #extenso = None
+            xxx = number_to_long_number('210.000', 'es', 'G$')
+            print(xxx)
+            """ 
+            #print(number_to_long_number('10.000,00'))
+            try:
+                # extenso =  num2words(4200.99, lang='es')
+                #extenso =  self.number_to_long_number(42)
+                number_p = '4.000,55'
+                lingua = 'es'
+
+                if number_p.find(',')!=-1:
+                    number_p = number_p.split(',')
+                    number_p1 = int(number_p[0].replace('.',''))
+                    number_p2 = int(number_p[1])
+                else:
+                    number_p1 = int(number_p.replace('.',''))
+                    number_p2 = 0    
+                    
+                if number_p1 == 1:
+                    aux1 = ' dolar'
+                else:
+                    aux1 = ' dolares'
+                    
+                if number_p2 == 1:
+                    aux2 = ' centavo'
+                else:
+                    aux2 = ' centavos'
+                    
+                text1 = ''
+                if number_p1 > 0:
+                    text1 = num2words(number_p1,lang=lingua) + str(aux1)
+                else:
+                    text1 = ''
+                
+                if number_p2 > 0:
+                    text2 = num2words(number_p2,lang=lingua) + str(aux2) 
+                else: 
+                    text2 = ''
+                
+                if (number_p1 > 0 and number_p2 > 0):
+                    result = text1 + ' y ' + text2
+                else:
+                    result = text1 + text2
+
+                extenso = result
+                print(extenso)
+            except NotImplementedError:
+                extenso =  num2words(4200, lang='en')
+            print('Resultado do extenso: ', extenso) """
             return Response(serializer.data, status=status.HTTP_200_OK) 
         else:
             queryset = LancamentoCaixa.objects.filter(empresa_id=empresa)
@@ -738,6 +856,8 @@ class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
             print('sem data')
             return Response(serializer.data, status=status.HTTP_200_OK)
         return super().list(Request, *args, **kwargs)
+
+    
     
         
 class ContaContabilViewSet(viewsets.ModelViewSet):
