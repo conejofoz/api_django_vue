@@ -2,9 +2,9 @@
 
 #from urllib import request
 
-from this import d
-from tkinter import N
-from turtle import st
+# from this import d
+# from tkinter import N
+# from turtle import st
 from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
