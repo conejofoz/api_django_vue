@@ -800,7 +800,7 @@ class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
             serializer = LancamentoCaixaSerializer(queryset, many=True)
             print('datas ok')
             #extenso = None
-            xxx = number_to_long_number('210.000', 'es', 'G$')
+            xxx = number_to_long_number('3400,55', 'es', 'U$')
             print(xxx)
             """ 
             #print(number_to_long_number('10.000,00'))
