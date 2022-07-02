@@ -5,7 +5,9 @@
 # from email.mime import image
 # from operator import mod, truediv
 # from pickletools import optimize
+from email.policy import default
 from io import BytesIO
+from ntpath import realpath
 from tabnanny import verbose
 # from tabnanny import verbose
 # from ssl import Options
@@ -144,7 +146,7 @@ class Grupo(ModeloEdit):
 
     class Meta:
         verbose_name_plural = 'Grupos'
-        
+
 
 class Produto(ModeloEdit):
 
@@ -181,12 +183,12 @@ class Produto(ModeloEdit):
     imagem = models.ImageField(null=True, blank=True, upload_to='')
     thumbnail = models.ImageField(null=True, blank=True, upload_to='')
     empresa = models.ManyToManyField(Empresa, related_name="produtos", through="EstoqueEmpresa", blank=True, default=1)
-    """
+    
     referencia = models.CharField(max_length=100, blank=True, null=True)
     codigo_origem = models.CharField(max_length=100, blank=True, null=True)
     codigo_barras = models.CharField(max_length=100, blank=True, null=True)
-    grupo = models.IntegerField(default=1, blank=True, null=True)
-    forncedor = models.ForeignKey(Fornecedor, related_name="produtos", on_delete=models.PROTECT)
+    grupo = models.ForeignKey(Grupo, default=1, related_name="grupos", on_delete=models.PROTECT)
+    fornecedor = models.ForeignKey(Fornecedor, default=1, related_name="fornecedores", on_delete=models.PROTECT)
     unidade = models.CharField(max_length=10, blank=True, null=True)
     iva = models.FloatField(default=0, null=True, blank=True)
 
@@ -215,7 +217,7 @@ class Produto(ModeloEdit):
     preco_custo_di = models.FloatField(null=True, blank=True)
 
 
-    """
+    
     
 
     def get_image(self):
