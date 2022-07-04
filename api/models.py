@@ -193,31 +193,29 @@ class Produto(ModeloEdit):
     iva = models.FloatField(default=0, null=True, blank=True)
 
     # PREÇOS DEPOSTIO
-    preco_atacado_dp = models.FloatField(null=True, blank=True)
-    preco_custo_dp = models.FloatField(null=True, blank=True)
-    preco_origem_dp = models.FloatField(null=True, blank=True)
-    preco_ficticio_dp = models.FloatField(null=True, blank=True)
+    preco_atacado_dp = models.FloatField(default=0, null=True, blank=True)
+    preco_custo_dp = models.FloatField(default=0, null=True, blank=True)
+    preco_origem_dp = models.FloatField(default=0, null=True, blank=True)
+    preco_ficticio_dp = models.FloatField(default=0, null=True, blank=True)
 
-    preco_medio = models.FloatField(null=True, blank=True)
-    preco_custo = models.FloatField(null=True, blank=True)
-    preco_atacado = models.FloatField(null=True, blank=True)
+    preco_medio = models.FloatField(default=0, null=True, blank=True)
+    preco_custo = models.FloatField(default=0, null=True, blank=True)
+    preco_atacado = models.FloatField(default=0, null=True, blank=True)
 
     data_ultima_compra = models.DateField(null=True, blank=True)
     data_ultima_venda = models.DateField(null=True, blank=True)
     
-    quantidade_por_caixa = models.FloatField(null=True, blank=True)
-    peso_neto_caixa = models.FloatField(null=True, blank=True)
-    peso_neto_bruto = models.FloatField(null=True, blank=True)
+    quantidade_por_caixa = models.FloatField(default=0, null=True, blank=True)
+    peso_neto_caixa = models.FloatField(default=0, null=True, blank=True)
+    peso_bruto_caixa = models.FloatField(default=0, null=True, blank=True)
 
     descricaodi = models.CharField(max_length=200, null=True, blank=True)
     descricao2di = models.CharField(max_length=200, null=True, blank=True)
     marcadi = models.CharField(max_length=100, null=True, blank=True)
     fabricadi = models.CharField(max_length=100, null=True, blank=True)
     classificacaodi = models.CharField(max_length=100, null=True, blank=True)
-    preco_custo_di = models.FloatField(null=True, blank=True)
+    preco_custo_di = models.FloatField(default=0, null=True, blank=True)
 
-
-    
     
 
     def get_image(self):

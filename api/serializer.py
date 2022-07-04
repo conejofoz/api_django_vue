@@ -92,7 +92,13 @@ class ProdutoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Produto
-        fields = ("id", "codigo", "descricao", "stock", "preco", "subcategoria", "subcat_descricao", "imagem", "thumbnail", "estoque_empresa", )
+        fields = (
+            "id", "codigo", "descricao", "stock", "preco", "subcategoria", 
+            "subcat_descricao", "imagem", "thumbnail", "estoque_empresa",
+            "referencia", "codigo_origem", "codigo_barras", "unidade", "iva",
+            "quantidade_por_caixa", "peso_neto_caixa", "peso_bruto_caixa",
+            "descricaodi", "descricao2di", "marcadi", "fabricadi", "preco_custo_di"
+             )
 
 
 class FornecedorSerializer(serializers.ModelSerializer):
