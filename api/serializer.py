@@ -97,7 +97,9 @@ class ProdutoSerializer(serializers.ModelSerializer):
             "subcat_descricao", "imagem", "thumbnail", "estoque_empresa",
             "referencia", "codigo_origem", "codigo_barras", "unidade", "iva",
             "quantidade_por_caixa", "peso_neto_caixa", "peso_bruto_caixa",
-            "descricaodi", "descricao2di", "marcadi", "fabricadi", "preco_custo_di"
+            "descricaodi", "descricao2di", "marcadi", "fabricadi", "preco_custo_di",
+            "preco_atacado_dp", "preco_custo_dp", "preco_origem_dp", "preco_ficticio_dp",
+            "preco_medio", "preco_custo", "preco_atacado"
              )
 
 

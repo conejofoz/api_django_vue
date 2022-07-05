@@ -9,6 +9,7 @@ from email.policy import default
 from io import BytesIO
 from ntpath import realpath
 from tabnanny import verbose
+from tkinter import N
 # from tabnanny import verbose
 # from ssl import Options
 # from turtle import width
@@ -22,6 +23,8 @@ from django.dispatch import receiver
 from django.db import models
 from django.contrib.auth.models import User
 from django_userforeignkey.models.fields import UserForeignKey
+
+
 
 from PIL import Image
 
@@ -239,14 +242,28 @@ class Produto(ModeloEdit):
             self.imagem.name = u'produtos/'+nome_img+'.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
         if self.thumbnail:
             self.thumbnail.name = u'produtos/'+nome_img+'_thumbnail.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
+        """
+        if self.id is not None:
+            try: 
+                img_antiga = os.path.join(settings.MEDIA_ROOT, self.imagem.path)
+                tum_antigo = os.path.join(settings.MEDIA_ROOT, self.thumbnail.path)
+                os.remove(img_antiga)
+                os.remove(tum_antigo)
+            except OSError as e:
+                print("Error removing", e)
+        """
             
         self.descricao = self.descricao.upper()
         #self.thumbnail = self.make_thumbnail(self.imagem)
+        
         super().save(*args, **kwargs)
-        if self.thumbnail:
-            self.resize_image(self.thumbnail.name, 720, 60)
-        if self.imagem:
-            self.resize_image(self.imagem.name, 1280, 80)
+        try:
+            if self.thumbnail:
+                self.resize_image(self.thumbnail.name, 720, 60)
+            if self.imagem:
+                self.resize_image(self.imagem.name, 1280, 80)
+        except Exception as e:
+            print("Error resizing image:", e)
 
     @staticmethod
     def resize_image(img_name, new_width, qualidade):
