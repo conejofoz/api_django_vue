@@ -99,7 +99,8 @@ class ProdutoSerializer(serializers.ModelSerializer):
             "quantidade_por_caixa", "peso_neto_caixa", "peso_bruto_caixa",
             "descricaodi", "descricao2di", "marcadi", "fabricadi", "preco_custo_di",
             "preco_atacado_dp", "preco_custo_dp", "preco_origem_dp", "preco_ficticio_dp",
-            "preco_medio", "preco_custo", "preco_atacado"
+            "preco_medio", "preco_custo", "preco_atacado",
+            "del_foto"
              )
 
 

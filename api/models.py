@@ -218,6 +218,7 @@ class Produto(ModeloEdit):
     fabricadi = models.CharField(max_length=100, null=True, blank=True)
     classificacaodi = models.CharField(max_length=100, null=True, blank=True)
     preco_custo_di = models.FloatField(default=0, null=True, blank=True)
+    del_foto = models.BooleanField(default=False, null=True, blank=True)
 
     
 
@@ -242,19 +243,23 @@ class Produto(ModeloEdit):
             self.imagem.name = u'produtos/'+nome_img+'.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
         if self.thumbnail:
             self.thumbnail.name = u'produtos/'+nome_img+'_thumbnail.%s' % self.imagem.name.split('.')[1] # Pegando a extensão da img
-        """
+        
         if self.id is not None:
-            try: 
-                img_antiga = os.path.join(settings.MEDIA_ROOT, self.imagem.path)
-                tum_antigo = os.path.join(settings.MEDIA_ROOT, self.thumbnail.path)
-                os.remove(img_antiga)
-                os.remove(tum_antigo)
-            except OSError as e:
-                print("Error removing", e)
-        """
+            print('apagar foto===================================================: ', self.del_foto)
+            if self.del_foto == True:
+                try: 
+                    img_antiga = os.path.join(settings.MEDIA_ROOT, self.imagem.path)
+                    tum_antigo = os.path.join(settings.MEDIA_ROOT, self.thumbnail.path)
+                    os.remove(img_antiga)
+                    os.remove(tum_antigo)
+                    self.del_foto = False
+                except Exception as e:
+                    print("Error removing", e)
             
         self.descricao = self.descricao.upper()
         #self.thumbnail = self.make_thumbnail(self.imagem)
+
+        print('apagar foto===================================================: ', self.del_foto)
         
         super().save(*args, **kwargs)
         try:
