@@ -346,6 +346,7 @@ class Paginacao(pagination.PageNumberPagination):
 
 class ProdutoViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Produto.objects.all().order_by('descricao')
     serializer_class = ProdutoSerializer
     #pagination_class = Paginacao
@@ -394,6 +395,10 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         serializador = ProdutoSerializer(obj, many=True)
         print('SERIALIZADOR: ',serializador.data)
         return Response(serializador.data)
+
+    
+
+    
 
 
 class FornecedorViewSet(viewsets.ModelViewSet):

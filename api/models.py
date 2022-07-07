@@ -290,6 +290,12 @@ class Produto(ModeloEdit):
         new_img.close()
         img.close()
 
+    def delete(self, *args, **kwargs):
+        try:
+            return super().delete()
+        except Exception as e:
+            print("Error deleting", e)
+
     class Meta:
         verbose_name_plural = "Produtos"
 
