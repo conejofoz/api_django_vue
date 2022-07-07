@@ -5,6 +5,8 @@
 # from this import d
 # from tkinter import N
 # from turtle import st
+from ast import Try
+from cmath import e
 from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -14,6 +16,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 
 from num2words import num2words
+from psycopg2 import IntegrityError
 
 # from rest_framework import generics, serializers
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, \
@@ -348,21 +351,18 @@ class ProdutoViewSet(viewsets.ModelViewSet):
     #pagination_class = Paginacao
 
     def create(self, request, *args, **kwargs):
-        estoque_empresa = json.loads(request.POST.get('estoque_empresa'))
-        print("estoque_empresa: ---------->", estoque_empresa)
-        print(estoque_empresa['produto'])
-        print(estoque_empresa['empresa'])
-        print(estoque_empresa['quantidade'])
-        serializerProduto = ProdutoSerializer(data=request.data)
-        print('serializerproduto data',  serializerProduto)
-        print("request.data ==>", request.data)
-        if serializerProduto.is_valid():
-            serializerProduto.save()
-            print('\ndpoisde slavar\n', serializerProduto.data)
-            print('\n id dpoisde slavar\n', serializerProduto.data['id'])
-            EstoqueEmpresa.objects.create(empresa_id=estoque_empresa['empresa'], produto_id=serializerProduto.data['id'])
-            print('\ndpoisde slavar\n', serializerProduto.data)
-            return Response(serializerProduto.data, status=status.HTTP_201_CREATED)
+        try:
+            estoque_empresa = json.loads(request.POST.get('estoque_empresa'))
+            serializerProduto = ProdutoSerializer(data=request.data)
+            if serializerProduto.is_valid():
+                serializerProduto.save()
+                print('\ndpoisde slavar\n', serializerProduto.data)
+                print('\n id dpoisde slavar\n', serializerProduto.data['id'])
+                EstoqueEmpresa.objects.create(empresa_id=estoque_empresa['empresa'], produto_id=serializerProduto.data['id'])
+                print('\ndpoisde slavar\n', serializerProduto.data)
+                return Response(serializerProduto.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({'error': str(e), 'status': status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(serializerProduto.errors, status=status.HTTP_400_BAD_REQUEST)
 
