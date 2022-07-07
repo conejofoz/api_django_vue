@@ -9,7 +9,7 @@ from email.policy import default
 from io import BytesIO
 from ntpath import realpath
 from tabnanny import verbose
-from tkinter import N
+# from tkinter import N
 # from tabnanny import verbose
 # from ssl import Options
 # from turtle import width
