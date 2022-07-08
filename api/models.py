@@ -219,6 +219,7 @@ class Produto(ModeloEdit):
     classificacaodi = models.CharField(max_length=100, null=True, blank=True)
     preco_custo_di = models.FloatField(default=0, null=True, blank=True)
     del_foto = models.BooleanField(default=False, null=True, blank=True)
+    ncm = models.CharField(max_length=100, null=True, blank=True)
 
     
 
@@ -290,11 +291,11 @@ class Produto(ModeloEdit):
         new_img.close()
         img.close()
 
-    def delete(self, *args, **kwargs):
+    """ def delete(self, *args, **kwargs):
         try:
             return super().delete()
         except Exception as e:
-            print("Error deleting", e)
+            print("Error deleting", e) """
 
     class Meta:
         verbose_name_plural = "Produtos"

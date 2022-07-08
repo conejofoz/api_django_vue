@@ -364,8 +364,28 @@ class ProdutoViewSet(viewsets.ModelViewSet):
                 return Response(serializerProduto.data, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({'error': str(e), 'status': status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-
         return Response(serializerProduto.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    """
+    def destroy(self, request, *args, **kwargs):
+        try:
+            super().destroy(request, *args, **kwargs)
+            return Response("ok", status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_HTTP_400_BAD_REQUEST)
+    """
+    """
+    def destroy(self, request, *args, **kwargs):
+        print("Destroy")
+        try:
+            instance = self.get_object()
+            self.perform_destroy(instance)
+            return Response({'msg': 'Registro eliminado'},status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            print(e)
+            return Response({'message': 'Erro ao eliminar'},  status=status.HTTP_400_BAD_REQUEST)
+    """     
+    
 
     @action(methods=['get'], detail=False,permission_classes=[], 
         url_path='by-descricao/(?P<descricao>[-\w\ ]+)')
