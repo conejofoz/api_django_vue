@@ -384,8 +384,15 @@ class ProdutoViewSet(viewsets.ModelViewSet):
         except Exception as e:
             print(e)
             return Response({'message': 'Erro ao eliminar'},  status=status.HTTP_400_BAD_REQUEST)
-    """     
-    
+    """   
+    """
+    def destroy(self, Request, *args, **kwargs):
+        instance = self.get_object()
+        produto = Produto.objects.get(pk=instance.id)
+        produto.delete()
+        #return super().destroy(request, *args, **kwargs)  
+        return Response({'message': 'Apagado com sucesso'}, status=status.HTTP_204_NO_CONTENT)
+    """
 
     @action(methods=['get'], detail=False,permission_classes=[], 
         url_path='by-descricao/(?P<descricao>[-\w\ ]+)')
