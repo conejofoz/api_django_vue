@@ -592,6 +592,7 @@ class ClienteViewSet(viewsets.ModelViewSet):
 
 class VendaViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Venda.objects.all().order_by('-id')    
     serializer_class = VendaSerializer
 
@@ -743,7 +744,7 @@ class MoedaViewSet(viewsets.ModelViewSet):
 
 
 class LancamentoCaixaViewSet(viewsets.ModelViewSet):
-    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = LancamentoCaixa.objects.all().order_by('descricao')
     serializer_class = LancamentoCaixaSerializer
 
@@ -804,7 +805,7 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
 
 
 class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
-    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = LancamentoCaixa.objects.all()
     # serializer_class = LancamentoCaixaSimplesSerializer
     serializer_class = LancamentoCaixaSerializer
@@ -834,53 +835,6 @@ class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
             #extenso = None
             xxx = number_to_long_number('3400,55', 'es', 'U$')
             print(xxx)
-            """ 
-            #print(number_to_long_number('10.000,00'))
-            try:
-                # extenso =  num2words(4200.99, lang='es')
-                #extenso =  self.number_to_long_number(42)
-                number_p = '4.000,55'
-                lingua = 'es'
-
-                if number_p.find(',')!=-1:
-                    number_p = number_p.split(',')
-                    number_p1 = int(number_p[0].replace('.',''))
-                    number_p2 = int(number_p[1])
-                else:
-                    number_p1 = int(number_p.replace('.',''))
-                    number_p2 = 0    
-                    
-                if number_p1 == 1:
-                    aux1 = ' dolar'
-                else:
-                    aux1 = ' dolares'
-                    
-                if number_p2 == 1:
-                    aux2 = ' centavo'
-                else:
-                    aux2 = ' centavos'
-                    
-                text1 = ''
-                if number_p1 > 0:
-                    text1 = num2words(number_p1,lang=lingua) + str(aux1)
-                else:
-                    text1 = ''
-                
-                if number_p2 > 0:
-                    text2 = num2words(number_p2,lang=lingua) + str(aux2) 
-                else: 
-                    text2 = ''
-                
-                if (number_p1 > 0 and number_p2 > 0):
-                    result = text1 + ' y ' + text2
-                else:
-                    result = text1 + text2
-
-                extenso = result
-                print(extenso)
-            except NotImplementedError:
-                extenso =  num2words(4200, lang='en')
-            print('Resultado do extenso: ', extenso) """
             return Response(serializer.data, status=status.HTTP_200_OK) 
         else:
             queryset = LancamentoCaixa.objects.filter(empresa_id=empresa)
