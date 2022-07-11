@@ -1,12 +1,10 @@
 # from unicodedata import name
-
-#from urllib import request
-
+# from urllib import request
 # from this import d
 # from tkinter import N
 # from turtle import st
+# from cmath import e
 from ast import Try
-from cmath import e
 from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -36,7 +34,7 @@ from datetime import datetime
 
 from .models import CompraDetalhe, Documento, Categoria, EstoqueEmpresa, \
     LancamentoCaixa, SubCategoria, Produto, Fornecedor, Compra, Cliente, \
-    Venda, VendaDetalhe, Empresa, ContaContabil
+    Venda, VendaDetalhe, Empresa, ContaContabil, ProdutoAntigo
 
 from .serializer import ClienteSerializer, CompraSerializer, \
     DocumentoSerializer, CategoriaSerializer, LancamentoCaixaSerializer, \
@@ -46,15 +44,19 @@ from .serializer import ClienteSerializer, CompraSerializer, \
     Moeda, CompraSerializerFornecedor, UsuarioSerializer, ContaContabilSerializer, \
     LancamentoCaixaSimplesSerializer
 
+
 import logging
 logger = logging.getLogger('django.arquivo')
 # data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-#print(data_log)
+# print(data_log)
+
 
 """ 
 ACHADO NA INTERNET ADAPTADO PARA VARIAS MOEDAS BY SILVIAO
 number_to_long_number('210.000', 'es', 'G$')
 """
+
+
 def number_to_long_number(number_p, lang=None, moeda_p=None):
     moeda = {}
     e = ' e '
@@ -117,6 +119,7 @@ def number_to_long_number(number_p, lang=None, moeda_p=None):
         result = text1 + text2
     return result
 
+
 def index(request):
     return render(request, 'index.html')
 
@@ -160,16 +163,89 @@ def email_contato(request):
 
 @method_decorator(csrf_exempt) 
 def ajusta_estoque(request):
-    produtos = Produto.objects.all()
+    print('Por favor aguarde ....')
+    produtos = ProdutoAntigo.objects.all()
+
+    #for produto in produtos:
+    #    print(produto.id)
+
+
+
+
     contador = 1
-    empresa = '2'
+    # empresa = '2'
+    
+    empresas = [
+        {'empresa': '1', 'antiga': '0'},
+        {'empresa': '2', 'antiga': '1'},
+        {'empresa': '3', 'antiga': '8'}
+    ]
+    
+    # deposito = '7'
+
+    for emp in empresas:
+        print(emp, emp['empresa'], emp['antiga'])
+        contador = 0
+        
+        for produto in produtos:
+            #print("produto =>", produto)
+            #print(dir(produto))
+            #print("id do produto=>", produto['id'])
+            p = produto
+            estoque = p.empresa_estoque_antigo.filter(empresa_id=emp['empresa']).first()
+            if estoque is not None:
+                if emp['empresa'] == '1':
+                    estoque.deposito1 = produto['deposito1']
+                    estoque.deposito2 = produto['deposito2']
+                    estoque.deposito3 = produto['deposito3']
+                    estoque.deposito4 = produto['deposito4']
+                    estoque.deposito5 = produto['deposito5']
+                    estoque.deposito6 = produto['deposito6']
+                    estoque.deposito7 = produto['deposito7']
+                else:    
+                    estoque.quantidade = produto['qtd'+emp['antiga']]
+                estoque.save()
+            else:
+                if emp['empresa'] == '1':
+                    #print('Não tem, entrou para criar estoque deposito')
+                    EstoqueEmpresa.objects.create(
+                        empresa_id=int(emp['empresa']),
+                        produto_id=produto['id'],
+                        produto_antigo_id=produto['id'],
+                        deposito1=produto['deposito1'],
+                        deposito2=produto['deposito2'],
+                        deposito3=produto['deposito3'],
+                        deposito4=produto['deposito4'],
+                        deposito5=produto['deposito5'],
+                        deposito6=produto['deposito6'],
+                        deposito7=produto['deposito7'],
+                    )
+                else:
+                    EstoqueEmpresa.objects.create(
+                        empresa_id=int(emp['empresa']),
+                        produto_id=produto['id'],
+                        produto_antigo_id=produto['id'],
+                        quantidade=produto['qtd'+emp['antiga']],
+                    )
+            contador = contador+1
+            #print(contador)
+    return HttpResponse("terminou...")
+
+
+@method_decorator(csrf_exempt) 
+def ajusta_estoque_ok(request):
+    # produtos = Produto.objects.all()
+    produtos = ProdutoAntigo.objects.all()
+    contador = 1
+    # empresa = '2'
+    
     empresas = [
         {'empresa': '1', 'antiga': '0'},
         {'empresa': '2', 'antiga': '2'},
         {'empresa': '3', 'antiga': '8'}
     ]
     
-    deposito = '7'
+    # deposito = '7'
 
     for emp in empresas:
         print(emp, emp['empresa'], emp['antiga'])
@@ -592,7 +668,6 @@ class ClienteViewSet(viewsets.ModelViewSet):
 
 class VendaViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Venda.objects.all().order_by('-id')    
     serializer_class = VendaSerializer
 
@@ -744,7 +819,7 @@ class MoedaViewSet(viewsets.ModelViewSet):
 
 
 class LancamentoCaixaViewSet(viewsets.ModelViewSet):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = LancamentoCaixa.objects.all().order_by('descricao')
     serializer_class = LancamentoCaixaSerializer
 
@@ -805,7 +880,7 @@ class LancamentoCaixaViewSet(viewsets.ModelViewSet):
 
 
 class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly)
     queryset = LancamentoCaixa.objects.all()
     # serializer_class = LancamentoCaixaSimplesSerializer
     serializer_class = LancamentoCaixaSerializer
@@ -835,6 +910,54 @@ class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
             #extenso = None
             xxx = number_to_long_number('3400,55', 'es', 'U$')
             print(xxx)
+
+            """ 
+            #print(number_to_long_number('10.000,00'))
+            try:
+                # extenso =  num2words(4200.99, lang='es')
+                #extenso =  self.number_to_long_number(42)
+                number_p = '4.000,55'
+                lingua = 'es'
+
+                if number_p.find(',')!=-1:
+                    number_p = number_p.split(',')
+                    number_p1 = int(number_p[0].replace('.',''))
+                    number_p2 = int(number_p[1])
+                else:
+                    number_p1 = int(number_p.replace('.',''))
+                    number_p2 = 0    
+                    
+                if number_p1 == 1:
+                    aux1 = ' dolar'
+                else:
+                    aux1 = ' dolares'
+                    
+                if number_p2 == 1:
+                    aux2 = ' centavo'
+                else:
+                    aux2 = ' centavos'
+                    
+                text1 = ''
+                if number_p1 > 0:
+                    text1 = num2words(number_p1,lang=lingua) + str(aux1)
+                else:
+                    text1 = ''
+                
+                if number_p2 > 0:
+                    text2 = num2words(number_p2,lang=lingua) + str(aux2) 
+                else: 
+                    text2 = ''
+                
+                if (number_p1 > 0 and number_p2 > 0):
+                    result = text1 + ' y ' + text2
+                else:
+                    result = text1 + text2
+
+                extenso = result
+                print(extenso)
+            except NotImplementedError:
+                extenso =  num2words(4200, lang='en')
+            print('Resultado do extenso: ', extenso) """
             return Response(serializer.data, status=status.HTTP_200_OK) 
         else:
             queryset = LancamentoCaixa.objects.filter(empresa_id=empresa)

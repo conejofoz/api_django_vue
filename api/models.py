@@ -151,6 +151,39 @@ class Grupo(ModeloEdit):
         verbose_name_plural = 'Grupos'
 
 
+class ProdutoAntigo(models.Model):
+    codigo = models.CharField(max_length=10, null=False, blank=False)
+    descricao = models.CharField(max_length=50)
+
+    qtd1 = models.IntegerField(default=0, blank=True, null=True)
+    qtd2 = models.IntegerField(default=0, blank=True, null=True)
+    qtd3 = models.IntegerField(default=0, blank=True, null=True)
+    qtd4 = models.IntegerField(default=0, blank=True, null=True)
+    qtd5 = models.IntegerField(default=0, blank=True, null=True)
+    qtd6 = models.IntegerField(default=0, blank=True, null=True)
+    qtd7 = models.IntegerField(default=0, blank=True, null=True)
+    qtd8 = models.IntegerField(default=0, blank=True, null=True)
+    qtd9 = models.IntegerField(default=0, blank=True, null=True)
+    
+    deposito1 = models.IntegerField(default=0, blank=True, null=True)
+    deposito2 = models.IntegerField(default=0, blank=True, null=True)
+    deposito3 = models.IntegerField(default=0, blank=True, null=True)
+    deposito4 = models.IntegerField(default=0, blank=True, null=True)
+    deposito5 = models.IntegerField(default=0, blank=True, null=True)
+    deposito6 = models.IntegerField(default=0, blank=True, null=True)
+    deposito7 = models.IntegerField(default=0, blank=True, null=True)
+    empresa = models.ManyToManyField(Empresa, related_name="produtosantigos", through="EstoqueEmpresa", blank=True, default=1)
+
+    class Meta:
+        verbose_name_plural = "ProdutosAntigos"
+    
+    def __str__(self):
+        return self.descricao
+
+    def __getitem__(self, key):
+        return self.__dict__[key]
+
+
 class Produto(ModeloEdit):
 
     """ def nome_imagem(self, filename):
@@ -316,6 +349,7 @@ class Produto(ModeloEdit):
 class EstoqueEmpresa(ModeloEdit):
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="empresa_estoque", blank=True, null=True, default=1)
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name="empresa_estoque", blank=True, null=True, default=1)
+    produto_antigo = models.ForeignKey(ProdutoAntigo, on_delete=models.CASCADE, related_name="empresa_estoque_antigo", blank=True, null=True, default=1)
     quantidade = models.FloatField(default=0)
     deposito1 = models.FloatField(default=0)
     deposito2 = models.FloatField(default=0)
