@@ -15,6 +15,8 @@ from .views import LancamentoCaixaViewSet, prueba, DocumentoViewSet, \
     upload, clientest, EmpresaViewSet, MoedaViewSet, email_contato, \
     ajusta_estoque, LancamentoCaixaSimplesViewSet
 
+from .viewsExporta import exporta_categoria, exporta_produto, import_csv
+
 router = routers.DefaultRouter()
 router.register(r'docs', DocumentoViewSet)
 router.register(r'categoria', CategoriaViewSet)
@@ -44,4 +46,7 @@ urlpatterns = [
     path('clientest/', clientest, name='clientest'),
     path('email-contato/', email_contato, name='email_contato'),
     path('ajusta-estoque/', ajusta_estoque, name='ajusta_estoque'),
+    path('exporta-categoria/', exporta_categoria, name='exporta_categoria'),
+    path('import-categoria/', import_csv, name='import_csv'),
+    path('exporta-produto/', exporta_produto, name='exporta_produto'),
 ]

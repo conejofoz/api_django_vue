@@ -55,8 +55,6 @@ logger = logging.getLogger('django.arquivo')
 ACHADO NA INTERNET ADAPTADO PARA VARIAS MOEDAS BY SILVIAO
 number_to_long_number('210.000', 'es', 'G$')
 """
-
-
 def number_to_long_number(number_p, lang=None, moeda_p=None):
     moeda = {}
     e = ' e '
