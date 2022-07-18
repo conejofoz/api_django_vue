@@ -777,6 +777,20 @@ class VendaViewSet(viewsets.ModelViewSet):
         return Response(serializerVenda.errors, status=status.HTTP_400_BAD_REQUEST)  
 
 
+    def update(self, Request, *args, **kwargs):
+        total = Request.data['total'].replace('.',',')
+        print(Request.data['total'])
+        print(total)
+        extenso = number_to_long_number(total, 'es', 'U$')
+        print(extenso)
+        Request.data._mutable = True
+        Request.data['extenso'] = extenso
+
+
+
+        return super().update(Request, *args, **kwargs)
+
+
 class VendaDetalheViewSet(viewsets.ModelViewSet):
     #permission_classes = (IsAuthenticated,)
     queryset = VendaDetalhe.objects.all().order_by('id')    
@@ -790,11 +804,13 @@ class VendaDetalheViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             data = request.data
             prod = Produto.objects.get(pk=data["produto"])
-            if int(prod.stock) >= int(data["quantidade"]):
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response("Não tem quantidade suficiente" + "Estoque atual: " + str(prod.stock))
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            # if int(prod.stock) >= int(data["quantidade"]):
+                # serializer.save()
+                # return Response(serializer.data, status=status.HTTP_201_CREATED)
+            # else:
+                # return Response("Não tem quantidade suficiente" + "Estoque atual: " + str(prod.stock))
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

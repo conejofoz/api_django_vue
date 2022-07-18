@@ -5,6 +5,7 @@
 # from email.mime import image
 # from operator import mod, truediv
 # from pickletools import optimize
+from distutils import extension
 from email.policy import default
 from io import BytesIO
 from ntpath import realpath
@@ -462,6 +463,15 @@ class Cliente(ModeloEdit):
         verbose_name_plural = "Clientes"
 
 
+class NotaFiscal(ModeloEdit):
+    sucursal = models.CharField(max_length=3)
+    pdv = models.CharField(max_length=3)
+    numero = models.IntegerField(default=0)
+    numero_final = models.IntegerField(default=0)
+    descricao = models.CharField(max_length=100)
+
+
+
 class Venda(ModeloEdit):
     cliente = models.ForeignKey(Cliente, related_name='cliente', on_delete=models.RESTRICT)
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
@@ -470,6 +480,8 @@ class Venda(ModeloEdit):
     paga = models.BooleanField(default=False)
     destino = models.IntegerField(blank=True, null=True)
     tipo_movimento = models.IntegerField(blank=True, null=True)
+    numero_nf = models.CharField(max_length=13, null=True, blank=True)
+    extenso = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
