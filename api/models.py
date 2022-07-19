@@ -445,6 +445,7 @@ class Cliente(ModeloEdit):
     telefone = models.CharField(max_length=20, null=True, blank=True)
     email = models.TextField(null=True, blank=True)
     estado = models.BooleanField(default=True)
+    nacional = models.BooleanField(default=False)
     imagem = models.ImageField(null=True, blank=True, upload_to='clientes/')
 
     def get_image(self):
@@ -469,6 +470,7 @@ class NotaFiscal(ModeloEdit):
     numero = models.IntegerField(default=0)
     numero_final = models.IntegerField(default=0)
     descricao = models.CharField(max_length=100)
+    empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)  
 
 
 

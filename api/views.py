@@ -33,7 +33,7 @@ from datetime import date
 from datetime import datetime
 
 from .models import CompraDetalhe, Documento, Categoria, EstoqueEmpresa, \
-    LancamentoCaixa, SubCategoria, Produto, Fornecedor, Compra, Cliente, \
+    LancamentoCaixa, NotaFiscal, SubCategoria, Produto, Fornecedor, Compra, Cliente, \
     Venda, VendaDetalhe, Empresa, ContaContabil, ProdutoAntigo
 
 from .serializer import ClienteSerializer, CompraSerializer, \
@@ -779,12 +779,24 @@ class VendaViewSet(viewsets.ModelViewSet):
 
     def update(self, Request, *args, **kwargs):
         total = Request.data['total'].replace('.',',')
+        empresa = Request.data['empresa']
         print(Request.data['total'])
         print(total)
         extenso = number_to_long_number(total, 'es', 'U$')
         print(extenso)
+        print('{:*<100}'.format(extenso))
+        extenso = '{:*<50}'.format(extenso)
+            
         Request.data._mutable = True
         Request.data['extenso'] = extenso
+        if Request.data['numero_nf'] == 'null':
+            notafiscal = NotaFiscal.objects.filter(empresa_id=empresa).first()
+            numero_novo = notafiscal.numero + 1
+            notafiscal.numero = numero_novo
+            notafiscal.save()
+            numero_novo = str(numero_novo).zfill(7)
+            numero_novo = notafiscal.sucursal + notafiscal.pdv + numero_novo
+            Request.data['numero_nf'] = numero_novo
 
 
 
