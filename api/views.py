@@ -789,8 +789,13 @@ class VendaViewSet(viewsets.ModelViewSet):
             
         Request.data._mutable = True
         Request.data['extenso'] = extenso
-        if Request.data['numero_nf'] == 'null':
+        if Request.data['numero_nf'] == 'null' or Request.data['numero_nf'] == 'undefined':
             notafiscal = NotaFiscal.objects.filter(empresa_id=empresa).first()
+            print(notafiscal)
+            if notafiscal == None:
+                return Response({'error': 'Configuração de nota fiscal não encontrada'}, status=status.HTTP_404_NOT_FOUND)
+            if notafiscal.numero == notafiscal.numero_final:
+                return Response({'error': 'Terminou a numeração da nota fiscal'}, status=status.HTTP_400_BAD_REQUEST)
             numero_novo = notafiscal.numero + 1
             notafiscal.numero = numero_novo
             notafiscal.save()

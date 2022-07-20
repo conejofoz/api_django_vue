@@ -446,6 +446,8 @@ class Cliente(ModeloEdit):
     email = models.TextField(null=True, blank=True)
     estado = models.BooleanField(default=True)
     nacional = models.BooleanField(default=False)
+    endereco_nf = models.CharField(max_length=200, null=True, blank=True)
+    documento_nf = models.CharField(max_length=50, null=True, blank=True)
     imagem = models.ImageField(null=True, blank=True, upload_to='clientes/')
 
     def get_image(self):
