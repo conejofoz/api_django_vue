@@ -4,7 +4,7 @@
 # from tkinter import N
 # from turtle import st
 # from cmath import e
-from ast import Try
+from ast import Return, Try
 from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -363,6 +363,7 @@ class CategoriaViewSet(viewsets.ModelViewSet):
     permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Categoria.objects.all().order_by('descricao')
     serializer_class = CategoriaSerializer
+    print('categoria')
 
     def list(self, Request, *args, **kwargs):
         usuario = Request.user.username
@@ -374,6 +375,7 @@ class CategoriaViewSet(viewsets.ModelViewSet):
         return super(CategoriaViewSet, self).list(Request, *args, **kwargs)
 
     def create(self, Request, *args, **kwargs):
+        print('create da categoria' )
         #Request.data['descricao'] = Request.data['descricao'].lower()
         usuario = Request.user.username
         obj = Request.data['descricao']
@@ -396,12 +398,21 @@ class CategoriaViewSet(viewsets.ModelViewSet):
         return super().update(Request, *args, **kwargs)
 
     def destroy(self, Request, *args, **kwargs):
-        id = kwargs['pk']
-        obj = Categoria.objects.get(id=id)
-        data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-        usuario = Request.user.username
-        logger.info(usuario + ' apagou a categoria ' + obj.descricao + ' em: ' + data_log)
-        return super().destroy(Request, *args, **kwargs)
+        print('entrou antes do try')
+        try:
+            print('entrou no destroy')
+            id = kwargs['pk']
+            obj = Categoria.objects.get(id=id)
+            data_log = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+            usuario = Request.user.username
+            logger.info(usuario + ' apagou a categoria ' + obj.descricao + ' em: ' + data_log)
+            # return super().destroy(Request, *args, **kwargs)
+            super().destroy(Request, *args, **kwargs)
+            return Response({"detail":"Registro eliminado"}, status=status.HTTP_200_OK)
+        except Exception as e:
+            print('entrou no except')
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class SubCategoriaViewSet(viewsets.ModelViewSet):
