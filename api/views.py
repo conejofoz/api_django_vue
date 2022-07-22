@@ -4,6 +4,7 @@
 # from tkinter import N
 # from turtle import st
 # from cmath import e
+from django.db.models import Q
 from ast import Return, Try
 from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
@@ -488,10 +489,11 @@ class ProdutoViewSet(viewsets.ModelViewSet):
             #obj = Produto.objects.all().exclude(imagem__isnull=True).order_by('?')[0:90]
             obj = Produto.objects.exclude(imagem__isnull=True).exclude(imagem__iexact='').order_by('?')[0:90]
         else:
-            obj = Produto.objects.filter(descricao__icontains=descricao).order_by('descricao')
+            # obj = Produto.objects.filter(descricao__icontains=descricao).order_by('descricao')
+            obj = Produto.objects.filter(Q(descricao__icontains=descricao) | Q(codigo=descricao)).order_by('descricao')   
         print('OBJ: ', obj)
         if not obj:
-            return Response({"detail": "Não existe um produto com esse nome"})
+            return Response({"detail": "Não existe um produto com esse nome"}, status=status.HTTP_404_NOT_FOUND)
         serializador = ProdutoSerializer(obj, many=True)
         print('SERIALIZADOR: ',serializador.data)
         return Response(serializador.data)
