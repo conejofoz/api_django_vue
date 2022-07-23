@@ -417,9 +417,10 @@ class CategoriaViewSet(viewsets.ModelViewSet):
 
 
 class SubCategoriaViewSet(viewsets.ModelViewSet):
-    #permission_classes = (IsAuthenticated,)
-    #permission_classes = (IsAuthenticatedOrReadOnly,)
-    #permission_classes = (DjangoModelPermissions,)
+    # permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    # permission_classes = (DjangoModelPermissions,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = SubCategoria.objects.all().order_by('descricao')
     serializer_class = SubCategoriaSerializer
 
@@ -490,7 +491,10 @@ class ProdutoViewSet(viewsets.ModelViewSet):
             obj = Produto.objects.exclude(imagem__isnull=True).exclude(imagem__iexact='').order_by('?')[0:90]
         else:
             # obj = Produto.objects.filter(descricao__icontains=descricao).order_by('descricao')
-            obj = Produto.objects.filter(Q(descricao__icontains=descricao) | Q(codigo=descricao)).order_by('descricao')   
+            obj = Produto.objects.filter(Q(descricao__icontains=descricao) | 
+            Q(codigo=descricao) | 
+            Q(referencia__icontains=descricao) | 
+            Q(codigo_barras=descricao)).order_by('descricao')   
         print('OBJ: ', obj)
         if not obj:
             return Response({"detail": "Não existe um produto com esse nome"}, status=status.HTTP_404_NOT_FOUND)
@@ -523,6 +527,7 @@ class FornecedorViewSet(viewsets.ModelViewSet):
 
 class CompraViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Compra.objects.all().order_by('-id')    
     serializer_class = CompraSerializer
 
@@ -660,11 +665,13 @@ class ComprasDetalheViewSet(viewsets.ModelViewSet):
  """
 class ClienteViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
+    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    permission_classes = (DjangoModelPermissions,)
     queryset = Cliente.objects.all().order_by('nome')
     # ###print('QUERYSET: ', queryset) #ESTAVA DANDO PAU NA HORA DE CRIAR UM BANCO NOVO
     serializer_class = ClienteSerializer
 
-    @action(methods=['get'], detail=False, permission_classes=[],
+    @action(methods=['get'], detail=False, permission_classes=[DjangoModelPermissions,],
         url_path='by-name/(?P<nome>[\w\ ]+)')
     def by_name(self, request, pk=None, nome=None):
         print(nome)
@@ -679,6 +686,7 @@ class ClienteViewSet(viewsets.ModelViewSet):
 
 class VendaViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Venda.objects.all().order_by('-id')    
     serializer_class = VendaSerializer
 
@@ -846,6 +854,7 @@ class VendaDetalheViewSet(viewsets.ModelViewSet):
 
 class MoedaViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Moeda.objects.all().order_by('descricao')
     serializer_class = MoedaSerializer
 
@@ -863,7 +872,7 @@ class MoedaViewSet(viewsets.ModelViewSet):
 
 
 class LancamentoCaixaViewSet(viewsets.ModelViewSet):
-    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = LancamentoCaixa.objects.all().order_by('descricao')
     serializer_class = LancamentoCaixaSerializer
 
@@ -1014,6 +1023,6 @@ class LancamentoCaixaSimplesViewSet(viewsets.ModelViewSet):
     
         
 class ContaContabilViewSet(viewsets.ModelViewSet):
-    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
     queryset = ContaContabil.objects.all().order_by('descricao')
     serializer_class = ContaContabilSerializer

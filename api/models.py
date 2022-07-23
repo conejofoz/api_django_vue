@@ -7,6 +7,7 @@
 # from pickletools import optimize
 from distutils import extension
 from email.policy import default
+from enum import unique
 from io import BytesIO
 from ntpath import realpath
 from tabnanny import verbose
@@ -333,6 +334,7 @@ class Produto(ModeloEdit):
 
     class Meta:
         verbose_name_plural = "Produtos"
+        #unique_together = ("descricao", "referencia",)
 
     def make_thumbnail(imagem, size=(300, 200)):
         img = Image.open(imagem)
