@@ -445,7 +445,7 @@ class ComprasDetalhe(ModeloEdit):
 class Cliente(ModeloEdit):
     nome = models.CharField(max_length=200, null=False, blank=False, unique=True)
     telefone = models.CharField(max_length=20, null=True, blank=True)
-    email = models.TextField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True, unique=True)
     estado = models.BooleanField(default=True)
     nacional = models.BooleanField(default=False)
     endereco_nf = models.CharField(max_length=200, null=True, blank=True)
@@ -466,6 +466,9 @@ class Cliente(ModeloEdit):
 
     class Meta:
         verbose_name_plural = "Clientes"
+        permissions = (
+            ('listar_clientes', 'Usuário pode listar clientes'),
+        )
 
 
 class NotaFiscal(ModeloEdit):

@@ -683,18 +683,68 @@ class ClienteViewSet(viewsets.ModelViewSet):
     # ###print('QUERYSET: ', queryset) #ESTAVA DANDO PAU NA HORA DE CRIAR UM BANCO NOVO
     serializer_class = ClienteSerializer
 
+    """
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.has_perm('cliente.listar_clientes'):
+            #return Response({"detail": "Sem permissão"}, status=status.HTTP_400_BAD_REQUEST) #estalinhanaofunciona
+            print("sem permissão")
+        return super().dispatch(request, *args, **kwargs)
+        #return super(ClienteViewSet, self).dispatch(request, *args, **kwargs)
+    """
+
     @action(methods=['get'], detail=False, permission_classes=[DjangoModelPermissions,],
         url_path='by-name/(?P<nome>[\w\ ]+)')
     def by_name(self, request, pk=None, nome=None):
-        print(nome)
-        obj = Cliente.objects.filter(nome__icontains=nome, estado=True)
-        print('OBJ: ', obj)
-        if not obj:
+        clientes = Cliente.objects.filter(nome__icontains=nome, estado=True)
+        if not clientes:
             return Response({"detail": "Não existe um cliente com esse nome"})
-        serializador = ClienteSerializer(obj, many=True)
-        print('SERIALIZADOR: ',serializador.data)
+        serializador = ClienteSerializer(clientes, many=True)
         return Response(serializador.data)
 
+
+    """ def list(self, request, *args, **kwargs):
+        if not request.user.has_perm('cliente.listar_clientes'):
+           return Response({"detail": "Sem permissão"}, status=status.HTTP_403_FORBIDDEN)
+        return super().list(request, *args, **kwargs) """
+
+    def create(self, request, *args, **kwargs):
+        try:
+            serializer = self.serializer_class(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_400_BAD_REQUEST)    
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get_queryset(self, pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.all().order_by('nome')
+        return self.get_serializer().Meta.model.objects.filter(id = pk).first()
+        
+     
+    def update(self, request, pk=None):
+        if not request.user.has_perm('cliente.listar_clientes'):
+            return Response({"detail": "Sem permissão"}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            if self.get_queryset(pk):
+                # manda a instancia do cliente para ser encontrada e em seguida atualizada com os dados do request
+                serializer = self.serializer_class(self.get_queryset(pk), data=request.data)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_400_BAD_REQUEST)  
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
+    
+    """ 
+    def update(self, request, *args, **kwargs):
+        try:
+            return super().update(request, *args, **kwargs)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_400_BAD_REQUEST)  
+    """
+    
 
 class VendaViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
