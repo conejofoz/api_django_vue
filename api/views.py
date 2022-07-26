@@ -7,6 +7,7 @@
 from django.db.models import Q
 from ast import Return, Try
 from django.contrib.auth.models import User
+from django.urls import is_valid_path
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
@@ -348,13 +349,14 @@ class DocumentoViewSet(viewsets.ModelViewSet):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    #permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = User.objects.all().order_by('username')
     serializer_class = UsuarioSerializer
 
 
 class EmpresaViewSet(viewsets.ModelViewSet):
-    #permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
+    permission_classes = (DjangoModelPermissions,)
     queryset = Empresa.objects.all().order_by('id')
     serializer_class = EmpresaSerializer
 
@@ -453,14 +455,14 @@ class ProdutoViewSet(viewsets.ModelViewSet):
             return Response({'error': str(e), 'status': status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializerProduto.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    """
+    
     def destroy(self, request, *args, **kwargs):
         try:
             super().destroy(request, *args, **kwargs)
-            return Response("ok", status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_204_NO_CONTENT)
         except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_HTTP_400_BAD_REQUEST)
-    """
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+    
     """
     def destroy(self, request, *args, **kwargs):
         print("Destroy")
@@ -523,6 +525,16 @@ class FornecedorViewSet(viewsets.ModelViewSet):
     permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Fornecedor.objects.all().order_by('nome')
     serializer_class = FornecedorSerializer
+
+    def create(self, request, *args, **kwargs):
+        try:
+            # super().create(request, *args, **kwargs)
+            serializer = self.serializer_class(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CompraViewSet(viewsets.ModelViewSet):
