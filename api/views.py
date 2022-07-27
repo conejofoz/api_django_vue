@@ -702,10 +702,10 @@ class ClienteViewSet(viewsets.ModelViewSet):
         return Response(serializador.data)
 
 
-    """ def list(self, request, *args, **kwargs):
-        if not request.user.has_perm('cliente.listar_clientes'):
+    def list(self, request, *args, **kwargs):
+        if not request.user.has_perm('api.listar_clientes'):
            return Response({"detail": "Sem permissão"}, status=status.HTTP_403_FORBIDDEN)
-        return super().list(request, *args, **kwargs) """
+        return super().list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         try:
@@ -724,7 +724,7 @@ class ClienteViewSet(viewsets.ModelViewSet):
         
      
     def update(self, request, pk=None):
-        if not request.user.has_perm('cliente.listar_clientes'):
+        if not request.user.has_perm('api.listar_clientes'):
             return Response({"detail": "Sem permissão"}, status=status.HTTP_400_BAD_REQUEST)
         try:
             if self.get_queryset(pk):

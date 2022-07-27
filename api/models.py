@@ -75,6 +75,9 @@ class Empresa(ModeloEdit):
 
     class Meta:
         verbose_name_plural = "Empresas"
+        permissions = (
+            ('listar_empresas', 'Usuário pode listar empresas'),
+        )
 
 
 class Categoria(ModeloEdit):
@@ -105,6 +108,9 @@ class Categoria(ModeloEdit):
 
     class Meta:
         verbose_name_plural = "Categorias"
+        permissions = (
+            ('listar_categorias', 'Usuário pode listar categorias'),
+        )
 
 
 class SubCategoria(ModeloEdit):
@@ -121,6 +127,9 @@ class SubCategoria(ModeloEdit):
     class Meta:
         verbose_name_plural = "Sub Categorias"
         unique_together = ("categoria", "descricao")
+        permissions = (
+            ('listar_subcategorias', 'Usuário pode listar subcategorias'),
+        )
 
 
 
@@ -138,6 +147,9 @@ class Fornecedor(ModeloEdit):
 
     class Meta:
         verbose_name_plural = 'Fornecedores'
+        permissions = (
+            ('listar_fornecedores', 'Usuário pode listar fornecedores'),
+        )
 
 class Grupo(ModeloEdit):
     nome = models.CharField(max_length=100, null=True, blank=True)
@@ -335,6 +347,9 @@ class Produto(ModeloEdit):
     class Meta:
         verbose_name_plural = "Produtos"
         #unique_together = ("descricao", "referencia",)
+        permissions = (
+            ('listar_produtos', 'Usuário pode listar produtos'),
+        )
 
     def make_thumbnail(imagem, size=(300, 200)):
         img = Image.open(imagem)
@@ -383,6 +398,9 @@ class Compra(ModeloEdit):
 
     class Meta:
         verbose_name_plural = "Compras"
+        permissions = (
+            ('listar_compras', 'Usuário pode listar compras'),
+        )
 
 
 class CompraDetalhe(ModeloEdit):
@@ -479,6 +497,12 @@ class NotaFiscal(ModeloEdit):
     descricao = models.CharField(max_length=100)
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)  
 
+    class Meta:
+        permissions = (
+            ('listar_notafiscal', 'Usuário pode listar notafiscal'),
+            ('emitir_notafiscal', 'Usuário pode emitir notafiscal'),
+        )
+
 
 
 class Venda(ModeloEdit):
@@ -497,6 +521,9 @@ class Venda(ModeloEdit):
 
     class Meta:
         verbose_name_plural = "Vendas"
+        permissions = (
+            ('listar_vendas', 'Usuário pode listar vendas'),
+        )
 
 
 class VendaDetalhe(ModeloEdit):
@@ -536,6 +563,9 @@ class ContaContabil(ModeloEdit):
 
     class Meta:
         verbose_name_plural = 'Contas Contábeis'
+        permissions = (
+            ('listar_contacontabil', 'Usuário pode listar conta contabil'),
+        )
 
 
 class LancamentoCaixa(ModeloEdit):
@@ -550,8 +580,13 @@ class LancamentoCaixa(ModeloEdit):
     empresa = models.ForeignKey(Empresa, default=1, on_delete=models.RESTRICT)
     conta_contabil = models.ForeignKey(ContaContabil, related_name="lancamentos", on_delete=models.RESTRICT)
     comprovante = models.FileField(blank=True, null=True, upload_to='uploads/lancamentos/')
+
+
     class Meta:
         verbose_name_plural = 'Lancamentos de caixa'
+        permissions = (
+            ('listar_lancamentoscaixa', 'Usuário pode listar lançamentos do caixa'),
+        )
 
 
 
@@ -631,3 +666,6 @@ class Moeda(ModeloEdit):
     class Meta:
         verbose_name_plural = "moedas"
         unique_together = ("empresa", "descricao", )
+        permissions = (
+            ('listar_moedas', 'Usuário pode listar moedas'),
+        )
