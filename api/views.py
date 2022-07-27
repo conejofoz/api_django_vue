@@ -861,6 +861,13 @@ class VendaViewSet(viewsets.ModelViewSet):
 
 
     def update(self, Request, *args, **kwargs):
+        if not Request.user.has_perm('api.emitir_notafiscal'):
+            return Response({"detail": "Usuário não tem permissão para emitir nota fiscal"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        
+        if not "numero_nf" in kwargs:
+            return super().update(Request, *args, **kwargs)
+        
         total = Request.data['total'].replace('.',',')
         empresa = Request.data['empresa']
         print(Request.data['total'])
@@ -885,9 +892,6 @@ class VendaViewSet(viewsets.ModelViewSet):
             numero_novo = str(numero_novo).zfill(7)
             numero_novo = notafiscal.sucursal + notafiscal.pdv + numero_novo
             Request.data['numero_nf'] = numero_novo
-
-
-
         return super().update(Request, *args, **kwargs)
 
 
