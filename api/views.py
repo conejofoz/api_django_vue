@@ -865,9 +865,14 @@ class VendaViewSet(viewsets.ModelViewSet):
             return Response({"detail": "Usuário não tem permissão para emitir nota fiscal"}, status=status.HTTP_400_BAD_REQUEST)
         
         
-        if not "numero_nf" in kwargs:
+        if not "numero_nf" in Request.data:
+            print('Não veio o numero, só atualização normal')
+            print(args)
+            print(kwargs)
+            print(Request.data)
             return super().update(Request, *args, **kwargs)
         
+        print(Request.data)
         total = Request.data['total'].replace('.',',')
         empresa = Request.data['empresa']
         print(Request.data['total'])
