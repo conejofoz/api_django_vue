@@ -4,6 +4,7 @@
 # from tkinter import N
 # from turtle import st
 # from cmath import e
+import queue
 from django.db.models import Q
 from ast import Return, Try
 from django.contrib.auth.models import User
@@ -525,6 +526,20 @@ class FornecedorViewSet(viewsets.ModelViewSet):
     permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
     queryset = Fornecedor.objects.all().order_by('nome')
     serializer_class = FornecedorSerializer
+
+    @action(methods=['get'], detail=False, permission_classes=[DjangoModelPermissions,],
+        url_path='by-name/(?P<nome>[\w\ ]+)')
+    def by_name(self, request, pk=None, nome=None):
+        fornecedores = Fornecedor.objects.filter(nome__icontains=nome)
+        if not fornecedores:
+            return Response({"detail": "Não existe um fornecedor com esse nome"}, status=status.HTTP_404_NOT_FOUND)
+        serializador = FornecedorSerializer(fornecedores, many=True)
+        return Response(serializador.data)
+
+    """ def list(self, request, *args, **kwargs):
+        serializer = self.serializer_class(self.queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK) """
+        #return super().list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         try:
