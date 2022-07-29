@@ -559,6 +559,8 @@ class CompraViewSet(viewsets.ModelViewSet):
     serializer_class = CompraSerializer
 
     def list(self, request, *args, **kwargs):
+        if not request.user.has_perm('api.listar_compras'):
+            return Response({"detail":"Sem permissão"}, status=status.HTTP_403_FORBIDDEN)
         print('o que tem no request',  request.GET)
         print('data inicial: ', request.GET.get('dataInicial'))
         print('data final  : ', request.GET.get('dataFinal'))
